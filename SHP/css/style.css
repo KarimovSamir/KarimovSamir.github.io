@@ -1308,8 +1308,6 @@ preloader
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: "235";
-    height: "55";
   }
   .mil-preloader .mil-preloader-animation .mil-pos-abs p {
     margin-right: 0;
