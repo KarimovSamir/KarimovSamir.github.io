@@ -133,6 +133,7 @@ $(function () {
             scrollTop: target.offset().top - offset
         }, 400);
     });
+
     /***************************
 
     append
@@ -239,6 +240,7 @@ $(function () {
         yPercent: -50,
     });
 
+
     document.addEventListener('pointermove', movecursor);
 
     function movecursor(e) {
@@ -250,39 +252,7 @@ $(function () {
         });
     }
 
-    // $('.mil-drag, .mil-more, .mil-choose').mouseover(function () {
-    //     gsap.to($(cursor), .2, {
-    //         width: 90,
-    //         height: 90,
-    //         opacity: 1,
-    //         ease: 'sine',
-    //     });
-    // });
-
-    $('.mil-drag, .mil-more, .mil-choose').mouseleave(function () {
-        gsap.to($(cursor), .2, {
-            width: 20,
-            height: 20,
-            opacity: .1,
-            ease: 'sine',
-        });
-    });
-
-    // $('.mil-accent-cursor').mouseover(function () {
-    //     gsap.to($(cursor), .2, {
-    //         background: accent,
-    //         ease: 'sine',
-    //     });
-    //     $(cursor).addClass('mil-accent');
-    // });
-
-    // $('.mil-accent-cursor').mouseleave(function () {
-    //     gsap.to($(cursor), .2, {
-    //         background: dark,
-    //         ease: 'sine',
-    //     });
-    //     $(cursor).removeClass('mil-accent');
-    // });
+    
 
     $('.mil-drag').mouseover(function () {
         gsap.to($('.mil-ball .mil-icon-1'), .2, {

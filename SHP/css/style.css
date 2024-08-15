@@ -2599,8 +2599,8 @@ services
           transform: translateY(10px);
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
   -webkit-box-orient: vertical;
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
@@ -4531,3 +4531,21 @@ footer style
     height: "55";
   }
 } */
+
+@media (min-width: 992px){
+  .bootstrap-col-lg-3 {
+    flex: 0 0 auto;
+    width: 33%;
+  }
+}
+
+@media (min-width: 992px){
+  .bootstrap-service-col-lg-3 {
+    flex: 0 0 auto;
+    width: 49.99%;
+  }
+}
+
+.mil-service-card-black {
+  border: solid 1px rgb(0, 0, 0);
+}

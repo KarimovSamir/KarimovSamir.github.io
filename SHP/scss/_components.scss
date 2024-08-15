@@ -866,22 +866,37 @@ lines
 
 ------------------------------------------- */
 @mixin move-animation {
-    from {
-        transform: translateY(-75px);
-    }
+    @keyframes move {
+        from {
+            transform: translateY(-75px);
+        }
 
-    50% {
-        transform: translateY(75px);
-    }
+        50% {
+            transform: translateY(75px);
+        }
 
-    to {
-        transform: translateY(-75px);
+        to {
+            transform: translateY(-75px);
+        }
     }
 }
+// @mixin move-animation {
+//     from {
+//         transform: translateY(-75px);
+//     }
 
-@keyframes move {
-    @include move-animation;
-}
+//     50% {
+//         transform: translateY(75px);
+//     }
+
+//     to {
+//         transform: translateY(-75px);
+//     }
+// }
+
+// @keyframes move {
+//     @include move-animation;
+// }
 
 .mil-lines-place {
     & .mil-lines {
