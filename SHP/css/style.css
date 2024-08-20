@@ -1167,6 +1167,15 @@ spaces
   }
 }
 
+.mil-p-60-0 {
+  padding-top: 60px;
+}
+@media screen and (max-width: 992px) {
+  .mil-p-60-0 {
+    padding-top: 30px;
+  }
+}
+
 .mil-p-120-60 {
   padding-top: 120px;
   padding-bottom: 60px;
@@ -4548,4 +4557,12 @@ footer style
 
 .mil-service-card-black {
   border: solid 1px rgb(0, 0, 0);
+}
+
+.mil-mt-30 {
+  margin-top: 30px;
+}
+
+.mil-mt-60 {
+  margin-top: 60px;
 }
