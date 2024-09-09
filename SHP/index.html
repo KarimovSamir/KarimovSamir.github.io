@@ -93,7 +93,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!-- <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-h3 mil-muted-preloader mil-thin">Sustainable</p>
@@ -108,7 +108,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scrollbar progress -->
@@ -121,7 +121,7 @@
         <div class="mil-menu-frame">
             <div class="mil-video-background">
                 <video autoplay muted loop>
-                    <source src="video/construction_hd_1920_1080_24fps.mp4" type="video/mp4">
+                    <source src="video/Building-Construction-Shp_3.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
                 
@@ -211,15 +211,21 @@
         <!-- content -->
         <div class="mil-content">
             <div id="swupMain" class="mil-main-transition">
-
+                
                 <!-- banner -->
                 <section class="mil-banner mil-dark-bg">
                     <div class="mi-invert-fix">
-                        <div class="mil-animation-frame">
+                        <div class="mil-video-background">
+                            <video autoplay muted loop>
+                                <source src="video/Building-Construction-Shp.webm" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>                          
+                        </div>
+                        <!-- <div class="mil-animation-frame">
                             <div class="mil-animation mil-position-1 mil-scale" data-value-1="7" data-value-2="1.6"></div>
                             <div class="mil-animation mil-position-2 mil-scale" data-value-1="4" data-value-2="1"></div>
                             <div class="mil-animation mil-position-3 mil-scale" data-value-1="1.2" data-value-2=".1"></div>
-                        </div>
+                        </div> -->
 
                         <div class="mil-gradient"></div>
 
@@ -822,7 +828,30 @@
         <!-- content -->
     </div>
     <!-- wrapper end -->
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const frame = document.querySelector('.mil-frame');
+          const invertFix = document.querySelector('.mi-invert-fix');
+        
+          function checkVideoVisibility() {
+            const rect = invertFix.getBoundingClientRect();
+        
+            // Если элемент с видео находится в видимой части экрана
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+              frame.style.zIndex = '999';
+            } else {
+              frame.style.zIndex = '2'; // Возвращаем старое значение
+            }
+          }
+        
+          // Вызываем функцию при загрузке страницы
+          checkVideoVisibility();
+        
+          // Отслеживаем скролл
+          document.addEventListener("scroll", checkVideoVisibility);
+        });
+    </script>        
+        
     <script src="js/plugins/jquery.min.js"></script>
     <script src="js/plugins/swup.min.js"></script>
     <script src="js/plugins/swiper.min.js"></script>

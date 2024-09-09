@@ -634,7 +634,8 @@ a {
 }
 
 .mil-light-soft {
-  color: rgba(255, 255, 255, 0.4);
+  /* color: rgba(255, 255, 255, 0.4); */
+  color: rgba(255, 255, 255);
 }
 
 .mil-dark-soft {
@@ -1470,6 +1471,7 @@ frame
   width: 100%;
   height: 100%;
 }
+
 @media screen and (max-width: 1200px) {
   .mil-frame {
     padding: 30px;
@@ -4593,7 +4595,7 @@ footer style
   transform: translate(-50%, -50%);
   z-index: -1;
   object-fit: cover;
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 
 .mil-menu-content .row {
@@ -4601,4 +4603,12 @@ footer style
   z-index: 1;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
+li::marker {
+  display: none;
+}
