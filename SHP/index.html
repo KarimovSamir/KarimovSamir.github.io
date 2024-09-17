@@ -93,7 +93,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!-- <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-h3 mil-muted-preloader mil-thin">Sustainable</p>
@@ -108,7 +108,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scrollbar progress -->
@@ -121,7 +121,7 @@
         <div class="mil-menu-frame">
             <div class="mil-video-background">
                 <video autoplay muted loop playsinline>
-                    <source src="https://res.cloudinary.com/dlarkoumm/video/upload/v1725950483/Building-Shp_1280%D1%85720_e6spfi.webm" type="video/webm">
+                    <source src="https://res.cloudinary.com/dlarkoumm/video/upload/v1725950484/Building-Construction-Shp_1280%D1%85720_li3cyg.webm" type="video/webm">
                     <!-- <source src="video/webm/Building-Shp_1280х720.webm" type="video/webm"> -->
                     <!-- <source src="video/mp4/Building-Shp_1280х720.mp4" type="video/mp4"> -->
                     Your browser does not support the video tag.
@@ -196,6 +196,9 @@
                     Aze
                 </a> -->
                 <div class="mil-menu-btn">
+                    <a class="mil-lang-menu mil-logo" href="index_aze.html">
+                        Aze
+                    </a>
                     <span></span>
                 </div>
             </div>
@@ -215,16 +218,18 @@
             <div id="swupMain" class="mil-main-transition">
                 
                 <!-- banner -->
-                <section class="mil-banner mil-dark-bg">
+                <section class="mil-banner mil-dark-bg mil-mainpage-class">
                     <div class="mi-invert-fix">
-                        <div class="mil-video-background">
+                        <div class="mil-slideshow-background">
+                            <img id="slideshow-image" src="img/main_page_slider/BilgahBeachHotel.png" alt="Slideshow Image">
+                        </div>
+                          
+                        <!-- <div class="mil-video-background">
                             <video autoplay muted loop playsinline>
-                                <source src="https://res.cloudinary.com/dlarkoumm/video/upload/v1725950484/Building-Construction-Shp_1280%D1%85720_li3cyg.webm" type="video/webm">
-                                <!-- <source src="video/webm/Building-Construction-Shp_1280х720.webm" type="video/webm">
-                                <source src="video/mp4/Building-Construction-Shp_1280х720.mp4" type="video/mp4"> -->
+                                <source src="https://res.cloudinary.com/dlarkoumm/video/upload/v1725950483/Building-Shp_1280%D1%85720_e6spfi.webm" type="video/webm">
                                 Your browser does not support the video tag.
                             </video>                          
-                        </div>
+                        </div> -->
                         <!-- <div class="mil-animation-frame">
                             <div class="mil-animation mil-position-1 mil-scale" data-value-1="7" data-value-2="1.6"></div>
                             <div class="mil-animation mil-position-2 mil-scale" data-value-1="4" data-value-2="1"></div>
@@ -832,38 +837,6 @@
         <!-- content -->
     </div>
     <!-- wrapper end -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const frame = document.querySelector('.mil-frame');
-          const invertFix = document.querySelector('.mi-invert-fix');
-      
-          function checkVideoVisibility() {
-            // Проверяем ширину экрана
-            if (window.innerWidth > 1200) {
-              const rect = invertFix.getBoundingClientRect();
-      
-              // Если элемент с видео находится в видимой части экрана
-              if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                frame.style.zIndex = '999';
-              } else {
-                frame.style.zIndex = '2'; // Возвращаем старое значение
-              }
-            } else {
-              // Возвращаем z-index на дефолтное значение для мобильной версии
-              frame.style.zIndex = '999';
-            }
-          }
-      
-          // Вызываем функцию при загрузке страницы
-          checkVideoVisibility();
-      
-          // Отслеживаем скролл
-          document.addEventListener("scroll", checkVideoVisibility);
-      
-          // Отслеживаем изменение размера окна браузера
-          window.addEventListener("resize", checkVideoVisibility);
-        });
-    </script>
                  
     <script src="js/plugins/jquery.min.js"></script>
     <script src="js/plugins/swup.min.js"></script>
@@ -875,6 +848,7 @@
     <script src="js/plugins/ScrollTo.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/main_add.js"></script>
+    
 </body>
 
 </html>

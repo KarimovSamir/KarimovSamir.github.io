@@ -1484,6 +1484,7 @@ frame
     height: 90px;
   }
 }
+
 @media screen and (max-width: 1200px) {
   .mil-frame .mil-frame-top {
     height: 90px;
@@ -1502,6 +1503,7 @@ frame
     background: rgb(0, 0, 0);
   }
 }
+
 .mil-frame .mil-frame-bottom {
   width: 100%;
   display: -webkit-box;
@@ -1552,6 +1554,8 @@ frame
   pointer-events: all;
   color: rgb(0, 0, 0);
 }
+
+
 
 /* -------------------------------------------
 
@@ -4574,6 +4578,32 @@ footer style
   z-index: 1;
 } */
 
+.mil-slideshow-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.mil-slideshow-background img {
+  /* width: 100%;
+  height: 100%; */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover; /* Сохраняет полное изображение */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: brightness(40%);
+}
+
 .mil-video-background {
   position: absolute;
   top: 0;
@@ -4595,7 +4625,7 @@ footer style
   transform: translate(-50%, -50%);
   z-index: -1;
   object-fit: cover;
-  filter: brightness(60%);
+  filter: brightness(40%);
 }
 
 .mil-menu-content .row {
@@ -4611,4 +4641,33 @@ ul {
 
 li::marker {
   display: none;
+}
+
+.mil-frame-visible {
+  position: fixed;
+  pointer-events: none;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 999;
+
+  height: 90px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  padding: 20px 60px 20px 60px;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+
+.mil-frame-visible .mil-frame-bottom {
+  display: none;
+}
+
+.mil-lang-menu {
+  margin-right: 32px;
+  margin-bottom: 8px;
 }
