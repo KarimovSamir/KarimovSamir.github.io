@@ -56,11 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Инициализация слайдшоу
     function initSlideshow() {
         const slideshowImages = [
-            'img/main_page_slider/BilgahBeachHotel.png',
-            'img/main_page_slider/AzureBusinessCenter.png',
-            'img/main_page_slider/GanjlikMall.png',
-            'img/main_page_slider/vasilchuki-chaihona-1.png',
-            'img/main_page_slider/BravoHypermarkets.png'
+            'https://res.cloudinary.com/dlarkoumm/image/upload/v1726902785/BilgahBeachHotel_hcx6oi.png',
+            'https://res.cloudinary.com/dlarkoumm/image/upload/v1726902784/AzureBusinessCenter_er3fnx.png',
+            'https://res.cloudinary.com/dlarkoumm/image/upload/v1726902789/GanjlikMall_qkp6hk.png',
+            'https://res.cloudinary.com/dlarkoumm/image/upload/v1726902783/vasilchuki-chaihona-1_wzvqfx.png',
+            'https://res.cloudinary.com/dlarkoumm/image/upload/v1726902786/BravoHypermarkets_e6crau.png'
         ];
 
         let currentImageIndex = 0;

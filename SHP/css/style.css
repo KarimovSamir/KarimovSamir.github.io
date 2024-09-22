@@ -2576,7 +2576,7 @@ services
 }
 
 .mil-text-image {
-  height: 80px;
+  height: 110px;
   width: 250px;
   display: inline-block;
   overflow: hidden;
@@ -2795,10 +2795,10 @@ team
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -o-object-position: center;
+     object-position: center;
+  -webkit-transform: scale(1);
+          transform: scale(1);
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
@@ -2854,8 +2854,8 @@ team
   color: rgb(41, 178, 74);
 }
 .mil-team-card:hover img {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
 }
 .mil-team-card:hover:after {
   width: 100%;
@@ -2971,7 +2971,7 @@ revievs
           box-shadow: inset 0 0 0 4px rgb(255, 255, 255);
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot {
-  background-color: red;
+  background-color: white;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -2987,15 +2987,15 @@ revievs
   }
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-1 {
-  background-image: url(../img/faces/customers/1.jpg);
+  background-image: url(../img/partners/Casalogo.png);
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-2 {
-  background-image: url(../img/faces/customers/2.jpg);
+  background-image: url(../img/partners/Pashalogo.png);
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-3 {
-  background-image: url(../img/faces/customers/3.jpg);
+  background-image: url(../img/partners/Caspainlogo.png);
 }
-.mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-4 {
+/* .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-4 {
   background-image: url(../img/faces/customers/4.jpg);
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-5 {
@@ -3006,7 +3006,7 @@ revievs
 }
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-7 {
   background-image: url(../img/faces/customers/7.jpg);
-}
+} */
 .mil-revi-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   -webkit-box-shadow: inset 0 0 0 4px rgb(41, 178, 74);
           box-shadow: inset 0 0 0 4px rgb(41, 178, 74);
@@ -4670,4 +4670,16 @@ li::marker {
 .mil-lang-menu {
   margin-right: 32px;
   margin-bottom: 8px;
+}
+
+.mil-frame .mil-frame-bottom .mil-current-page-without-js {
+  pointer-events: none;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  width: 300px;
+  color: rgb(0, 0, 0);
+  -webkit-transform: rotate(-90deg) translateX(138px) translateY(-138px);
+          transform: rotate(-90deg) translateX(138px) translateY(-138px);
 }
