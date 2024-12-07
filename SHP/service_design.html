@@ -9,13 +9,14 @@
     <meta name="author" content="Samir Karimov">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="noindex">
 
     <!-- Open Graph -->
-    <meta property="og:url" content="https://shp.az/service_design" />
+    <meta property="og:url" content="https://www.shp.az/service_design" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SHP LLC - Design Services | Architectural and MEP Design Excellence" />
     <meta property="og:description" content="Experience SHP LLC's design services, crafting detailed architectural and MEP designs that combine functionality with aesthetic appeal, complying with global standards."/>
-    <meta property="og:image" content="https://shp.az/images/SHP_Logo_Graph.png"/>
+    <meta property="og:image" content="https://www.shp.az/images/SHP_Logo_Graph.png"/>
     <meta property="og:image:width" content="1080" />
     <meta property="og:image:height" content="566" />
     <meta property="og:locale" content="en_EN" />
@@ -26,10 +27,10 @@
     <meta property="og:updated_time" content="2024-08-14T08:00:00+00:00" />
 
     <!-- Canonical URL for SEO -->
-    <link rel="canonical" href="https://shp.az/service_design"/>
+    <link rel="canonical" href="https://www.shp.az/service_design"/>
     
     <!-- Hreflang for all language versions -->
-    <link rel="alternate" href="https://shp.az/service_design_az" hreflang="az" />
+    <!-- <link rel="alternate" href="https://www.shp.az/service_design_az" hreflang="az" /> -->
 
     <!-- Favicon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="img/logo/favicon-16x16.png">
@@ -51,14 +52,15 @@
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <link rel="stylesheet" href="css/plugins/fancybox.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "SHP",
-            "url": "https://shp.az/service_design",
-            "logo": "https://shp.az/images/SHP_Logo_Graph.png",
+            "url": "https://www.shp.az/service_design",
+            "logo": "https://www.shp.az/images/SHP_Logo_Graph.png",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "609 Jaffar Jabbarli, Globus Center, 11th floor",
@@ -69,14 +71,29 @@
             },
             "telephone": "+994 (51) 270 88 08",
             "openingHours": "Mon-Fri 10:00-19:00",
-            "image": "https://shp.az/images/SHP_Logo_Graph.png",
-            "description": "SHP LLC provides detailed architectural and MEP design services, adhering to both Azerbaijan and international standards. Our design team excels in delivering functional and aesthetic solutions"
+            "image": "https://www.shp.az/images/SHP_Logo_Graph.png",
+            "description": "SHP LLC provides detailed architectural and MEP design services, adhering to both Azerbaijan and international standards. Our design team excels in delivering functional and aesthetic solutions",
             "sameAs": ["https://www.linkedin.com/in/tyusifov/"]
         }
     </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NXV9PCX8');
+    </script>
+    <!-- End Google Tag Manager -->
+
 </head>
 
 <body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXV9PCX8"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- wrapper -->
     <div class="mil-wrapper" id="top">
@@ -131,14 +148,14 @@
             </div>
             <!-- frame clone -->
             <div class="mil-frame-top">
-                <a href="index.html" class="mil-logo">
+                <a href="/" class="mil-logo">
                     <img src="https://res.cloudinary.com/dlarkoumm/image/upload/v1726900589/SHP_Logo_u2doln.png" alt="SHP Logo frame clone" width="129" height="31" />
                 </a>
-                <!-- <a href="index_aze.html" class="mil-logo">
+                <!-- <a href="index_aze" class="mil-logo">
                     Aze
                 </a> -->
                 <div class="mil-menu-btn">
-                    <a class="mil-lang-menu mil-logo" href="index_aze.html">
+                    <a class="mil-lang-menu mil-logo" href="index_aze">
                         Aze
                     </a>
                     <span></span>
@@ -152,31 +169,33 @@
                             <nav class="mil-main-menu" id="swupMenu">
                                 <ul>
                                     <li class="mil-has-children">
-                                        <a href="index.html">Home</a>
+                                        <a href="/">Home</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="portfolio.html">Portfolio</a>
+                                        <a href="/" onclick="navigateToAnchor(event, '/#about')">About us</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="sectors.html">Sectors</a>
+                                        <a href="/" onclick="navigateToAnchor(event, '/#team')">Our Team</a>
+                                    </li>
+                                    <li class="mil-has-children">
+                                        <a href="/" onclick="navigateToAnchor(event, '/#services')">Our Services</a>
                                     </li>
                                     <li class="mil-has-children mil-active">
-                                        <a href="#.">Services</a>
-                                        <ul>
-                                            <li><a href="service_mep.html">Services Construction & MEP</a></li>
-                                            <li><a href="service_design.html">Services design</a></li>
-                                            <li><a href="service_consultancy.html">Services consultancy</a></li>
-                                        </ul>
+                                        <a href="portfolio">Our Projects</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="mil-has-children">
+                                        <a href="certificates">Licences and Cerficates</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="certificates.html">Certificates</a>
+                                        <a href="/" onclick="navigateToAnchor(event, '/#partners_up')">Clients and Partners</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Other pages</a>
-                                        <ul>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
+                                        <a href="#">Carrer</a>
+                                    </li>
+                                    <li class="mil-has-children">
+                                        <a href="contact">Contacts</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -194,21 +213,20 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="index.html" class="mil-logo">
+                <a href="/" class="mil-logo">
                     <img class="LogoBrightless" src="https://res.cloudinary.com/dlarkoumm/image/upload/v1726900589/SHP_Logo_u2doln.png" alt="SHP Logo frame clone" width="129" height="31" />
                 </a>
-                <!-- <a href="index_aze.html" class="mil-logo">
+                <!-- <a href="index_aze" class="mil-logo">
                     Aze
                 </a> -->
                 <div class="mil-menu-btn">
-                    <a class="mil-lang-menu mil-logo" href="index_aze.html">
+                    <a class="mil-lang-menu mil-logo" href="index_aze">
                         Aze
                     </a>
                     <span></span>
                 </div>
             </div>
             <div class="mil-frame-bottom">
-                <div class="mil-current-page-without-js">Services</div>
                 <div class="mil-back-to-top">
                     <a href="#top" class="mil-link mil-dark mil-arrow-place">
                         <span>Back to top</span>
@@ -223,35 +241,51 @@
             <div id="swupMain" class="mil-main-transition">
 
                 <!-- banner -->
-                <div class="mil-inner-banner">
+                <div class="mil-inner-banner services-page">
                     <div class="mil-animation-frame">
                         <div class="mil-animation mil-position-4 mil-dark mil-scale" data-value-1="6" data-value-2="1.4"></div>
                     </div>
-                    <div class="mil-banner-content mil-up">
-                        <div class="container">
+                    <div class="mil-banner-content ">
+                        <div class="container flex-container">
                             <ul class="mil-breadcrumbs mil-mb-60">
-                                <li><a href="index.html">Homepage</a></li>
-                                <li><a href="service_design.html">Service</a></li>
+                                <li><a href="/">Homepage</a></li>
+                                <li><a href="service_design">Service</a></li>
                             </ul>
                             <h1 class="mil-mb-60">Design Services</h1>
-                            <a href="#service" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
-                                <span>About service</span>
-                            </a>
+                        </div>
+                        <div class="mil-banner-image">
+                            <img src="https://res.cloudinary.com/dlarkoumm/image/upload/v1727799712/design_nergmr.webp" alt="Design Works Image">
                         </div>
                     </div>
                 </div>
                 <!-- banner end -->
 
+                <section>
+                    <div class="container">
+                        <div class="mil-works-nav ">
+                            <a href="service_consultancy" class="mil-link mil-dark mil-arrow-place mil-icon-left">
+                                <span>Prev service</span>
+                            </a>
+                            <!-- <a href="portfolio-1.html" class="mil-link mil-dark">
+                                <span>All projects</span>
+                            </a> -->
+                            <a href="service_mep" class="mil-link mil-dark mil-arrow-place">
+                                <span>Next service</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- service -->
                 <section id="service">
-                    <div class="container mil-p-120-90">
+                    <div class="container mil-p-60-30">
                         <div class="row justify-content-between">
                             <div class="col-lg-4 mil-relative mil-mb-90">
 
-                                <h4 class="mil-up mil-mb-30">Our <span class="mil-thin">Approach</span> <br>and <span class="mil-thin">Work Specifics</span></h4>
-                                <p class="mil-up mil-mb-30">At SHP LLC, we prioritize excellence in every project. Our approach integrates meticulous planning, top-tier construction practices, and rigorous adherence to both local and international standards. Whether it's MEP systems, architectural design, or project management, we ensure that every aspect is executed with precision and quality. Our team is dedicated to delivering innovative solutions that meet your unique needs, ensuring your project's success from concept to completion.</p>
-                                <div class="mil-up">
-                                    <a href="portfolio.html" class="mil-link mil-dark mil-arrow-place">
+                                <h4 class=" mil-mb-30">Our <span class="mil-thin">Approach</span> <br>and <span class="mil-thin">Work Specifics</span></h4>
+                                <p class=" mil-mb-30">At SHP LLC, we prioritize excellence in every project. Our approach integrates meticulous planning, top-tier construction practices, and rigorous adherence to both local and international standards. Whether it's MEP systems, architectural design, or project management, we ensure that every aspect is executed with precision and quality. Our team is dedicated to delivering innovative solutions that meet your unique needs, ensuring your project's success from concept to completion.</p>
+                                <div class="">
+                                    <a href="portfolio" class="mil-link mil-dark mil-arrow-place">
                                         <span>View works</span>
                                     </a>
                                 </div>
@@ -259,7 +293,7 @@
                             </div>
                             <div class="col-lg-6">
 
-                                <div class="mil-accordion-group mil-up">
+                                <div class="mil-accordion-group ">
                                     <div class="mil-accordion-menu">
 
                                         <p class="mil-accordion-head">Concept Design & Visualization</p>
@@ -277,7 +311,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mil-accordion-group mil-up">
+                                <div class="mil-accordion-group ">
                                     <div class="mil-accordion-menu">
 
                                         <p class="mil-accordion-head">Architectural Design</p>
@@ -295,7 +329,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mil-accordion-group mil-up">
+                                <div class="mil-accordion-group ">
                                     <div class="mil-accordion-menu">
 
                                         <p class="mil-accordion-head">MEP Design</p>
@@ -319,15 +353,15 @@
                 <!-- service end -->
 
                 <!-- other services -->
-                <section class="mil-soft-bg">
-                    <div class="container mil-p-120-90">
+                <section id="other_services" class="mil-soft-bg">
+                    <div class="container mil-p-60-30">
                         <div class="row align-items-center mil-mb-30">
                             <div class="col-lg-6 mil-mb-30">
-                                <h3 class="mil-up">Other services</h3>
+                                <h3 class="">Other services</h3>
                             </div>
                             <div class="col-lg-6 mil-mb-30">
-                                <div class="mil-adaptive-right mil-up">
-                                    <a href="service_consultancy.html" class="mil-link mil-dark mil-arrow-place">
+                                <div class="mil-adaptive-right ">
+                                    <a href="service_consultancy" class="mil-link mil-dark mil-arrow-place">
                                         <span>View next</span>
                                     </a>
                                 </div>
@@ -336,16 +370,16 @@
                         <div class="row">
                             <div class="bootstrap-service-col-lg-3">
 
-                                <a href="service_consultancy.html" class="mil-service-card-lg mil-other-card  mil-mb-30" style="border: solid 1px rgb(0, 0, 0)">
-                                    <h4 class="mil-up mil-mb-30">Consultancy</h4>
-                                    <p class="mil-descr mil-up mil-mb-30">We provide consultancy to our clients in the various complex projects</p>
+                                <a href="service_consultancy" class="mil-service-card-lg mil-other-card  mil-mb-30" style="border: solid 1px rgb(0, 0, 0)">
+                                    <h4 class=" mil-mb-30">Consultancy</h4>
+                                    <p class="mil-descr  mil-mb-30">We provide consultancy to our clients in the various complex projects</p>
                                     <ul class="mil-service-list mil-dark mil-mb-30">
-                                        <li class="mil-up">Project Management Services</li>
-                                        <li class="mil-up">Third Party Consultancy</li>
-                                        <li class="mil-up">Feasibility Study and Expert Judgement</li>
-                                        <li class="mil-up">Facilities Management Services</li>
+                                        <li class="">Project Management Services</li>
+                                        <li class="">Third Party Consultancy</li>
+                                        <li class="">Feasibility Study and Expert Judgement</li>
+                                        <li class="">Facilities Management Services</li>
                                     </ul>
-                                    <div class="mil-link mil-dark mil-arrow-place mil-up">
+                                    <div class="mil-link mil-dark mil-arrow-place ">
                                         <span>Read more</span>
                                     </div>
                                 </a>
@@ -353,16 +387,16 @@
                             </div>
                             <div class="bootstrap-service-col-lg-3">
 
-                                <a href="service_mep.html" class="mil-service-card-lg mil-other-card  mil-mb-30" style="border: solid 1px rgb(0, 0, 0)">
-                                    <h4 class="mil-up mil-mb-30">Construction and MEP Works</h4>
-                                    <p class="mil-descr mil-up mil-mb-30">Our services include construction, fitting out and MEP systems installation works of various type and scale projects</p>
+                                <a href="service_mep" class="mil-service-card-lg mil-other-card  mil-mb-30" style="border: solid 1px rgb(0, 0, 0)">
+                                    <h4 class=" mil-mb-30">Construction and MEP Works</h4>
+                                    <p class="mil-descr  mil-mb-30">Our services include construction, fitting out and MEP systems installation works of various type and scale projects</p>
                                     <ul class="mil-service-list mil-dark mil-mb-30">
-                                        <li class="mil-up">Construction & Fit-Out works</li>
-                                        <li class="mil-up">Mechanical works</li>
-                                        <li class="mil-up">Fire Protection works</li>
-                                        <li class="mil-up">Electrical works:</li>
+                                        <li class="">Construction & Fit-Out works</li>
+                                        <li class="">Mechanical works</li>
+                                        <li class="">Fire Protection works</li>
+                                        <li class="">Electrical works:</li>
                                     </ul>
-                                    <div class="mil-link mil-dark mil-arrow-place mil-up">
+                                    <div class="mil-link mil-dark mil-arrow-place ">
                                         <span>Read more</span>
                                     </div>
                                 </a>
@@ -380,7 +414,7 @@
                             <div class="row justify-content-between">
                                 <div class="col-md-4 col-lg-4 mil-mb-60">
                                     <img src="https://res.cloudinary.com/dlarkoumm/image/upload/v1726900589/SHP_Logo_u2doln.png" alt="SHP Logo" width="314" height="74"/>
-                                    <p class="mil-light-soft mil-up mil-mb-30"><br><br>We are building ecosystem which unlocks the high potential of the crucial
+                                    <p class="mil-light-soft  mil-mb-30"><br><br>We are building ecosystem which unlocks the high potential of the crucial
                                         projects in the region, contributing to the development of economics</p>
                                 </div>
                                 <div class="col-md-7 col-lg-6">
@@ -389,23 +423,20 @@
 
                                             <nav class="mil-footer-menu mil-mb-60">
                                                 <ul>
-                                                    <li class="mil-up">
-                                                        <a href="index.html">Home</a>
+                                                    <li class="">
+                                                        <a href="/">Home</a>
                                                     </li>
-                                                    <li class="mil-up">
-                                                        <a href="portfolio.html">Portfolio</a>
+                                                    <li class="">
+                                                        <a href="/portfolio">Our Projects</a>
                                                     </li>
-                                                    <li class="mil-up mil-active">
-                                                        <a href="service_mep.html">Services</a>
+                                                    <li class="">
+                                                        <a href="/" onclick="navigateToAnchor(event, '/#services')">Our Services</a>
                                                     </li>
-                                                    <li class="mil-up">
-                                                        <a href="sectors.html">Sectors</a>
+                                                    <li class="">
+                                                        <a href="/sectors">Our Sectors</a>
                                                     </li>
-                                                    <li class="mil-up">
-                                                        <a href="certificates.html">Certificates</a>
-                                                    </li>
-                                                    <li class="mil-up">
-                                                        <a href="contact.html">Contact</a>
+                                                    <li class="">
+                                                        <a href="/certificates">Licences and Cerficates</a>
                                                     </li>
                                                 </ul>
                                             </nav>
@@ -413,12 +444,10 @@
                                         </div>
                                         <div class="col-md-6 col-lg-5">
                                             <div class="mil-mb-30-footer">
-                                                <ul class="mil-social-icons mil-up">
+                                                <ul class="mil-social-icons ">
                                                     <li>
-                                                        <a class="mil-light-soft mil-up mil-mb-30-footer" href="tel:+994512708808" data-no-swup>+994 51 270 88 08</a>
-                                                        <!-- <br> -->
-                                                        <a class="mil-light-soft mil-up mil-mb-30-footer" href="mailto:teymur.yusifov@shp.az" data-no-swup>teymur.yusifov@shp.az</a>
-                                                        <!-- <br> -->
+                                                        <!-- <a class="mil-light-soft  mil-mb-30-footer" href="tel:+994512708808" data-no-swup>+994 51 270 88 08</a> -->
+                                                        <a class="mil-light-soft  mil-mb-30-footer" href="mailto:info@shp.az" data-no-swup>info@shp.az</a>
                                                         <a href="https://www.linkedin.com/in/tyusifov/" rel="noopener nofollow" target="_blank" data-no-swup> 
                                                             <i class="fab fa-linkedin"></i> Linkedin
                                                         </a>
@@ -427,25 +456,25 @@
                                                 </ul>
                                             </div>
                                             <div class="col-md-6 col-lg-5 mil-mb-60 custom-width">
-                                                <p class="mil-light-soft mil-up">
+                                                <p class="mil-light-soft ">
                                                     609 Jaffar Jabbarli, Globus Center, 11<sup>th</sup> floor, Baku AZ1065
                                                 </p>
                                             </div>
 
-                                            <div class="row justify-content-between flex-sm-row-reverse">
+                                            <!-- <div class="row justify-content-between flex-sm-row-reverse">
                                                 <div class="mil-animation-frame">
                                                     <div class="mil-animation mil-position-1 mil-scale" data-value-1="2.4" data-value-2="1.4" style="top: 300px; right: -100px"></div>
                                                     <div class="mil-animation mil-position-2 mil-scale" data-value-1="2" data-value-2="1" style="left: 150px"></div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Add this block to include copyright information -->
                             <div class="footer-bottom text-center">
-                                <p class="mil-light-soft mil-up">© Copyright 2024 - All Rights Reserved.</p>
-                                <p class="mil-light-soft mil-up">
+                                <p class="mil-light-soft ">© Copyright 2024 - All Rights Reserved.</p>
+                                <p class="mil-light-soft ">
                                     <a href="https://www.mydigitalhome.me" style="text-decoration: underline;" data-no-swup>Site by My Digital Home</a>
                                 </p>
                             </div>
@@ -576,6 +605,9 @@
     <script src="js/plugins/ScrollTo.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/main_add.js"></script>
+    <script src="js/main_portfolio_single.js" data-swup-reload-script></script>
+    <script src="js/main_other_scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 </body>
 

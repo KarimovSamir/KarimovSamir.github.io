@@ -1,3 +1,10 @@
+let swup;
+
+function navigateToAnchor(event, url) {
+    event.preventDefault();
+    swup.loadPage({ url: url });
+}
+
 $(function () {
 
     "use strict";
@@ -10,10 +17,11 @@ $(function () {
     const options = {
         containers: ['#swupMain', '#swupMenu'],
         animateHistoryBrowsing: true,
-        linkSelector: 'a:not([data-no-swup])',
+        linkSelector: 'a:not([data-no-swup]):not([href^="#"])',
         animationSelector: '[class="mil-main-transition"]'
     };
-    const swup = new Swup(options);
+    swup = new Swup(options);
+
 
     /***************************
 
@@ -27,7 +35,8 @@ $(function () {
 
     ***************************/
 
-    var accent = 'rgba(255, 152, 0, 1)';
+    // var accent = 'rgba(255, 152, 0, 1)';
+    var accent = 'rgb(41, 178, 74)';
     var dark = '#000';
     var light = '#fff';
 
@@ -103,6 +112,7 @@ $(function () {
             $('.mil-preloader').addClass("mil-hidden");
         },
     }, "-=1");
+    
     /***************************
 
     anchor scroll
@@ -110,18 +120,102 @@ $(function () {
     ***************************/
     $(document).on('click', 'a[href^="#"]', function (event) {
         event.preventDefault();
-
-        var target = $($.attr(this, 'href'));
-        var offset = 0;
-
-        if ($(window).width() < 1200) {
-            offset = 90;
+    
+        // Получаем значение атрибута href
+        var href = $(this).attr('href');
+    
+        // Если якорная ссылка ведет на "#", то ничего не делаем
+        if (href === '#') {
+            return;
         }
-
-        $('html, body').animate({
-            scrollTop: target.offset().top - offset
-        }, 400);
+    
+        // Проверяем, находится ли якорь на текущей странице
+        const target = $(href);
+        const currentUrl = window.location.pathname + window.location.search;
+    
+        // Если элемент присутствует, выполняем плавный скролл
+        if (target.length) {
+            const offset = $(window).width() < 1200 ? 90 : 0;
+    
+            $('html, body').animate({
+                scrollTop: target.offset().top - offset
+            }, 400);
+        } else {
+            // Если якорь ведет на другую страницу, проверяем текущий URL
+            const targetUrl = href.startsWith('/') ? href : `/${href}`;
+            if (currentUrl !== targetUrl.split('#')[0]) {
+                swup.loadPage({ url: targetUrl });
+            } else {
+                // Если это та же страница, но элемент недоступен, просто добавляем якорь в адрес
+                window.location.hash = href;
+            }
+        }
     });
+    // $(document).on('click', 'a[href^="#"]', function (event) {
+    //     event.preventDefault();
+    
+    //     // Получаем значение атрибута href
+    //     var href = $(this).attr('href');
+    
+    //     // Если якорная ссылка ведет на "#", то ничего не делаем
+    //     if (href === '#') {
+    //         return;
+    //     }
+    
+    //     // Проверяем, существует ли элемент на текущей странице
+    //     var target = $(href);
+    //     if (target.length) {
+    //         var offset = 0;
+    
+    //         // Устанавливаем смещение для мобильных устройств
+    //         if ($(window).width() < 1200) {
+    //             offset = 90;
+    //         }
+    
+    //         // Плавный скролл до элемента
+    //         $('html, body').animate({
+    //             scrollTop: target.offset().top - offset
+    //         }, 400);
+    //     } else {
+    //         // Если элемент отсутствует, используем Swup для перехода
+    //         const currentPage = window.location.pathname;
+    //         const targetPage = href.startsWith('/') ? href : `/${href}`;
+    //         if (currentPage !== targetPage) {
+    //             swup.loadPage({ url: targetPage });
+    //         }
+    //     }
+    // });
+
+    // Отмена перехвата якорных ссылок Swup
+    document.addEventListener('swup:clickLink', function (event) {
+        const link = event.detail.link; // Получаем объект ссылки из события
+    
+        // Проверяем, является ли `link` HTML-элементом
+        if (link instanceof HTMLElement && link.getAttribute('href').startsWith('#')) {
+            event.preventDefault(); // Отменяем перехват Swup для якорных ссылок
+        }
+    });
+    
+    
+    // Переинициализация якорных ссылок после замены контента
+    document.addEventListener('swup:contentReplaced', function () {
+        $(document).on('click', 'a[href^="#"]', function (event) {
+            event.preventDefault();
+
+            const href = $(this).attr('href');
+            if (href === '#') return;
+
+            const target = $(href);
+            if (target.length) {
+                const offset = $(window).width() < 1200 ? 90 : 0;
+                $('html, body').animate({
+                    scrollTop: target.offset().top - offset
+                }, 400);
+            }
+        });
+    });
+
+    
 
     /***************************
 
@@ -241,92 +335,16 @@ $(function () {
         });
     }
 
-    
-
-    $('.mil-drag').mouseover(function () {
-        gsap.to($('.mil-ball .mil-icon-1'), .2, {
-            scale: '1',
-            ease: 'sine',
-        });
-    });
-
-    $('.mil-drag').mouseleave(function () {
-        gsap.to($('.mil-ball .mil-icon-1'), .2, {
-            scale: '0',
-            ease: 'sine',
-        });
-    });
-
-    $('.mil-more').mouseover(function () {
-        gsap.to($('.mil-ball .mil-more-text'), .2, {
-            scale: '1',
-            ease: 'sine',
-        });
-    });
-
-    $('.mil-more').mouseleave(function () {
-        gsap.to($('.mil-ball .mil-more-text'), .2, {
-            scale: '0',
-            ease: 'sine',
-        });
-    });
-
-    $('.mil-choose').mouseover(function () {
-        gsap.to($('.mil-ball .mil-choose-text'), .2, {
-            scale: '1',
-            ease: 'sine',
-        });
-    });
-
-    $('.mil-choose').mouseleave(function () {
-        gsap.to($('.mil-ball .mil-choose-text'), .2, {
-            scale: '0',
-            ease: 'sine',
-        });
-    });
-
-    $('a:not(".mil-choose , .mil-more , .mil-drag , .mil-accent-cursor"), input , textarea, .mil-accordion-menu').mouseover(function () {
-        gsap.to($(cursor), .2, {
-            scale: 0,
-            ease: 'sine',
-        });
-        gsap.to($('.mil-ball svg'), .2, {
-            scale: 0,
-        });
-    });
-
-    $('a:not(".mil-choose , .mil-more , .mil-drag , .mil-accent-cursor"), input, textarea, .mil-accordion-menu').mouseleave(function () {
-        gsap.to($(cursor), .2, {
-            scale: 1,
-            ease: 'sine',
-        });
-
-        gsap.to($('.mil-ball svg'), .2, {
-            scale: 1,
-        });
-    });
-
-    $('body').mousedown(function () {
-        gsap.to($(cursor), .2, {
-            scale: .1,
-            ease: 'sine',
-        });
-    });
-    $('body').mouseup(function () {
-        gsap.to($(cursor), .2, {
-            scale: 1,
-            ease: 'sine',
-        });
-    });
     /***************************
 
      menu
 
     ***************************/
+    // Чтобы не открывалось дополнительное меню
     $('.mil-menu-btn').on("click", function () {
         $('.mil-menu-btn').toggleClass('mil-active');
         $('.mil-menu').toggleClass('mil-active');
-        $('.mil-menu-frame').toggleClass('mil-active');
+        // $('.mil-menu-frame').toggleClass('mil-active');
     });
     /***************************
 
@@ -572,6 +590,18 @@ $(function () {
 
     ------------------------------------------------------------
     ----------------------------------------------------------*/
+    document.addEventListener("swup:contentReplaced", (event) => {
+        const hash = window.location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: "smooth" });
+                }, 100); // Добавляем небольшую задержку для корректной прокрутки
+            }
+        }
+    });
+    
     document.addEventListener("swup:contentReplaced", function () {
 
         $('html, body').animate({
@@ -592,7 +622,7 @@ $(function () {
         ***************************/
         $('.mil-menu-btn').removeClass('mil-active');
         $('.mil-menu').removeClass('mil-active');
-        $('.mil-menu-frame').removeClass('mil-active');
+        // $('.mil-menu-frame').removeClass('mil-active');
         /***************************
 
         append

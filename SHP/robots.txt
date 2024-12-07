@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /portfolio_single
+Disallow: /service_consultancy
+Disallow: /service_design
+Disallow: /service_mep
+
+Sitemap: https://www.shp.az/sitemap.xml
