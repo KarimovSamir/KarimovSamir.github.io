@@ -70,10 +70,6 @@ function initPortfolioSingle() {
                     src: "https://res.cloudinary.com/dlarkoumm/image/upload/v1729437432/port_baku_walk3_x4z3xy.webp",
                     alt: "3 project picture"
                 },
-                {
-                    src: "img/portfolio/FlameTowers.jpg",
-                    alt: "2 project picture"
-                },
             ]
         },
         // Другие проекты...
