@@ -1592,13 +1592,15 @@ frame
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1070px) {
   .mil-frame .mil-frame-top {
-    height: 90px;
+    /* height: 90px; */
+    height: 60px;
+    /* align-items: flex-start; */
     /* background-color: rgba(0, 0, 0, 0.95); */
     background-color: rgb(255, 255, 255);
     border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-    padding: 0 30px;
+    /* padding: 0 30px; */
     -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
   }
@@ -1671,6 +1673,7 @@ menu button
 ------------------------------------------- */
 .mil-menu-btn {
   pointer-events: all;
+  margin-right: -20px;
   height: 28px;
   cursor: pointer;
   display: -webkit-box;
@@ -1686,8 +1689,9 @@ menu button
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1070px) {
   .mil-menu-btn {
+    margin-right: 0px;
     -webkit-transform: scale(0.85);
             transform: scale(0.85);
   }
@@ -4838,6 +4842,28 @@ li::marker {
           backdrop-filter: blur(8px);
 }
 
+/* sam */
+/* @media (min-width: 1070px){
+  .mil-frame-visible {
+    position: fixed;
+    pointer-events: none;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 999;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    padding: 10px 20px 10px 20px;
+    -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+  }
+} */
+
 .mil-frame-visible .mil-frame-bottom {
   display: none;
 }
@@ -5315,11 +5341,22 @@ main page "our projects" button
 .mil-lang-menu {
   margin-right: 32px;
   margin-bottom: 0;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 100%;
   color: rgb(0, 0, 0);
   text-decoration: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .mil-lang-menu {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1070px) {
+  .mil-lang-menu {
+    font-size: 24px;
+  }
 }
 
 .mil-lang-toggle {
@@ -5457,4 +5494,20 @@ portfolio single slider
 
 .slider-btn:hover {
   transform: scale(1.1);
+}
+
+.desktop-menu {
+  display: block;
+}
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 1070px) {
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
 }

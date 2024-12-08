@@ -344,7 +344,11 @@ $(function () {
     $('.mil-menu-btn').on("click", function () {
         $('.mil-menu-btn').toggleClass('mil-active');
         $('.mil-menu').toggleClass('mil-active');
+        // sam убрать если уберу меню
         // $('.mil-menu-frame').toggleClass('mil-active');
+        if ($(window).width() < 1070) {
+            $('.mil-menu-frame').toggleClass('mil-active');
+        }
     });
     /***************************
 
@@ -622,7 +626,11 @@ $(function () {
         ***************************/
         $('.mil-menu-btn').removeClass('mil-active');
         $('.mil-menu').removeClass('mil-active');
+        // sam убрать если уберу меню
         // $('.mil-menu-frame').removeClass('mil-active');
+        if ($(window).width() < 1070) {
+            $('.mil-menu-frame').toggleClass('mil-active');
+        }
         /***************************
 
         append
