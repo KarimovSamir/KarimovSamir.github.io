@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             function updateAboutSelectorPosition() {
+                if (!aboutSelector) return;
+
                 const activeTab = document.querySelector('._main_tabs_about_us-tab.active');
                 if (activeTab) {
                     const activeWidth = activeTab.offsetWidth;
@@ -82,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const serviceSelector = document.querySelector('._main_tabs_services-selector');
 
             function updateServiceSelectorPosition() {
+                if (!serviceSelector) return;
+
                 const activeTab = document.querySelector('._main_tabs_services-tab.active');
                 if (activeTab) {
                     const activeWidth = activeTab.offsetWidth;

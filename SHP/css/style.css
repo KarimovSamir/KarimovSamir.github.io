@@ -1999,6 +1999,8 @@ menu
 }
 @media screen and (max-width: 1200px) {
   .mil-main-menu {
+    text-align: center;
+    gap: 65px;
     display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -2035,6 +2037,15 @@ menu
   }
   .mil-main-menu ul li.mil-has-children ul li:first-child {
     margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mil-main-menu {
+    gap: 0px;
+  }
+  .mil-main-menu ul li a {
+    font-size: 28px;
   }
 }
 
@@ -2652,11 +2663,13 @@ about
 
 .mil-about-photo {
   position: relative;
+  z-index: 0;
 }
 .mil-about-photo .mil-lines-place {
   position: absolute;
   top: -120px;
   left: -57%;
+  z-index: -1;
 }
 
 /* -------------------------------------------
@@ -3028,11 +3041,13 @@ team
 
 .mil-team-list {
   position: relative;
+  z-index: 0;
 }
 .mil-team-list .mil-lines-place {
   position: absolute;
   top: -120px;
   left: -10.8%;
+  z-index: -1;
 }
 
 /* -------------------------------------------
@@ -3639,10 +3654,12 @@ portfolio
 
 .mil-portfolio {
   position: relative;
+  z-index: 0;
 }
 .mil-portfolio .mil-lines-place {
   position: absolute;
   left: 40.7%;
+  z-index: -1;
 }
 .mil-portfolio .mil-lines-place.mil-lines-long {
   top: 1289px;
@@ -4532,9 +4549,9 @@ images
   -o-object-position: center;
      object-position: center;
 } */
-.mil-image-frame.mil-horizontal {
+/* .mil-image-frame.mil-horizontal {
   padding-bottom: 5%;
-}
+} */
 /* .mil-image-frame.mil-vertical {
   padding-bottom: 140%;
 } */
@@ -4742,6 +4759,10 @@ footer style
 
 .mil-service-card-black {
   border: solid 1px rgb(0, 0, 0);
+}
+
+.mil-mt-15 {
+  margin-top: 15px;
 }
 
 .mil-mt-30 {
