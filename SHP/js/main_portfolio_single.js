@@ -13,22 +13,22 @@ function initPortfolioSingle() {
         "rahat_crescent_mall": {
             title: "RAHAT GOURMET CRESCENT MALL",
             bannerTitle: "RAHAT GOURMET CRESCENT MALL",
-            breadcrumbs: ["Homepage", "Portfolio", "RAHAT GOURMET CRESCENT MALL"],
+            breadcrumbs: ["Homepage", "Projects", "RAHAT GOURMET CRESCENT MALL"],
             info: [
                 {
                     tag: "h4",
-                    class: "mil-up mil-mb-30",
-                    text: "Инновационный супермаркет в сердце города"
+                    class: "mil-mb-30",
+                    text: "An innovative supermarket in the heart of the city"
                 },
                 {
                     tag: "p",
-                    class: "mil-up mil-mb-30",
-                    text: "Проект Rahat Gourmet Crescent Mall представляет собой современный супермаркет, сочетающий в себе удобство и широкий ассортимент товаров."
+                    class: "mil-mb-30",
+                    text: "The Rahat Gourmet Crescent Mall project is a modern supermarket that combines convenience and a wide range of products."
                 },
                 {
                     tag: "p",
-                    class: "mil-up mil-mb-60",
-                    text: "Мы предоставили полный спектр услуг: строительство, отделка, MEP, дизайн и реализация под ключ."
+                    class: "mil-mb-60",
+                    text: "We provided a full range of services: construction, finishing, MEP, design, and turnkey implementation."
                 },
             ],
             images: [
@@ -44,27 +44,31 @@ function initPortfolioSingle() {
                     src: "https://res.cloudinary.com/dlarkoumm/image/upload/v1729437434/rahar_gourme3_qgre0u.png",
                     alt: "3 project picture"
                 },
+            ],
+            relatedProjects: [
+                { id: "rahat_crescent_mall", name: "RAHAT GOURMET CRESCENT MALL" },
+                { id: "port_baku_walk", name: "PORT BAKU WALK" }
             ]
         },
         "port_baku_walk": {
             title: "PORT BAKU WALK",
             bannerTitle: "PORT BAKU WALK",
-            breadcrumbs: ["Homepage", "Portfolio", "PORT BAKU WALK"],
+            breadcrumbs: ["Homepage", "Projects", "PORT BAKU WALK"],
             info: [
                 {
                     tag: "h4",
-                    class: "mil-up mil-mb-30",
-                    text: "Инновационный бизнес центр в сердце города"
+                    class: "mil-mb-30",
+                    text: "An innovative business center in the heart of the city"
                 },
                 {
                     tag: "p",
-                    class: "mil-up mil-mb-30",
-                    text: "Проект PORT BAKU WALK представляет собой современный бизнес центр, сочетающий в себе удобство и большое количество ресторанов."
+                    class: "mil-mb-30",
+                    text: "The PORT BAKU WALK project is a modern business center that combines convenience and a large number of restaurants."
                 },
                 {
                     tag: "p",
-                    class: "mil-up mil-mb-30",
-                    text: "Мы предоставили полный спектр услуг: строительство, отделка, MEP, дизайн и реализация под ключ."
+                    class: "mil-mb-60",
+                    text: "We provided a full range of services: construction, finishing, MEP, design, and turnkey implementation."
                 },
             ],
             images: [
@@ -80,10 +84,15 @@ function initPortfolioSingle() {
                     src: "https://res.cloudinary.com/dlarkoumm/image/upload/v1729437432/port_baku_walk3_x4z3xy.webp",
                     alt: "3 project picture"
                 },
+            ],
+            relatedProjects: [
+                { id: "rahat_crescent_mall", name: "RAHAT GOURMET CRESCENT MALL" },
+                { id: "port_baku_walk", name: "PORT BAKU WALK" }
             ]
         },
-        // Другие проекты...
+        // Other projects...
     };
+    
 
     // Получение параметров URL
     function getQueryParams() {
@@ -182,6 +191,28 @@ function initPortfolioSingle() {
             element.textContent = item.text;
             infoContainer.appendChild(element);
         });
+
+        // Добавляем блок "Похожие проекты"
+        if (project.relatedProjects && project.relatedProjects.length > 0) {
+            const relatedProjectsContainer = document.createElement('div');
+            relatedProjectsContainer.className = 'mil-related-projects';
+        
+            const relatedProjectsTitle = document.createElement('h4');
+            relatedProjectsTitle.className = 'mil-mb-30';
+            relatedProjectsTitle.textContent = 'Similar projects';
+            relatedProjectsContainer.appendChild(relatedProjectsTitle);
+        
+            project.relatedProjects.forEach(relatedProject => {
+                const relatedLink = document.createElement('a');
+                relatedLink.href = `?project=${relatedProject.id}`;
+                relatedLink.className = 'mil-mb-30 mil-hashtag';
+                relatedLink.textContent = relatedProject.name;
+                relatedProjectsContainer.appendChild(relatedLink);
+            });
+        
+            infoContainer.appendChild(relatedProjectsContainer);
+        }
+        
 
         lightbox.option({
             'resizeDuration': 200,

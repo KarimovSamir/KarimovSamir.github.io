@@ -811,6 +811,14 @@ link
   -webkit-transform: scale(1.15) rotate(90deg);
           transform: scale(1.15) rotate(90deg);
 }
+.mil-link.mil-left-arrow svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.mil-link.mil-left-arrow:hover svg {
+  -webkit-transform: scale(1.15) rotate(180deg);
+          transform: scale(1.15) rotate(180deg);
+}
 .mil-link.mil-icon-left {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5012,7 +5020,7 @@ services new picture
 
   .services-page .mil-banner-image {
     padding-left: 0;
-    padding-top: 30px;
+    padding-top: 10px;
     max-width: 100%;
   }
 
@@ -5137,31 +5145,65 @@ main page tabs for 'services'
 }
 
 /* Services Tabs Styles */
-._main_tabs_services-tabs {
-  margin: 30px auto;
-  font-size: 15px;
-  list-style: none;
-  background: transparent;
-  /* box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1); */
-  display: inline-block;
-  border-radius: 50px;
-  position: relative;
-  z-index: 1;
-}
-
 ._main_tabs_services-tab {
   text-decoration: none;
-  color: #000000;
   text-transform: uppercase;
-  padding: 20px 30px;
+  padding: 15px 30px;
   display: inline-block;
   position: relative;
   z-index: 1;
   transition-duration: 0.6s;
+  border-radius: 50px;
 }
 
 ._main_tabs_services-tab.active {
   color: #ffffff;
+  background: linear-gradient(45deg, #00a14b 40%, #8200f4 100%);
+}
+
+._main_tabs_services-tab:not(.active) {
+  color: #000000;
+  background: transparent;
+}
+
+@media screen and (max-width: 1000px) {
+  ._main_tabs_services-tab {
+    padding: 15px 30px;
+  }
+}
+
+._main_tabs_services-tabs {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  ._main_tabs_services-tabs {
+    font-size: 13px;
+  }
+  ._main_tabs_services-tab {
+    padding: 15px 37px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  ._main_tabs_services-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  ._main_tabs_services-tab {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    /* margin: 10px 0; */
+    text-align: center;
+  }
+
+  ._main_tabs_services-selector {
+    display: none;
+  }
 }
 
 ._main_tabs_services-tab i {
@@ -5178,7 +5220,7 @@ main page tabs for 'services'
   border-radius: 50px;
   transition-duration: 0.6s;
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  background: linear-gradient(45deg, #00a14b 40%, #8200f4 100%);
+  /* background: linear-gradient(45deg, #00a14b 40%, #8200f4 100%); */
 }
 
 /* Center tabs container */
@@ -5532,3 +5574,54 @@ portfolio single slider
     display: block;
   }
 }
+
+
+/* -------------------------------------------
+
+portfolio same projects
+
+------------------------------------------- */
+
+
+.mil-hashtag {
+  display: inline-block;
+  background-color: #f0f0f0; /* Светлый фон */
+  color: #333; /* Тёмный текст */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px; /* Закруглённые границы */
+  margin: 0 8px 8px 0; /* Отступы между хэштегами */
+  transition: background-color 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.mil-hashtag::before {
+  content: "#";
+  margin-right: 5px; /* Отступ между решёткой и текстом */
+  color: #999; /* Чуть более светлый цвет для символа # */
+}
+
+.mil-hashtag:hover {
+  background-color: #e0e0e0; /* Чуть более тёмный фон при ховере */
+}
+
+.mil-related-projects {
+  border: 2px solid #e0e0e0; /* Граница вокруг квадрата */
+  border-radius: 10px; /* Немного скругляем углы */
+  padding: 20px; /* Внутренние отступы */
+  background-color: #f9f9f9; /* Светлый фон внутри контейнера */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Лёгкая тень для объёма */
+  margin-top: 40px; /* Отступ сверху от основного текста */
+}
+
+.mil-related-projects h4 {
+  font-size: 22px; /* Немного увеличиваем размер текста заголовка */
+  font-weight: bold; /* Делаем текст жирным */
+  margin-bottom: 20px; /* Отступ ниже заголовка */
+  color: #333; /* Тёмный цвет текста */
+  text-align: center; /* Центрируем заголовок */
+}
+

@@ -264,8 +264,8 @@
                                 <li><a href="portfolio">Our Projects</a></li>
                             </ul>
                             <h1 class="mil-mb-30">Constructing a <br> Better <span class="mil-thin">World Today</span></h1>
-                            <a href="#footer" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
-                                <span>Contact us</span>
+                            <a href="#portfolio" onclick="navigateToAnchor(event, '/#portfolio')" class="mil-link mil-dark mil-arrow-place mil-left-arrow">
+                                <span>Back</span>
                             </a>
                         </div>
                     </div>
@@ -284,7 +284,7 @@
                         <div class="row justify-content-between align-items-center">
 
                             <div class="col-lg-6">
-                                <a href="portfolio_single.html?project=rahat_crescent_mall" class="mil-portfolio-item mil-mb-60">
+                                <a href="portfolio_single?project=rahat_crescent_mall" class="mil-portfolio-item mil-mb-60">
                                     <div class="mil-cover-frame mil-hori ">
                                         <div class="mil-cover mil-scale" data-value-1="1.2" data-value-2="1">
                                             <img src="https://res.cloudinary.com/dlarkoumm/image/upload/v1726902899/RahatCresentMall_mxn93e.png" alt="RahatCresentMall">
@@ -302,7 +302,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-5">
-                                <a href="portfolio_single.html?project=port_baku_walk" class="mil-portfolio-item mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
+                                <a href="portfolio_single?project=port_baku_walk" class="mil-portfolio-item mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
                                     <div class="mil-cover-frame mil-hori ">
                                         <div class="mil-cover">
                                             <img src="https://res.cloudinary.com/dlarkoumm/image/upload/v1726902862/PortBakuWalk_aojr7o.jpg" alt="PortBakuWalk">
@@ -799,14 +799,14 @@
                                                     <li class="">
                                                         <a href="/">Home</a>
                                                     </li>
-                                                    <li class="">
-                                                        <a href="/portfolio">Our Projects</a>
+                                                    <li class="mil-active">
+                                                        <a href="/portfolio">Projects</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/" onclick="navigateToAnchor(event, '/#services')">Our Services</a>
+                                                        <a href="#services_tab" onclick="navigateToAnchor(event, '/#services_tab')">Services</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/sectors">Our Sectors</a>
+                                                        <a href="/sectors">Sectors</a>
                                                     </li>
                                                     <li class="">
                                                         <a href="/certificates">Licences and Cerficates</a>
@@ -981,6 +981,7 @@
     <script src="js/main_add.js"></script>
     <script src="js/main_portfolio_single.js" data-swup-reload-script></script>
     <script src="js/main_other_scripts.js"></script>
+    <!-- <script src="js/scrollPosition.js" defer></script> -->
 
 </body>
 

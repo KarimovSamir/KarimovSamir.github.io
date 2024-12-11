@@ -110,7 +110,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!-- <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-h3 mil-muted-preloader mil-thin">Sustainable</p>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scrollbar progress -->
@@ -279,8 +279,8 @@
                                 <li><a href="certificates">Licenses and Certificates</a></li>
                             </ul>
                             <h1 class="mil-mb-30">Licenses and Certificates</h1>
-                            <a href="#footer" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
-                                <span>Contact us</span>
+                            <a href="#licences_slider" onclick="navigateToAnchor(event, '/#licences_slider')" class="mil-link mil-dark mil-arrow-place mil-left-arrow">
+                                <span>Back</span>
                             </a>
                         </div>
                     </div>
@@ -396,15 +396,15 @@
                                                         <a href="/">Home</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/portfolio">Our Projects</a>
+                                                        <a href="/portfolio">Projects</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/" onclick="navigateToAnchor(event, '/#services')">Our Services</a>
+                                                        <a href="#services_tab" onclick="navigateToAnchor(event, '/#services_tab')">Services</a>
                                                     </li>
                                                     <li class="">
-                                                        <a href="/sectors">Our Sectors</a>
+                                                        <a href="/sectors">Sectors</a>
                                                     </li>
-                                                    <li class="">
+                                                    <li class="mil-active">
                                                         <a href="/certificates">Licences and Cerficates</a>
                                                     </li>
                                                 </ul>
@@ -577,6 +577,7 @@
     <script src="js/main_add.js"></script>
     <script src="js/main_portfolio_single.js" data-swup-reload-script></script>
     <script src="js/main_other_scripts.js"></script>
+    <!-- <script src="js/scrollPosition.js" defer></script> -->
 
 </body>
 

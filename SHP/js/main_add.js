@@ -55,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ];
 
         const slideshowLinks = [
-            'portfolio.html', 
-            'portfolio.html', 
-            'portfolio.html', 
-            'portfolio.html', 
-            'portfolio.html'
+            'portfolio', 
+            'portfolio', 
+            'portfolio', 
+            'portfolio', 
+            'portfolio'
         ];
 
         const slideshowTexts = [
