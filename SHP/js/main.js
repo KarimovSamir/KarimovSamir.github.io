@@ -31,7 +31,7 @@ $(function () {
             'visit:start': (data) => {
                 console.log('Starting visit', data.url);
             },
-            'page:load': (data) => {
+            'contentReplaced': (data) => {
                 handleAnchorScroll(data.url);
             }
         }
@@ -40,11 +40,12 @@ $(function () {
 
     function handleAnchorScroll(url) {
         if (url.includes('#')) {
-            const anchor = url.split('#')[1];
-            const element = document.getElementById(anchor);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            setTimeout(() => {
+                const element = document.getElementById(anchor);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
         }
     }
 
