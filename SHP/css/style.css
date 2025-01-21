@@ -70,7 +70,7 @@ body {
   font-family: "Outfit", sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.75);
   line-height: 150%;
   position: relative;
   overflow-x: hidden;
@@ -444,7 +444,8 @@ h1,
 @media screen and (max-width: 1400px) {
   h1,
 .mil-h1 {
-    font-size: 55px;
+    /* font-size: 55px; */
+    font-size: 52px;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1136,6 +1137,10 @@ spaces
   margin-bottom: 30px;
 }
 
+.mil-mb-40 {
+  margin-bottom: 40px;
+}
+
 .mil-mb-60 {
   margin-bottom: 60px;
 }
@@ -1240,6 +1245,28 @@ spaces
   }
 }
 
+.mil-p-35-15 {
+  padding-top: 35px;
+  padding-bottom: 15px;
+}
+@media screen and (max-width: 992px) {
+  .mil-p-35-15 {
+    padding-top: 35px;
+    padding-bottom: 15px;
+  }
+}
+
+.mil-p-15-0 {
+  padding-top: 15px;
+  padding-bottom: 0px;
+}
+@media screen and (max-width: 992px) {
+  .mil-p-15-15 {
+    padding-top: 15px;
+    padding-bottom: 0px;
+  }
+}
+
 .mil-p-30-0 {
   padding-top: 30px;
 }
@@ -1330,6 +1357,17 @@ spaces
 @media screen and (max-width: 992px) {
   .mil-p-0-30 {
     padding-bottom: 0;
+  }
+}
+
+.mil-p-30-15 {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+@media screen and (max-width: 992px) {
+  .mil-p-30-15 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
 
@@ -1933,6 +1971,7 @@ menu
     font-size: 32px;
   }
 }
+
 .mil-main-menu ul li a:before {
   content: "";
   position: absolute;
@@ -2054,6 +2093,15 @@ menu
   }
   .mil-main-menu ul li a {
     font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 406px) {
+  .mil-main-menu {
+    gap: 0px;
+  }
+  .mil-main-menu ul li a {
+    font-size: 25px;
   }
 }
 
@@ -2924,11 +2972,25 @@ team
 ------------------------------------------- */
 
 .mil-team-image {
-  width: 100%; /* Устанавливаем ширину изображения в 100% от родительского контейнера */
-  max-width: 107%; /* Убедимся, что изображение не выходит за границы */
-  height: auto; /* Сохраняем пропорции изображения */
-  margin-top: 0px; /* Отступ сверху для разделения с кнопкой */
-  border-radius: 5px; /* Добавляем скругление углов, если требуется */
+  width: 93%;
+  height: auto;
+  margin-top: 0px;
+  border-radius: 5px;
+}
+
+.mil-team-image-bottom {
+  width: 86%;
+  height: auto; 
+  margin-top: 0px;
+  border-radius: 5px;
+}
+
+.mil-team-image-large {
+  width: 99%;
+  /* height: auto; */
+  height: 85%;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
 .mil-team-card {
@@ -3345,6 +3407,7 @@ blog
 }
 .mil-labels .mil-label {
   margin-right: 15px;
+  font-size: 18px;
 }
 .mil-labels .mil-label:last-child {
   margin-right: 0;
@@ -5404,21 +5467,21 @@ main page "our projects" button
 .mil-lang-menu {
   margin-right: 32px;
   margin-bottom: 0;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 100%;
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
   .mil-lang-menu {
     font-size: 20px;
   }
-}
+} */
 @media screen and (max-width: 1070px) {
   .mil-lang-menu {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
 
@@ -5625,3 +5688,37 @@ portfolio same projects
   text-align: center; /* Центрируем заголовок */
 }
 
+
+/* ====== CHESS LAYOUT CLASSES ====== */
+
+/* Картинка, которая не должна обрезаться */
+.mil-chess-img-uncropped {
+  display: block;
+  width: 60%;       /* либо 100%, если хотите во всю ширину */
+  height: auto;
+  object-fit: contain;
+}
+
+.mil-img-shift-left {
+  margin-left: 97px; /* или любая другая нужная величина */
+}
+
+.about-us-center-background {
+  background-color: rgb(242, 242, 242); /* Светлый фон внутри контейнера */
+}
+
+.similar-projects{
+  font-size: 22px !important; 
+}
+
+#services {
+  position: relative; /* Устанавливаем относительное позиционирование */
+}
+
+#services:before {
+  content: ''; /* Пустой псевдоэлемент */
+  display: block;
+  height: 100px; /* Высота меню */
+  margin-top: -100px; /* Сдвигаем секцию вверх */
+  pointer-events: none; /* Псевдоэлемент не мешает кликам */
+}

@@ -1,8 +1,16 @@
 let swup;
 
+// function navigateToAnchor(event, url) {
+//     event.preventDefault();
+//     swup.loadPage({ url: url });
+// }
+
 function navigateToAnchor(event, url) {
     event.preventDefault();
-    swup.loadPage({ url: url });
+    const anchor = url.split('#')[1];
+    if (anchor) {
+        swup.loadPage({ url: url });
+    }
 }
 
 $(function () {
@@ -18,11 +26,29 @@ $(function () {
         containers: ['#swupMain', '#swupMenu'],
         animateHistoryBrowsing: true,
         linkSelector: 'a:not([data-no-swup]):not([href^="#"])',
-        animationSelector: '[class="mil-main-transition"]'
+        animationSelector: '[class*="mil-main-transition"]',
+        hooks: {
+            'visit:start': (data) => {
+                console.log('Starting visit', data.url);
+            },
+            'page:load': (data) => {
+                handleAnchorScroll(data.url);
+            }
+        }
     };
     swup = new Swup(options);
 
+    function handleAnchorScroll(url) {
+        if (url.includes('#')) {
+            const anchor = url.split('#')[1];
+            const element = document.getElementById(anchor);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
 
+    
     /***************************
 
     register gsap plugins
