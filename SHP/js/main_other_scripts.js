@@ -1,22 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     function initializeScripts() {
-        // Логика для меню
-        // const menuLinks = document.querySelectorAll('.mil-main-menu a');
-        // const menuButton = document.querySelector('.mil-menu-btn');
-
-        // menuLinks.forEach(link => {
-        //     link.addEventListener('click', function(event) {
-        //         if (link.getAttribute('href').startsWith('#')) {
-        //             closeMenu();
-        //         }
-        //     });
-        // });
-
-        // function closeMenu() {
-        //     if (menuButton.classList.contains('mil-active')) {
-        //         menuButton.click();
-        //     }
-        // }
+        console.log('Scripts initialized');
 
         // Логика вкладок для секции "about us"
         function initAboutTabs() {
@@ -46,12 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
             aboutTabs.forEach(tab => {
                 tab.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    // Удаляем активный класс у всех вкладок about
                     aboutTabs.forEach(t => t.classList.remove('active'));
                     aboutTabContents.forEach(content => content.classList.remove('active'));
 
-                    // Добавляем активный класс текущей вкладке
                     this.classList.add('active');
                     const tabId = this.getAttribute('data-tab');
                     const contentElement = document.getElementById(tabId + '-content');
@@ -59,22 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         contentElement.classList.add('active');
                     }
 
-                    // Обновляем позицию селектора
-                    const activeWidth = this.offsetWidth;
-                    const itemPos = this.offsetLeft;
-                    aboutSelector.style.left = itemPos + 'px';
-                    aboutSelector.style.width = activeWidth + 'px';
+                    updateAboutSelectorPosition();
 
-                    // Обновляем изображение
                     if (aboutImageElement) {
                         aboutImageElement.src = aboutImageMap[tabId];
                     }
                 });
             });
 
-            // Инициализация позиции селектора
             updateAboutSelectorPosition();
-            return updateAboutSelectorPosition; // Возвращаем функцию для использования в обработчике resize
+            return updateAboutSelectorPosition;
         }
 
         // Логика вкладок для секции "services"
@@ -98,12 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
             serviceTabs.forEach(tab => {
                 tab.addEventListener('click', function(e) {
                     e.preventDefault();
-
-                    // Удаляем активный класс у всех вкладок services
                     serviceTabs.forEach(t => t.classList.remove('active'));
                     serviceTabContents.forEach(content => content.classList.remove('active'));
 
-                    // Добавляем активный класс текущей вкладке
                     this.classList.add('active');
                     const tabId = this.getAttribute('data-tab');
                     const contentElement = document.getElementById(tabId + '-content');
@@ -111,34 +83,30 @@ document.addEventListener('DOMContentLoaded', function() {
                         contentElement.classList.add('active');
                     }
 
-                    // Обновляем позицию селектора
-                    const activeWidth = this.offsetWidth;
-                    const itemPos = this.offsetLeft;
-                    serviceSelector.style.left = itemPos + 'px';
-                    serviceSelector.style.width = activeWidth + 'px';
+                    updateServiceSelectorPosition();
                 });
             });
 
-            // Инициализация позиции селектора
             updateServiceSelectorPosition();
-            return updateServiceSelectorPosition; // Возвращаем функцию для использования в обработчике resize
+            return updateServiceSelectorPosition;
         }
 
-        // Инициализация обеих секций вкладок
+        // Инициализация вкладок
         const updateAboutSelector = initAboutTabs();
         const updateServiceSelector = initServiceTabs();
 
         // Обработчик изменения размера окна
-        window.addEventListener('resize', function() {
+        window.removeEventListener('resize', handleResize);
+        function handleResize() {
             updateAboutSelector();
             updateServiceSelector();
-        });
-        console.log('Scripts initialized');
+        }
+        window.addEventListener('resize', handleResize);
     }
 
-    // Инициализация при загрузке контента
+    // Инициализация скриптов при загрузке страницы
     initializeScripts();
 
-    // Перехватываем обновление контента через Swup
+    // Инициализация при замене контента через Swup
     document.addEventListener('swup:contentReplaced', initializeScripts);
 });

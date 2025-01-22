@@ -1,6 +1,6 @@
 let autoSlideInterval; // Храним ID интервала для очистки
 
-// Глобальная функция для остановки авто-слайдшоу
+// Останавливаем авто-слайд
 function stopAutoSlide() {
     if (autoSlideInterval) {
         clearInterval(autoSlideInterval);
@@ -1817,181 +1817,126 @@ function initPortfolioSingle() {
     
 
     // Получение параметров URL
-    function getQueryParams() {
-        const params = {};
-        window.location.search
-            .substring(1)
-            .split("&")
-            .forEach(function (pair) {
-                const [key, value] = pair.split("=");
-                params[decodeURIComponent(key)] = decodeURIComponent(value || "");
-            });
-        return params;
+    const queryParams = new URLSearchParams(window.location.search);
+    const projectId = queryParams.get('project');
+    const project = projects[projectId];
+
+    if (!project) {
+        console.warn("Project not found:", projectId);
+        stopAutoSlide();
+        return;
     }
 
-    // Инициализация начальных классов для слайдера
-    function initializeSlider() {
-        const slides = document.querySelectorAll('.slide');
-        if (slides.length === 0) return; // Если слайдов нет, ничего не делаем
+    // Установка заголовка и хлебных крошек
+    const banner = document.querySelector('.mil-inner-banner h1');
+    const breadcrumbsContainer = document.querySelector('.mil-breadcrumbs');
+    const infoContainer = document.querySelector('.col-lg-5 .mil-p-0-90');
+    const imagesContainer = document.querySelector('.col-lg-7');
 
-        slides.forEach((slide, index) => {
-            slide.classList.remove('left', 'active', 'right'); // Сбрасываем классы
-
-            if (index === 0) {
-                slide.classList.add('active');
-            } else if (index === 1) {
-                slide.classList.add('right');
-            } else if (index === slides.length - 1) {
-                slide.classList.add('left');
-            }
-        });
+    if (!banner || !breadcrumbsContainer || !infoContainer || !imagesContainer) {
+        console.error("Required DOM elements are missing.");
+        return;
     }
 
-    // Управление переключением слайдов
-    function moveSlide(direction) {
-        const slides = document.querySelectorAll('.slide');
-        if (slides.length < 3) return; // Убедимся, что достаточно слайдов для переключения
-
-        const activeSlide = document.querySelector('.slide.active');
-        const activeIndex = Array.from(slides).indexOf(activeSlide);
-
-        slides.forEach(slide => slide.classList.remove('left', 'active', 'right'));
-
-        let newActiveIndex;
-        if (direction === 'next') {
-            newActiveIndex = (activeIndex + 1) % slides.length;
-        } else if (direction === 'prev') {
-            newActiveIndex = (activeIndex - 1 + slides.length) % slides.length;
+    banner.textContent = project.bannerTitle;
+    breadcrumbsContainer.innerHTML = project.breadcrumbs.map((crumb, index) => {
+        if (index < project.breadcrumbs.length - 1) {
+            return `<li><a href="${index === 0 ? '/' : 'portfolio'}">${crumb}</a></li>`;
         }
+        return `<li>${crumb}</li>`;
+    }).join("");
 
-        const newLeftIndex = (newActiveIndex - 1 + slides.length) % slides.length;
-        const newRightIndex = (newActiveIndex + 1) % slides.length;
+    infoContainer.innerHTML = project.info.map(item => `<${item.tag} class="${item.class}">${item.text}</${item.tag}>`).join("");
 
-        slides[newLeftIndex]?.classList.add('left');
-        slides[newActiveIndex]?.classList.add('active');
-        slides[newRightIndex]?.classList.add('right');
+    // Похожие проекты
+    if (project.relatedProjects) {
+        const relatedProjectsHTML = project.relatedProjects.map(rp => `
+            <a href="?project=${rp.id}" class="mil-mb-30 mil-hashtag" data-no-swup>${rp.name}</a>
+        `).join("");
+        infoContainer.innerHTML += `<div><h4 class="mil-mb-30 similar-projects">SIMILAR PROJECTS</h4>${relatedProjectsHTML}</div>`;
     }
 
-    // Функция для запуска авто-слайдшоу
-    function startAutoSlide() {
-        stopAutoSlide(); // На всякий случай останавливаем предыдущий интервал
-        autoSlideInterval = setInterval(() => {
-            moveSlide('next');
-        }, 3000);
-    }
-
-
-    // Инициализация проекта
-    const queryParams = getQueryParams();
-    const projectId = queryParams['project'];
-
-    if (projects[projectId]) {
-        const project = projects[projectId];
-
-        document.querySelector('.mil-inner-banner h1').textContent = project.bannerTitle;
-
-        const breadcrumbsContainer = document.querySelector('.mil-breadcrumbs');
-        breadcrumbsContainer.innerHTML = '';
-        project.breadcrumbs.forEach((crumb, index) => {
-            const li = document.createElement('li');
-            if (index < project.breadcrumbs.length - 1) {
-                const a = document.createElement('a');
-                a.href = index === 0 ? '/' : 'portfolio';
-                a.textContent = crumb;
-                li.appendChild(a);
-            } else {
-                li.textContent = crumb;
-            }
-            breadcrumbsContainer.appendChild(li);
-        });
-
-        const infoContainer = document.querySelector('.col-lg-5 .mil-p-0-90');
-        infoContainer.innerHTML = '';
-        project.info.forEach(item => {
-            const element = document.createElement(item.tag);
-            element.className = item.class;
-            element.textContent = item.text;
-            infoContainer.appendChild(element);
-        });
-
-        // Добавляем блок "Похожие проекты"
-        if (project.relatedProjects && project.relatedProjects.length > 0) {
-            const relatedProjectsContainer = document.createElement('div');
-            // relatedProjectsContainer.className = 'mil-related-projects';
-        
-            const relatedProjectsTitle = document.createElement('h4');
-            relatedProjectsTitle.className = 'mil-mb-30 similar-projects';
-            relatedProjectsTitle.textContent = 'SIMILAR PROJECTS';
-            relatedProjectsContainer.appendChild(relatedProjectsTitle);
-        
-            project.relatedProjects.forEach(relatedProject => {
-                const relatedLink = document.createElement('a');
-                relatedLink.href = `?project=${relatedProject.id}`;
-                relatedLink.className = 'mil-mb-30 mil-hashtag';
-                relatedLink.textContent = relatedProject.name;
-                relatedProjectsContainer.appendChild(relatedLink);
-            });
-        
-            infoContainer.appendChild(relatedProjectsContainer);
-        }
-        
-
-        lightbox.option({
-            'resizeDuration': 200,
-            'wrapAround': true,
-            'fadeDuration': 300,
-            'imageFadeDuration': 300
-        });
-
-        const imagesContainer = document.querySelector('.col-lg-7');
-        imagesContainer.innerHTML = `
-            <div class="slider-container">
-                <div class="slider">
-                    ${project.images
-                        .map(
-                            image =>
-                                `<div class="slide">
-                                    <a href="${image.src}" data-lightbox="project-gallery">
-                                        <img src="${image.src}" alt="${image.alt}">
-                                    </a>
-                                </div>`
-                        )
-                        .join('')}
-                </div>
-                <div class="slider-controls">
-                    <button class="slider-btn prev">←</button>
-                    <button class="slider-btn next">→</button>
-                </div>
+    // Слайдер
+    imagesContainer.innerHTML = `
+        <div class="slider-container">
+            <div class="slider">
+                ${project.images.map(image => `
+                    <div class="slide">
+                        <a href="${image.src}" data-lightbox="project-gallery">
+                            <img src="${image.src}" alt="${image.alt}">
+                        </a>
+                    </div>
+                `).join('')}
             </div>
-        `;
+            <div class="slider-controls">
+                <button class="slider-btn prev">←</button>
+                <button class="slider-btn next">→</button>
+            </div>
+        </div>
+    `;
 
-        const prevBtn = document.querySelector('.slider-btn.prev');
-        const nextBtn = document.querySelector('.slider-btn.next');
+    initializeSlider();
+    startAutoSlide();
 
-        prevBtn.addEventListener('click', () => {
-            stopAutoSlide();
-            moveSlide('prev');
-            startAutoSlide(); // Перезапускаем авто-переключение
-        });
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
 
-        nextBtn.addEventListener('click', () => {
-            stopAutoSlide();
-            moveSlide('next');
-            startAutoSlide(); // Перезапускаем авто-переключение
-        });
-
-        initializeSlider();
+    prevBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        moveSlide('prev');
         startAutoSlide();
-    } else {
-        stopAutoSlide(); // Останавливаем авто-переключение, если проект не найден
-    }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        stopAutoSlide();
+        moveSlide('next');
+        startAutoSlide();
+    });
 }
 
-// Останавливаем интервал при переходе Swup
+// Инициализация слайдера
+function initializeSlider() {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return;
+
+    slides.forEach((slide, index) => {
+        slide.classList.remove('left', 'active', 'right');
+        if (index === 0) slide.classList.add('active');
+        if (index === 1) slide.classList.add('right');
+        if (index === slides.length - 1) slide.classList.add('left');
+    });
+}
+
+// Переключение слайдов
+function moveSlide(direction) {
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length < 3) return;
+
+    const activeSlide = document.querySelector('.slide.active');
+    const activeIndex = Array.from(slides).indexOf(activeSlide);
+
+    slides.forEach(slide => slide.classList.remove('left', 'active', 'right'));
+
+    const newActiveIndex = direction === 'next'
+        ? (activeIndex + 1) % slides.length
+        : (activeIndex - 1 + slides.length) % slides.length;
+
+    slides[(newActiveIndex - 1 + slides.length) % slides.length].classList.add('left');
+    slides[newActiveIndex].classList.add('active');
+    slides[(newActiveIndex + 1) % slides.length].classList.add('right');
+}
+
+// Запуск авто-слайдшоу
+function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideInterval = setInterval(() => {
+        moveSlide('next');
+    }, 3000);
+}
+
+// События Swup
 document.addEventListener('swup:willReplaceContent', stopAutoSlide);
+document.addEventListener('swup:contentReplaced', initPortfolioSingle);
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', initPortfolioSingle);
-
-// Инициализация после замены контента Swup
-document.addEventListener('swup:contentReplaced', initPortfolioSingle);
