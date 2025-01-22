@@ -46,7 +46,30 @@ $(function () {
         initializeAnimations();
         initializeFancybox();
         initializeSliders();
+        // initializeSliders(); 
     }
+
+    // function initializeSliders() {
+    //     const sliders = document.querySelectorAll('.swiper-container');
+    //     sliders.forEach(slider => {
+    //         new Swiper(slider, {
+    //             slidesPerView: 2,
+    //             spaceBetween: 30,
+    //             speed: 5000,
+    //             autoplay: {
+    //                 delay: 0,
+    //                 disableOnInteraction: false,
+    //             },
+    //             loop: true,
+    //             freeMode: true,
+    //             breakpoints: {
+    //                 992: {
+    //                     slidesPerView: 4,
+    //                 },
+    //             },
+    //         });
+    //     });
+    // }
 
     function initializePreloader() {
         var timeline = gsap.timeline();
@@ -180,15 +203,35 @@ $(function () {
         $.fancybox.defaults.hash = false;
     }
 
+    // function initializeSliders() {
+    //     new Swiper('.mil-reviews-slider', {
+    //         pagination: {
+    //             el: '.mil-revi-pagination',
+    //             clickable: true,
+    //             renderBullet: function (index, className) {
+    //             const menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>'];
+    //             return '<span class="' + className + '">' + menu[index] + '</span>';
+    //         },
+    //         },
+    //         speed: 800,
+    //         effect: 'fade',
+    //         parallax: true,
+    //         navigation: {
+    //             nextEl: '.mil-revi-next',
+    //             prevEl: '.mil-revi-prev',
+    //         },
+    //     });
+    // }
     function initializeSliders() {
+        // Слайдер для отзывов
         new Swiper('.mil-reviews-slider', {
             pagination: {
                 el: '.mil-revi-pagination',
                 clickable: true,
                 renderBullet: function (index, className) {
-                const menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>'];
-                return '<span class="' + className + '">' + menu[index] + '</span>';
-            },
+                    const menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>'];
+                    return '<span class="' + className + '">' + menu[index] + '</span>';
+                },
             },
             speed: 800,
             effect: 'fade',
@@ -198,7 +241,26 @@ $(function () {
                 prevEl: '.mil-revi-prev',
             },
         });
+    
+        // Слайдер для лицензий
+        new Swiper('.mil-infinite-show', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            speed: 5000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            freeMode: true,
+            breakpoints: {
+                992: {
+                    slidesPerView: 4,
+                },
+            },
+        });
     }
+    
 
     // Инициализация при загрузке страницы
     initializeDynamicElements();
