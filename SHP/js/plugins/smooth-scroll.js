@@ -362,7 +362,8 @@ function wheel(event) {
 
     // check if it's a touchpad scroll that should be ignored
     if (isTouchpad(deltaY)) {
-        return true;
+        // return true;
+        return false;
     }
 
     // scale by step size
@@ -376,7 +377,13 @@ function wheel(event) {
     }
 
     scrollArray(overflowing, deltaX, deltaY);
-    event.preventDefault();
+    // event.preventDefault();
+    const isMac = navigator.userAgent.includes('Mac');
+
+    if (!isMac) {
+        event.preventDefault();
+    }
+    
     scheduleClearCache();
 }
 
