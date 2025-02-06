@@ -24,7 +24,7 @@ $(function () {
         animationSelector: '[class*="mil-main-transition"]',
         hooks: {
             'page:view': () => {
-                console.log('Контент обновлён. Выполняем повторную инициализацию...');
+                // console.log('Контент обновлён. Выполняем повторную инициализацию...');
                 initializeDynamicElements();
             },
         }
@@ -343,11 +343,23 @@ $(function () {
         nextSlideButton.replaceWith(nextSlideButton.cloneNode(true));
         prevSlideButton.replaceWith(prevSlideButton.cloneNode(true));
 
+        // function showSlide(index) {
+        //     currentImageIndex = (index + slideshowImages.length) % slideshowImages.length;
+        //     slideshowImageElement.src = slideshowImages[currentImageIndex];
+        //     slideshowLinkElement.href = slideshowLinks[currentImageIndex];
+        //     slideshowTextElement.textContent = slideshowTexts[currentImageIndex];
+        // }
         function showSlide(index) {
-            currentImageIndex = (index + slideshowImages.length) % slideshowImages.length;
-            slideshowImageElement.src = slideshowImages[currentImageIndex];
-            slideshowLinkElement.href = slideshowLinks[currentImageIndex];
-            slideshowTextElement.textContent = slideshowTexts[currentImageIndex];
+            const newIndex = (index + slideshowImages.length) % slideshowImages.length;
+            const tempImg = new Image();
+            tempImg.src = slideshowImages[newIndex];
+    
+            tempImg.onload = () => {
+                slideshowImageElement.src = tempImg.src;
+                slideshowLinkElement.href = slideshowLinks[newIndex];
+                slideshowTextElement.textContent = slideshowTexts[newIndex];
+                currentImageIndex = newIndex;
+            };
         }
 
         function startSlideshow() {
