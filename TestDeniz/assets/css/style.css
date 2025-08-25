@@ -9588,7 +9588,7 @@ textarea.form-control {
     Laboratory
 ----------------------------*/
 
-[id$="_lab"],          /* поймает: pressure_lab, temperature_lab, dimensional_lab, weight_lab, torque_lab */
+[id$="labSlider"],          /* поймает: pressure_lab, temperature_lab, dimensional_lab, weight_lab, torque_lab */
 #gas,
 #miscellaneous {
   scroll-margin-top: 140px; /* подстрой под реальную высоту хедера */
