@@ -1,9 +1,0 @@
-User-agent: *
-Disallow: /portfolio
-Disallow: /portfolio_single
-Disallow: /certificates
-Disallow: /contact
-Disallow: /team
-Disallow: /404
-
-Sitemap: https://www.shp.az/sitemap.xml
