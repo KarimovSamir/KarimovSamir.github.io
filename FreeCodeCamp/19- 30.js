@@ -116,3 +116,30 @@ let pushed = rows.push();
 console.log(rows);
 console.log(pushed);
 
+// Шаг 31
+
+// Объявление переменной с помощью ключевого слова let позволяет ей быть переназначенной. Это значит, что позже вы можете изменить character на совершенно другое значение.
+
+// В этом проекте вам не нужно изменять эти переменные. Поэтому вместо let следует использовать const. Переменные, объявленные через const, являются особенными.
+
+// Во-первых, переменная const не может быть переназначена, как переменная let. Такой код вызовет ошибку:
+
+// Замените ваши ключевые слова let на const.
+
+const character3 = "Hello";
+const count3 = 8;
+const rows3 = [];
+
+// Step 38
+
+// You should see the numbers zero through seven printed in your console, one per line. This will serve as the foundation for generating your pyramid.
+
+// Replace your log statement with a statement to push i to your rows array.
+
+const character4 = "#";
+const count4 = 8;
+const rows = [];
+
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(i);
+}
