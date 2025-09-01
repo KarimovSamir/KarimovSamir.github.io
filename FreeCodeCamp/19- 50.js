@@ -164,3 +164,35 @@ const rows = [];
 for (const row of rows) {
 
 }
+
+// Step 43
+
+// Now all of your numbers are appearing on the same line. This will not work for creating a pyramid.
+
+// You will need to add a new line to each row. However, pressing the return key to insert a line break between quotes in JavaScript will result in a parsing error. Instead, you need to use the special escape sequence \n, which is interpreted as a new line when the string is logged. For example:
+// Example Code
+
+// lineOne = lineOne + "\n" + lineTwo;
+
+// Use a second addition operator to append a new line after the result and row values.
+
+for (const row of rows) {
+  result = result + row + "\n";
+}
+
+// Step 45
+
+// Now you have a series of # characters, but the pyramid shape is still missing. Fortunately, the i variable represents the current "row" number in your loop, enabling you to use it for crafting a pyramid-like structure.
+
+// To achieve this, you will use the .repeat() method available to strings. This method accepts a number as an argument, specifying the number of times to repeat the target string. For example, using .repeat() to generate the string "Code! Code! Code!":
+// Example Code
+
+// const activity = "Code! ";
+// activity.repeat(3);
+
+// Use the .repeat() method on your character, and give it i for the number.
+
+
+for (let i = 0; i < count; i = i + 1) {
+  rows.push(character.repeat(i));
+}
