@@ -196,3 +196,20 @@ for (const row of rows) {
 for (let i = 0; i < count; i = i + 1) {
   rows.push(character.repeat(i));
 }
+
+// Step 49
+
+// You are calling your padRow function, but not doing anything with that function call. All functions in JavaScript return a value, meaning they provide the defined result of calling them for you to use elsewhere.
+
+// To see the result of calling your padRow function, declare a call variable and assign your existing padRow call to that variable.
+
+const call = padRow();
+
+// Step 50
+
+// Now add a log statement to print the value of your call variable.
+
+function padRow() {
+}
+const call2 = padRow();
+console.log(call);
