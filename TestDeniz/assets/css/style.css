@@ -9864,3 +9864,214 @@ body.lb-no-scroll { overflow: hidden; }
     font-size: 12px;
   }
 }
+
+/*----------------------------
+    Partners
+----------------------------*/
+
+.certs-strip__track{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap:30px;
+}
+@media (max-width:1200px){ .certs-strip__track{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width:768px){  .certs-strip__track{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width:480px){  .certs-strip__track{ grid-template-columns: 1fr; } }
+
+/* Карточка */
+.strip-card{
+  position:relative;
+  --bar-h: 64px; /* высота нижней плашки с названием */
+  border-radius:16px; overflow:hidden; background:#f6f7f9;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.strip-card:hover{ transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,.12); }
+.strip-card:focus-within{ outline:2px solid #0d6efd33; }
+
+/* Превью */
+.strip-card__img{
+  width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+  filter:contrast(1.02) saturate(1.02);
+  cursor: zoom-in;
+}
+
+/* Нижняя плашка */
+.strip-card__bar{
+  position:relative;
+  z-index: 1;
+  min-height: var(--bar-h);
+  display:flex; align-items:center; justify-content:flex-start;
+  padding:10px 12px; background:#fff;
+}
+.strip-card__name{ font-weight:600; margin:0; }
+
+/* Overlay — только над картинкой (не заходит на бар) */
+.strip-card__overlay{
+  position:absolute; left:0; right:0; top:0; bottom: var(--bar-h);
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:12px;
+  background:linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0) 55%);
+  opacity:0; transition:opacity .25s ease; padding:16px;
+  pointer-events: none; /* клики проходят к картинке */
+  z-index: 2;
+}
+.strip-card:hover .strip-card__overlay{ opacity:1; }
+
+.strip-card__title{
+  color:#fff; font-weight:600; margin:0; width:100%; text-align:center;
+}
+.strip-card__btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#0d6efd; color:#fff; border:none; border-radius:999px;
+  padding:10px 16px; font-weight:600; cursor:pointer; text-decoration:none;
+  pointer-events: auto; /* кнопка кликается */
+}
+.strip-card__btn i{ font-size:14px; }
+
+
+/* Лайтбокс: раскладка слева большая картинка, справа превью */
+.certs-lightbox{
+  position: fixed; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,.85); z-index: 9999; padding: 24px;
+}
+.certs-lightbox.is-open{ display:flex; }
+
+.certs-lightbox__close{
+  position:absolute; top:18px; right:18px; width:44px; height:44px;
+  border:none; border-radius:50%; background:rgba(255,255,255,.12); color:#fff;
+  font-size:28px; line-height:1; cursor:pointer;
+}
+.certs-lightbox__close:hover{ background:rgba(255,255,255,.2); }
+
+/* Контент: сцена + колонка превью */
+.certs-lightbox__content{
+  --thumbs-w: 120px;
+  display:flex; align-items:center; gap:16px;
+  max-width: min(1600px, 98vw);
+  max-height: calc(100vh - 120px);
+}
+@supports (height: 100dvh){
+  .certs-lightbox__content{ max-height: calc(100dvh - 120px); }
+}
+
+/* Сцена с большим изображением */
+.certs-lightbox__stage{
+  position:relative; flex:1 1 auto; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;          /* ВАЖНО: обрезаем при панорамировании */
+  border-radius:12px;
+}
+
+/* Само изображение теперь трансформируем (scale/translate) из JS */
+.certs-lightbox__img{
+  max-width:70%; max-height:70%;   /* убираем авто-вписывание CSS */
+  width:auto; height:auto; display:block;
+  will-change: transform;
+  border-radius:12px;
+  box-shadow:0 10px 40px rgba(0,0,0,.6);
+  user-select:none; -webkit-user-drag:none; pointer-events:none; /* события ловим на stage */
+}
+
+/* Курсоры */
+/* .certs-lightbox__stage.is-fit{ cursor: zoom-in; }
+.certs-lightbox__stage.is-zoomed{ cursor: grab; }
+.certs-lightbox__stage.is-zoomed.is-dragging{ cursor: grabbing; } */
+
+/* Курсоры состояний */
+.certs-lightbox__stage.is-fit{ cursor: zoom-in; }
+.certs-lightbox__stage.is-zoomed{ cursor: zoom-out; }         /* клик вернёт в Fit */
+.certs-lightbox__stage.is-zoomed.is-dragging{ cursor: grabbing; }  /* при удержании/перетаскивании */
+
+
+/* Стрелки поверх картинки */
+.certs-lightbox__nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:44px; height:44px; display:grid; place-items:center;
+  border:none; border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.18); color:#fff;
+}
+.certs-lightbox__nav:hover{ background:rgba(255,255,255,.28); }
+.certs-lightbox__prev{ left:10px; }
+.certs-lightbox__next{ right:10px; }
+.certs-lightbox__nav[disabled]{ opacity:.35; cursor:not-allowed; }
+
+/* Пейджер */
+.certs-lightbox__pager{
+  position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
+  background:rgba(0,0,0,.35); color:#fff; font-weight:600;
+  padding:6px 12px; border-radius:999px;
+}
+
+/* Вертикальные превью справа */
+.certs-lightbox__thumbs{
+  width:var(--thumbs-w); max-height:100%;
+  display:flex; flex-direction:column; gap:8px; overflow:auto;
+}
+.certs-lightbox__thumb{
+  width:100%; aspect-ratio:1/1; object-fit:cover;
+  border-radius:8px; opacity:.6; border:2px solid transparent; cursor:pointer;
+}
+.certs-lightbox__thumb.is-active{ opacity:1; border-color:#0d6efd; }
+
+/* Мобильная — превью вниз лентой */
+@media (max-width: 992px){
+  .certs-lightbox__content{ flex-direction:column; }
+  .certs-lightbox__thumbs{
+    width:auto; max-width:92vw; max-height:100px;
+    flex-direction:row; gap:8px; padding:6px;
+  }
+  .certs-lightbox__thumb{ width:64px; height:64px; aspect-ratio:auto; }
+}
+
+/* === Название партнёра — строгий монохромный акцент === */
+
+/* бар остаётся белым, только тонкая граница сверху */
+.strip-card__bar{
+  background:#fff;
+  border-top:1px solid rgba(0,0,0,.06);
+  padding:14px 16px;             /* чуть больше воздуха */
+}
+
+/* собственно имя */
+.strip-card__name{
+  position:relative;
+  font-weight:800;                /* заметнее, но без крика */
+  font-size:1.08rem;              /* + чуть крупнее */
+  letter-spacing:.2px;
+  color:#0f1115;
+  line-height:1.2;
+  /* мягкое “подсвеченное” подчёркивание под текстом (без цвета) */
+
+}
+
+/* мобильные — чутка плотнее, чтобы читалось */
+@media (max-width:576px){
+  .strip-card__name{ font-size:1.02rem; font-weight:800; }
+}
+
+/* STROKE: тонкий контур глифов + базовая линия */
+.certs-name--stroke .strip-card__bar{
+  background:#fff;
+  border-top:1px solid rgba(0,0,0,.06);
+}
+
+.certs-name--stroke .strip-card__name{
+  position:relative;
+  font-weight:800;
+  font-size:1.08rem;
+  color:#0f1115;
+  letter-spacing:.2px;
+
+  /* чёткий, но очень тонкий контур текста */
+  -webkit-text-stroke: .35px rgba(0,0,0,.35);
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+/* аккуратная статичная линия под названием (монохром) */
+.certs-name--stroke .strip-card__bar::after{
+  content:"";
+  position:absolute; left:16px; right:16px; bottom:10px; height:1px;
+  background:rgba(0,0,0,.12);
+}
