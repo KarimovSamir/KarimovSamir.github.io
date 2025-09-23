@@ -13,6 +13,12 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
 	<link rel="stylesheet" href="assets/css/libraries.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link
+		rel="stylesheet"
+		href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+		crossorigin=""
+	/>
 </head>
 
 <body>
@@ -112,7 +118,7 @@
 					</div>
 				</div>
 
-				<div class="row gy-4 mb-5">
+				<div class="row gy-4 mb-5 pb-30">
 					<!-- Address -->
 					<div class="col-md-4">
 						<div class="contact-box h-100 text-center p-4">
@@ -153,12 +159,13 @@
 				</div>
 
 				<!-- Карта -->
-				<div class="google-map-wrapper">
+				<!-- <div class="google-map-wrapper">
 					<iframe
 						src="https://www.google.com/maps/d/embed?mid=148gTkVgOKpsyi8i-uIJFR1o05_93AU0&hl=ru&ehbc=2E312F&noprof=1"
 						frameborder="0">
 					</iframe>
-				</div>
+				</div> -->
+				<div id="map" class="map-card">></div>
 			</div>
 		</section>
 
@@ -288,6 +295,57 @@
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
+	<!-- Leaflet JS -->
+	<script
+		src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+		crossorigin=""
+	></script>
+
+	<script>
+		// Координаты из вашей ссылки OSM
+		const DENIZ_POS = [40.388802, 49.822635]; // [lat, lng]
+
+		function initLeafletMap() {
+			const el = document.getElementById('map');
+			if (!el) return;
+
+			// Если карта уже была создана (например, при навигации через Swup) — очистим контейнер
+			if (el._leaflet_id) {
+			el._leaflet_id = null;
+			el.innerHTML = '';
+			}
+
+			const map = L.map(el, {
+			center: DENIZ_POS,
+			zoom: 18,
+			scrollWheelZoom: true
+			});
+
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 20,
+			attribution: '&copy; OpenStreetMap contributors'
+			}).addTo(map);
+
+			L.marker(DENIZ_POS, { title: 'Deniz Service' })
+			.addTo(map)
+			.bindPopup('<b>Deniz Service</b><br>İzmir Plaza')
+			.openPopup();
+
+			// Подгонка размеров после рендера (полезно, если контейнер изначально скрыт)
+			setTimeout(() => map.invalidateSize(), 0);
+		}
+
+		// Инициализация при обычной загрузке страницы
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initLeafletMap);
+		} else {
+			initLeafletMap();
+		}
+
+		// Поддержка Swup (если используется)
+		document.addEventListener('swup:contentReplaced', initLeafletMap);
+	</script>
 </body>
 
 </html>
