@@ -23,9 +23,41 @@
 
 <body>
 	<div class="wrapper">
-		<div class="preloader">
+		<!-- <div class="preloader">
 			<div class="loading"><span></span><span></span><span></span><span></span></div>
-		</div><!-- /.preloader -->
+		</div> -->
+		<!-- <div class="preloader" id="site-preloader" aria-hidden="true">
+			<div class="loading" role="status" aria-label="Loading">
+				<div class="ring">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+
+				<div class="loading-words">
+					<div class="row">
+						<span class="ch">D</span>
+						<span class="ch">E</span>
+						<span class="ch">N</span>
+						<span class="ch">I</span>
+						<span class="ch">Z</span>
+					</div>
+					<div class="row">
+						<span class="ch">S</span>
+						<span class="ch">E</span>
+						<span class="ch">R</span>
+						<span class="ch">V</span>
+						<span class="ch">I</span>
+						<span class="ch">C</span>
+						<span class="ch">E</span>
+					</div>
+					<div class="progress-line"></div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- /.preloader -->
 
 		<!-- =========================
         Header
@@ -92,11 +124,11 @@
 							<div class="dropdown lang-dropdown">
 								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
 									data-toggle="dropdown">
-									<img src="assets/images/flags/en.png" alt="en"> <span>EN</span>
+									<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
 								</button>
 								<div class="dropdown-menu" aria-labelledby="langDropdown">
 									<a class="dropdown-item" href="#">
-										<img src="assets/images/flags/az.png" alt="az"> <span>AZ</span>
+										<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
 									</a>
 								</div>
 							</div>
@@ -126,7 +158,8 @@
 								<i class="fas fa-map-marker-alt fa-2x"></i>
 							</div>
 							<h5 class="mb-2 contact-title-size">Our Location</h5>
-							<p class="contact-address-size">Izmir street 23, Floor 2, Office 3<br>Izmir Plaza, AZ 1065 Baku, Azerbaijan</p>
+							<p class="contact-address-size">Izmir street 23, Floor 2, Office 3<br>Izmir Plaza, AZ 1065
+								Baku, Azerbaijan</p>
 						</div>
 					</div>
 
@@ -168,8 +201,6 @@
 				<div id="map" class="map-card">></div>
 			</div>
 		</section>
-
-
 		<!-- ========================
       	Footer
     	========================== -->
@@ -252,8 +283,8 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-left">
 							<h6 class="footer-widget-title">Our Presentation</h6>
 							<div class="footer-widget-content">
-								<a href="assets/presentation/Deniz%20Service_Presentation.pdf" class="btn btn__primary btn__primary-style2 btn__download mb-60"
-									target="_blank">
+								<a href="assets/presentation/Deniz%20Service_Presentation.pdf"
+									class="btn btn__primary btn__primary-style2 btn__download mb-60" target="_blank">
 									<i class="icon-download"></i>
 									<span>Download PDF</span>
 								</a>
@@ -296,11 +327,8 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 	<!-- Leaflet JS -->
-	<script
-		src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-		crossorigin=""
-	></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 	<script>
 		// Координаты из вашей ссылки OSM
@@ -312,25 +340,25 @@
 
 			// Если карта уже была создана (например, при навигации через Swup) — очистим контейнер
 			if (el._leaflet_id) {
-			el._leaflet_id = null;
-			el.innerHTML = '';
+				el._leaflet_id = null;
+				el.innerHTML = '';
 			}
 
 			const map = L.map(el, {
-			center: DENIZ_POS,
-			zoom: 18,
-			scrollWheelZoom: true
+				center: DENIZ_POS,
+				zoom: 18,
+				scrollWheelZoom: true
 			});
 
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 20,
-			attribution: '&copy; OpenStreetMap contributors'
+				maxZoom: 20,
+				attribution: '&copy; OpenStreetMap contributors'
 			}).addTo(map);
 
 			L.marker(DENIZ_POS, { title: 'Deniz Service' })
-			.addTo(map)
-			.bindPopup('<b>Deniz Service</b><br>İzmir Plaza')
-			.openPopup();
+				.addTo(map)
+				.bindPopup('<b>Deniz Service</b><br>İzmir Plaza')
+				.openPopup();
 
 			// Подгонка размеров после рендера (полезно, если контейнер изначально скрыт)
 			setTimeout(() => map.invalidateSize(), 0);

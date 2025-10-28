@@ -17,15 +17,142 @@
 
 <body>
 	<div class="wrapper">
-		<div class="preloader">
+		<!-- <div class="preloader">
 			<div class="loading"><span></span><span></span><span></span><span></span></div>
+		</div> -->
+		<div class="preloader" id="site-preloader" aria-hidden="true">
+			<div class="loading" role="status" aria-label="Loading">
+				<div class="ring">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+
+				<div class="loading-words">
+					<div class="row">
+						<span class="ch">D</span>
+						<span class="ch">E</span>
+						<span class="ch">N</span>
+						<span class="ch">I</span>
+						<span class="ch">Z</span>
+					</div>
+					<div class="row">
+						<span class="ch">S</span>
+						<span class="ch">E</span>
+						<span class="ch">R</span>
+						<span class="ch">V</span>
+						<span class="ch">I</span>
+						<span class="ch">C</span>
+						<span class="ch">E</span>
+					</div>
+					<div class="progress-line"></div>
+				</div>
+			</div>
 		</div>
-		<!-- /.preloader -->
 
 		<!-- =========================
 			Header
 		=========================== -->
 		<header class="header header-layout1">
+			<nav class="navbar navbar-expand-xl sticky-navbar">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="index.html">
+						<img src="assets/images/logo/logo.png" class="logo" alt="logo">
+					</a>
+					<button class="navbar-toggler" type="button">
+						<span class="menu-lines"><span></span></span>
+					</button>
+					<div class="collapse navbar-collapse" id="mainNavigation">
+						<div class="navbar-mobile-panel">
+							<ul
+								class="navbar-actions navbar-actions--mobile d-xl-none align-items-center list-unstyled mb-0">
+								<li>
+									<div class="dropdown lang-dropdown">
+										<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdownMobile"
+											data-toggle="dropdown">
+											<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+										</button>
+										<div class="dropdown-menu" aria-labelledby="langDropdownMobile">
+											<a class="dropdown-item" href="#">
+												<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+											</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="navbar-nav">
+								<li class="nav__item has-dropdown">
+									<a href="index.html" class="nav__item-link active">Home</a>
+								</li>
+								<li class="nav__item has-dropdown">
+									<a href="#" class="nav__item-link">Company</a>
+									<button class="dropdown-toggle" data-toggle="dropdown"></button>
+									<ul class="dropdown-menu">
+										<li class="nav__item">
+											<a href="#about" class="nav__item-link">About Us</a>
+										</li>
+										<li class="nav__item">
+											<a href="#about" class="nav__item-link">How we act?</a>
+										</li>
+										<li class="nav__item">
+											<a href="#principles" class="nav__item-link">Our Principles</a>
+										</li>
+										<li class="nav__item">
+											<a href="#principles" class="nav__item-link">Our Goals</a>
+										</li>
+										<li class="nav__item">
+											<a href="#certificate" class="nav__item-link">Our Certificate</a>
+										</li>
+										<li class="nav__item">
+											<a href="#certificate" class="nav__item-link">What sets us apart</a>
+										</li>
+									</ul>
+								</li>
+								<li class="nav__item">
+									<a href="services.html" class="nav__item-link">Services</a>
+								</li>
+								<li class="nav__item">
+									<a href="partners.html" class="nav__item-link">Partners</a>
+								</li>
+								<li class="nav__item">
+									<a href="laboratory.html" class="nav__item-link">Laboratory</a>
+								</li>
+								<li class="nav__item">
+									<a href="contact.html" class="nav__item-link">Contact Us</a>
+								</li>
+							</ul>
+							<div class="contact__number contact__number--mobile d-xl-none align-items-center">
+								<i class="icon-mail"></i>
+								<a href="mailto:sales@denizservice.com">sales@denizservice.com</a>
+							</div>
+						</div>
+						<button class="close-mobile-menu d-block d-xl-none"><i class="fas fa-times"></i></button>
+					</div>
+					<div class="contact__number contact__number--desktop d-none d-xl-flex align-items-center">
+						<i class="icon-mail"></i>
+						<a href="mailto:sales@denizservice.com">sales@denizservice.com</a>
+					</div>
+					<ul
+						class="navbar-actions navbar-actions--desktop d-none d-xl-flex align-items-center list-unstyled mb-0">
+						<li>
+							<div class="dropdown lang-dropdown">
+								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
+									data-toggle="dropdown">
+									<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="langDropdown">
+									<a class="dropdown-item" href="#">
+										<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+									</a>
+								</div>
+							</div>
+						</li>
+					</ul><!-- /.navbar-actions -->
+				</div><!-- /.container -->
+			</nav><!-- /.navabr -->
+		</header>
+		<!-- <header class="header header-layout1">
 			<nav class="navbar navbar-expand-lg sticky-navbar">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="index.html">
@@ -37,7 +164,7 @@
 					<div class="collapse navbar-collapse" id="mainNavigation">
 						<ul class="navbar-nav">
 							<li class="nav__item has-dropdown">
-								<a href="index.html" class="nav__item-link active">Home</a>								
+								<a href="index.html" class="nav__item-link active">Home</a>
 							</li>
 							<li class="nav__item has-dropdown">
 								<a href="#" class="nav__item-link">Company</a>
@@ -45,24 +172,24 @@
 								<ul class="dropdown-menu">
 									<li class="nav__item">
 										<a href="#about" class="nav__item-link">About Us</a>
-									</li>	
+									</li>
 									<li class="nav__item">
 										<a href="#about" class="nav__item-link">How we act?</a>
-									</li>	
+									</li>
 									<li class="nav__item">
 										<a href="#principles" class="nav__item-link">Our Principles</a>
-									</li>	
+									</li>
 									<li class="nav__item">
 										<a href="#principles" class="nav__item-link">Our Goals</a>
-									</li>	
+									</li>
 									<li class="nav__item">
 										<a href="#certificate" class="nav__item-link">Our Certificate</a>
-									</li>	
+									</li>
 									<li class="nav__item">
 										<a href="#certificate" class="nav__item-link">What sets us apart</a>
-									</li>					
+									</li>
 								</ul>
-							</li>							
+							</li>
 							<li class="nav__item">
 								<a href="services.html" class="nav__item-link">Services</a>
 							</li>
@@ -87,58 +214,59 @@
 							<div class="dropdown lang-dropdown">
 								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
 									data-toggle="dropdown">
-									<img src="assets/images/flags/en.png" alt="en"> <span>EN</span>
+									<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
 								</button>
 								<div class="dropdown-menu" aria-labelledby="langDropdown">
 									<a class="dropdown-item" href="#">
-										<img src="assets/images/flags/az.png" alt="az"> <span>AZ</span>
+										<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
 									</a>
 								</div>
 							</div>
 						</li>
-					</ul><!-- /.navbar-actions -->
-				</div><!-- /.container -->
-			</nav><!-- /.navabr -->
-		</header>
+					</ul>
+				</div>
+			</nav>
+		</header> -->
 
 		<!-- ============================
 			Первая секция
 		============================== -->
 		<section class="slider">
-                <div class="slide-item align-v-h bg-overlay bg-overlay-2">
-                    <div class="bg-img">
-                        <img src="assets/images/sliders/12.jpg" class="darkened-image" alt="slide img">
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
-                                <div class="slide__body">
-                                    <!-- <span class="slide__subtitle">Industry Supply & Engineering Since 2005</span> -->
-                                    <h2 class="slide__title">Supply and Service Company in Azerbaijan Since 2005</h2>
-                                    <p class="slide__desc">
-                                        Deniz Service delivers supply and engineering support across oil & gas, metallurgy, food, chemicals, construction, and agriculture — ensuring reliability, expertise, and timely delivery to Azerbaijan.
-                                    </p>
-                                    <div class="d-flex">
-                                        <a href="#services" class="btn btn__primary mr-30">
-                                            <i class="icon-arrow-right"></i><span>Our Products</span>
-                                        </a>
-                                        <!-- <a href="#services" class="btn btn__white">Our Services</a> -->
-                                    </div>
-                                </div><!-- /.slide__body -->
-                            </div><!-- /.col-xl-8 -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container -->
-                    <!-- SVG волна как часть картинки -->
-                    
-                </div><!-- /.slide-item -->
-                <!-- <div class="slider-wave1">
+			<div class="slide-item align-v-h bg-overlay bg-overlay-2">
+				<div class="bg-img">
+					<img src="assets/images/sliders/main_menu_slider.webp" class="darkened-image" alt="slide img">
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
+							<div class="slide__body">
+								<!-- <span class="slide__subtitle">Industry Supply & Engineering Since 2005</span> -->
+								<h2 class="slide__title">Supply and Service Company in Azerbaijan Since 2005</h2>
+								<p class="slide__desc">
+									Deniz Service delivers supply and engineering support across oil & gas, metallurgy,
+									food, chemicals, construction, and agriculture — ensuring reliability, expertise,
+									and timely delivery to Azerbaijan.
+								</p>
+								<div class="d-flex">
+									<a href="#services" class="btn btn__primary mr-30">
+										<i class="icon-arrow-right"></i><span>Our Services</span>
+									</a>
+								</div>
+							</div><!-- /.slide__body -->
+						</div><!-- /.col-xl-8 -->
+					</div><!-- /.row -->
+				</div><!-- /.container -->
+				<!-- SVG волна как часть картинки -->
+
+			</div><!-- /.slide-item -->
+			<!-- <div class="slider-wave1">
                     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
                         <path d="M0,120 V80 Q600,20 1200,80 V120 H0 Z" fill="#1e1d1d"></path>
                     </svg>
                 </div> -->
-        </section>
+		</section>
 
-        <!-- <div class="slider-wave">
+		<!-- <div class="slider-wave">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0 V40 Q600,100 1200,40 V0 Z" fill="#1e1d1d"></path>
             </svg>
@@ -147,19 +275,24 @@
 		<!-- ====================== 
 			Услуги
 		========================= -->
-		<section class="services-layout2 pt-30 pb-30" id="services">
-			<div class="bg-img background-size-auto"><img src="assets/images/backgrounds/9.png" alt="background"></div>
+		<section class="services-layout2 pt-40 pb-30" id="services">
+			<div class="bg-img background-size-auto"><img src="assets/images/backgrounds/black_2.webp" alt="background">
+			</div>
 			<div class="container">
 				<div class="row mb-30">
 					<!-- <div class="col-12">
 						<h2 class="heading__subtitle color-primary">Your One-Stop Partner for Oilfield Supply Solutions</h2>
 					</div> -->
 					<div class="col-sm-12 col-md-12 col-lg-5">
-						<h3 class="heading__title color-white">More than 20 years of experience, Deniz Service is a fully integrated, end-to-end, One Stop Shop oilfield supply solutions</h3>
+						<h3 class="heading__title color-white">More than 20 years of experience, Deniz Service is a
+							fully integrated, end-to-end, One Stop Shop oilfield supply solutions</h3>
 					</div>
 					<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
 						<p class="heading__desc font-weight-bold color-gray mb-30">
-							From critical oilfield components to full-scale supply and engineering support — Deniz Service acts as a single-source partner for valves, HVAC systems, drilling tools, lifting gear, personal protection and more, ensuring precision, availability, and accountability at every stage.
+							From critical oilfield components to full-scale supply and engineering support — Deniz
+							Service acts as a single-source partner for valves, HVAC systems, drilling tools, lifting
+							gear, personal protection and more, ensuring precision, availability, and accountability at
+							every stage.
 						</p>
 						<div class="d-flex align-items-center">
 							<a href="services.html" class="btn btn__primary btn__primary-style2 mr-30">
@@ -173,45 +306,88 @@
 						</div>
 					</div>
 				</div>
-		
-				<div class="row">
+
+				<div class="row services-equal">
 					<!-- service item #1 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/1.png" alt="Explosion Proof Equipment" loading="lazy">
+								<img src="assets/images/services/1.webp" alt="Explosion Proof Equipment" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Explosion Proof Equipment</h4>
-								<p class="service__desc">Heat tracing, lighting, monitoring, control, and power systems</p>
-								<a href="services.html#explosion_proof" class="btn btn__secondary btn__outlined btn__custom">
+								<p class="service__desc">Heat tracing, lighting, monitoring, control, and power systems
+								</p>
+								<a href="services.html#explosion_proof"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #2 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/2.png" alt="Electrical bulks" loading="lazy">
+								<img src="assets/images/services/2.webp" alt="Electrical bulks" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Electrical bulks</h4>
-								<p class="service__desc">Cables, enclosures, lighting and accessories for electrical, marine, and aviation use</p>
-								<a href="services.html#electrical_bulks" class="btn btn__secondary btn__outlined btn__custom">
+								<p class="service__desc">Cables, enclosures, lighting and accessories for electrical,
+									marine, and aviation use</p>
+								<a href="services.html#electrical_bulks"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
-					<!-- service item #3 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+
+					<!-- service item #4 -->
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/3.png" alt="Valves and accessories" loading="lazy">
+								<img src="assets/images/services/4.webp" alt="Lifting gear and rigging equipment"
+									loading="lazy">
+							</div>
+							<div class="service__body">
+								<h4 class="service__title">Lifting gear and rigging equipment</h4>
+								<p class="service__desc">Elevators, slips, hydraulic tongs, accumulators and more.</p>
+								<a href="services.html#lifting_gear"
+									class="btn btn__secondary btn__outlined btn__custom">
+									<span>Read More</span><i class="icon-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- service item #21 -->
+					<div class="col-md-6 col-lg-3 mb-30">
+						<div class="service-item">
+							<div class="service__img">
+								<img src="assets/images/services/21.webp" alt="Electrical bulks" loading="lazy">
+							</div>
+							<div class="service__body">
+								<h4 class="service__title">Metallurgy</h4>
+								<p class="service__desc">
+									Steel structures, pipe insulation, scrap recycling, induction heating, and
+									protective coating systems
+								</p>
+
+								<a href="services.html#metallurgy"
+									class="btn btn__secondary btn__outlined btn__custom">
+									<span>Read More</span><i class="icon-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- service item #3 -->
+					<div class="col-md-6 col-lg-3 mb-30">
+						<div class="service-item">
+							<div class="service__img">
+								<img src="assets/images/services/3.webp" alt="Valves and accessories" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Valves and accessories</h4>
@@ -222,220 +398,221 @@
 							</div>
 						</div>
 					</div>
-				
-					<!-- service item #4 -->
-					<div class="col-md-6 col-lg-3 mb-10">
-						<div class="service-item">
-							<div class="service__img">
-								<img src="assets/images/services/4.png" alt="Lifting gear and rigging equipment" loading="lazy">
-							</div>
-							<div class="service__body">
-								<h4 class="service__title">Lifting gear and rigging equipment</h4>
-								<p class="service__desc">Elevators, slips, hydraulic tongs, accumulators and more.</p>
-								<a href="services.html#lifting_gear" class="btn btn__secondary btn__outlined btn__custom">
-									<span>Read More</span><i class="icon-arrow-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				
-					<!-- service item #5 -->
-					<div class="col-md-6 col-lg-3 mb-10">
-						<div class="service-item">
-							<div class="service__img">
-								<img src="assets/images/services/5.png" alt="HVAC" loading="lazy">
-							</div>
-							<div class="service__body">
-								<h4 class="service__title">HVAC</h4>
-								<p class="service__desc">Maintenance and repair of cooling, pumping, and engine systems</p>
-								<a href="services.html#hvac" class="btn btn__secondary btn__outlined btn__custom">
-									<span>Read More</span><i class="icon-arrow-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				
-					<!-- service item #6 -->
-					<div class="col-md-6 col-lg-3 mb-10">
-						<div class="service-item">
-							<div class="service__img">
-								<img src="assets/images/services/6.png" alt="Drilling Tools" loading="lazy">
-							</div>
-							<div class="service__body">
-								<h4 class="service__title">Drilling Tools & Components</h4>
-								<p class="service__desc">Drilling tools, handling equipment, tongs, slips</p>
-								<a href="services.html#drilling_tools" class="btn btn__secondary btn__outlined btn__custom">
-									<span>Read More</span><i class="icon-arrow-right"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				
+
 					<!-- service item #7 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/7.png" alt="Oilwell supplies" loading="lazy">
+								<img src="assets/images/services/7.webp" alt="Oilwell supplies" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Oilwell supplies</h4>
-								<p class="service__desc">High-pressure fluid control, lubrication, flowline, mixing equipment</p>
+								<p class="service__desc">High-pressure fluid control, lubrication, flowline, mixing
+									equipment</p>
 								<a href="services.html#oilwell" class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
-					<!-- service item #8 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+
+					<!-- service item #6 -->
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/8.png" alt="Piping and accessories" loading="lazy">
+								<img src="assets/images/services/6.webp" alt="Drilling Tools" loading="lazy">
+							</div>
+							<div class="service__body">
+								<h4 class="service__title">Drilling Tools & Components</h4>
+								<p class="service__desc">Drilling tools, handling equipment, tongs, slips</p>
+								<a href="services.html#drilling_tools"
+									class="btn btn__secondary btn__outlined btn__custom">
+									<span>Read More</span><i class="icon-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- service item #5 -->
+					<div class="col-md-6 col-lg-3 mb-30">
+						<div class="service-item">
+							<div class="service__img">
+								<img src="assets/images/services/5.webp" alt="HVAC" loading="lazy">
+							</div>
+							<div class="service__body">
+								<h4 class="service__title">HVAC</h4>
+								<p class="service__desc">Maintenance and repair of cooling, pumping, and engine systems
+								</p>
+								<a href="services.html#hvac" class="btn btn__secondary btn__outlined btn__custom">
+									<span>Read More</span><i class="icon-arrow-right"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- service item #8 -->
+					<div class="col-md-6 col-lg-3 mb-30">
+						<div class="service-item">
+							<div class="service__img">
+								<img src="assets/images/services/8.webp" alt="Piping and accessories" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Piping and accessories</h4>
-								<p class="service__desc">Industrial piping, fittings, flanges, and fastening hardware</p>
+								<p class="service__desc">Industrial piping, fittings, flanges, and fastening hardware
+								</p>
 								<a href="services.html#piping" class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #9 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/9.png" alt="Structural steel products" loading="lazy">
+								<img src="assets/images/services/9.webp" alt="Structural steel products" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Structural steel products</h4>
 								<p class="service__desc">High-performance steels and certified forged products</p>
-								<a href="services.html#steel_products" class="btn btn__secondary btn__outlined btn__custom">
+								<a href="services.html#steel_products"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #10 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/10.png" alt="Deck machinery" loading="lazy">
+								<img src="assets/images/services/10.webp" alt="Deck machinery" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Deck machinery</h4>
-								<p class="service__desc">Marine lifting systems, mooring equipment, and container handling solutions</p>
-								<a href="services.html#deck_machinery" class="btn btn__secondary btn__outlined btn__custom">
+								<p class="service__desc">Marine lifting systems, mooring equipment, and container
+									handling solutions</p>
+								<a href="services.html#deck_machinery"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #11 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/11.png" alt="Vessel support" loading="lazy">
+								<img src="assets/images/services/11.webp" alt="Vessel support" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Vessel support</h4>
-								<p class="service__desc">Marine filtration, waste management, navigation, and essential shipboard systems</p>
-								<a href="services.html#vessel_support" class="btn btn__secondary btn__outlined btn__custom">
+								<p class="service__desc">Marine filtration, waste management, navigation, and essential
+									shipboard systems</p>
+								<a href="services.html#vessel_support"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #12 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/12.png" alt="Hydraulics" loading="lazy">
+								<img src="assets/images/services/12.webp" alt="Hydraulics" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Hydraulics</h4>
-								<p class="service__desc">Hydraulic components, filtration systems, and power transmission parts</p>
+								<p class="service__desc">Hydraulic components, filtration systems, and power
+									transmission parts</p>
 								<a href="services.html#hydraulics" class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #13 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/13.png" alt="Pneumatics" loading="lazy">
+								<img src="assets/images/services/13.webp" alt="Pneumatics" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Pneumatics</h4>
-								<p class="service__desc">Pneumatic valves, actuators, air treatment, and safety components</p>
+								<p class="service__desc">Pneumatic valves, actuators, air treatment, and safety
+									components</p>
 								<a href="services.html#pneumatics" class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #14 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/14.png" alt="Pumps and drive system components" loading="lazy">
+								<img src="assets/images/services/14.webp" alt="Pumps and drive system components"
+									loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Pumps and drive system components</h4>
 								<p class="service__desc">Pumps, motors, gearboxes, and control systems</p>
-								<a href="services.html#pumps_drive" class="btn btn__secondary btn__outlined btn__custom">
+								<a href="services.html#pumps_drive"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #15 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/15.png" alt="Personal protection" loading="lazy">
+								<img src="assets/images/services/15.webp" alt="Personal protection" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Personal protection</h4>
-								<p class="service__desc">Comprehensive personal protective equipment and safety solutions</p>
+								<p class="service__desc">Comprehensive personal protective equipment and safety
+									solutions</p>
 								<a href="services.html#protection" class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #16 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/16.png" alt="Mobile equipment spare parts" loading="lazy">
+								<img src="assets/images/services/16.webp" alt="Mobile equipment spare parts"
+									loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Mobile equipment spare parts</h4>
 								<p class="service__desc">Spare parts for marine, offshore, and industrial equipment</p>
-								<a href="services.html#spare_parts" class="btn btn__secondary btn__outlined btn__custom">
+								<a href="services.html#spare_parts"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #17 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/17.png" alt="Welding tools and consumables" loading="lazy">
+								<img src="assets/images/services/17.webp" alt="Welding tools and consumables"
+									loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Welding tools and consumables</h4>
@@ -446,56 +623,61 @@
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #18 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/18.png" alt="Scaffolding and accessories" loading="lazy">
+								<img src="assets/images/services/18.webp" alt="Scaffolding and accessories"
+									loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Scaffolding and accessories</h4>
 								<p class="service__desc">Tubes, fittings, tools, and design support solutions</p>
-								<a href="services.html#scaffolding" class="btn btn__secondary btn__outlined btn__custom">
+								<a href="services.html#scaffolding"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #19 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/19.png" alt="Consumables and tools" loading="lazy">
+								<img src="assets/images/services/19.webp" alt="Consumables and tools" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Consumables and tools</h4>
 								<p class="service__desc">Workshop consumables, tools, lubricants, and filters</p>
-								<a href="services.html#consumables" class="btn btn__secondary btn__outlined btn__custom">
+								<a href="services.html#consumables"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- service item #20 -->
-					<div class="col-md-6 col-lg-3 mb-10">
+					<div class="col-md-6 col-lg-3 mb-30">
 						<div class="service-item">
 							<div class="service__img">
-								<img src="assets/images/services/20.png" alt="Services we render" loading="lazy">
+								<img src="assets/images/services/20.webp" alt="Services we render" loading="lazy">
 							</div>
 							<div class="service__body">
 								<h4 class="service__title">Services we render</h4>
-								<p class="service__desc">Maintenance, servicing, and certification for deck and industrial equipment</p>
-								<a href="services.html#services_rendered" class="btn btn__secondary btn__outlined btn__custom">
+								<p class="service__desc">Maintenance, servicing, and certification for deck and
+									industrial equipment</p>
+								<a href="services.html#services_rendered"
+									class="btn btn__secondary btn__outlined btn__custom">
 									<span>Read More</span><i class="icon-arrow-right"></i>
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 			</div><!-- /.container -->
 		</section><!-- /.services Layout 2 -->
 
@@ -564,20 +746,28 @@
 			</div>
 		</section> -->
 
-        <!-- ======================
+		<!-- ======================
 			О нас / Как мы действуем / Чем мы гордимся
 		========================= -->
 		<section class="features-layout2 pt-60 pb-30" id="about">
-			<div class="bg-img"><img src="assets/images/backgrounds/6.jpg" alt="background"></div>
+			<div class="bg-img"><img src="assets/images/backgrounds/white_1.webp" alt="background"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-lg-5">
 						<h2 class="heading__subtitle color-primary">20+ Years of Excellence</h2>
 						<h3 class="heading__title">About us</h3>
-						<p class="heading__desc mb-30">Deniz Service is an experienced supply and engineering provider, established in 2005. We are fully equipped to provide complete turnkey solutions, covering the entire cycle from the development of project documentation to the final stages of installation and commissioning. Our approach ensures smooth execution, technical excellence and full compliance with customer expectations.</p>
+						<p class="heading__desc mb-30">Deniz Service is an experienced supply and engineering provider,
+							established in 2005. We are fully equipped to provide complete turnkey solutions, covering
+							the entire cycle from the development of project documentation to the final stages of
+							installation and commissioning. Our approach ensures smooth execution, technical excellence
+							and full compliance with customer expectations.</p>
 						<!-- <p class="heading__desc mb-40">Deniz Service has assumed full responsibility as an EPC contractor in many projects in the steel industry. We constantly invests in the qualification of employees and process improvement. Our services include:</p> -->
 						<h3 class="heading__title">How we act?</h3>
-						<p class="heading__desc mb-30">We act as a reliable EPC (engineering, procurement and construction) partner, especially in the steel sector, bringing engineering expertise, reliable procurement and practical project execution within a single cycle. Deniz Service has assumed full responsibility as an EPC contractor in many projects in the steel industry.</p>
+						<p class="heading__desc mb-30">We act as a reliable EPC (engineering, procurement and
+							construction) partner, especially in the steel sector, bringing engineering expertise,
+							reliable procurement and practical project execution within a single cycle. Deniz Service
+							has assumed full responsibility as an EPC contractor in many projects in the steel industry.
+						</p>
 						<p class="heading__desc mb-30">Our reach spans across three key operational hubs:</p>
 						<ul class="custom-list">
 							<li>
@@ -590,13 +780,14 @@
 							</li>
 							<li>
 								<span class="dot">• </span>
-								<span>United Arab Emirates (for supply to Azerbaijan) – Represented by Elmidel LTD</span>
+								<span>United Arab Emirates (for supply to Azerbaijan) – Represented by Elmidel
+									LTD</span>
 							</li>
 						</ul>
 					</div><!-- /col-lg-5 -->
-		
+
 					<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
-                        <h3 class="heading__title mb-40">We are proud to:</h3>
+						<h3 class="heading__title mb-40">We are proud to:</h3>
 						<div class="row">
 							<!-- Feature item #1 -->
 							<div class="col-sm-6">
@@ -608,7 +799,7 @@
 									<!-- <p class="feature__desc">From electrical, mechanical and PPE to drilling, HVAC and marine — we cover all your supply needs.</p> -->
 								</div>
 							</div>
-		
+
 							<!-- Feature item #2 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
@@ -619,7 +810,7 @@
 									<!-- <p class="feature__desc">Flexibility, responsiveness, and dedication to your project timeline — that’s our promise.</p> -->
 								</div>
 							</div>
-		
+
 							<!-- Feature item #3 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
@@ -630,7 +821,7 @@
 									<!-- <p class="feature__desc">Our engineers, managers, and procurement experts ensure high standards across all operations.</p> -->
 								</div>
 							</div>
-		
+
 							<!-- Feature item #4 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
@@ -641,7 +832,7 @@
 									<!-- <p class="feature__desc">We maintain a strict Quality Management System ensuring safety, traceability, and efficiency.</p> -->
 								</div>
 							</div>
-		
+
 							<!-- Feature item #5 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
@@ -652,7 +843,7 @@
 									<!-- <p class="feature__desc">We work directly with leading global manufacturers, giving you access to top-tier products and pricing.</p> -->
 								</div>
 							</div>
-		
+
 							<!-- Feature item #6 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
@@ -664,17 +855,18 @@
 								</div>
 							</div>
 
-                            <!-- Feature item #7 -->
+							<!-- Feature item #7 -->
 							<div class="col-sm-6">
 								<div class="feature-item">
 									<div class="feature__icon">
 										<i class="fas fa-clipboard-check"></i>
 									</div>
-									<h4 class="feature__title">Follow transparency and responsibility for every operation</h4>
+									<h4 class="feature__title">Follow transparency and responsibility for every
+										operation</h4>
 									<!-- <p class="feature__desc">We proudly act in compliance with the law, uphold transparency, and treat clients and partners fairly.</p> -->
 								</div>
 							</div>
-		
+
 						</div><!-- /.row -->
 					</div>
 				</div><!-- /.row -->
@@ -686,7 +878,7 @@
       	=========================== -->
 		<section class="banner-layout2 pt-60 pb-60" id="principles">
 			<div class="bg-img">
-				<img src="assets/images/teamwork.jpg" alt="background">
+				<img src="assets/images/other/teamwork.webp" alt="background">
 			</div>
 			<div class="container">
 				<div class="row custom-dual">
@@ -700,15 +892,21 @@
 									<ul class="custom-list-second">
 										<li>
 											<span class="dot">• </span>
-											<span>As a fully integrated, end-to-end, one-stop-shop supply solution company to provide complete solution of the tasks set by involving in the process our providers and specialists required for the final success</span>
+											<span>As a fully integrated, end-to-end, one-stop-shop supply solution
+												company to provide complete solution of the tasks set by involving in
+												the process our providers and specialists required for the final
+												success</span>
 										</li>
 										<li>
 											<span class="dot">• </span>
-											<span>Being there when and where you need is key to maintain a long-lasting relationship with our customers</span>
+											<span>Being there when and where you need is key to maintain a long-lasting
+												relationship with our customers</span>
 										</li>
 										<li>
 											<span class="dot">• </span>
-											<span>Our technicians ready on-site in less time: our technicians are skilled professionals and are some of the most experienced in the industry, ready to accomplish all your service needs</span>
+											<span>Our technicians ready on-site in less time: our technicians are
+												skilled professionals and are some of the most experienced in the
+												industry, ready to accomplish all your service needs</span>
 										</li>
 									</ul>
 								</div>
@@ -722,7 +920,9 @@
 								<div class="heading heading-layout2">
 									<!-- <h2 class="heading__subtitle">How It Works, Step Two:</h2> -->
 									<h3 class="heading__title">Our goals:</h3>
-									<p class="heading__desc">To meet the demanding schedules of the metallurgical and other industries through a commitment to excellence, efficiency, and innovation.</p> <br>
+									<p class="heading__desc">To meet the demanding schedules of the metallurgical and
+										other industries through a commitment to excellence, efficiency, and innovation.
+									</p> <br>
 									<ul class="custom-list-second">
 										<li>
 											<span class="dot">• </span>
@@ -748,67 +948,76 @@
 				</div><!-- /.row -->
 			</div><!-- /.container -->
 		</section>
-		
-        <!-- ======================
+
+		<!-- ======================
 			Сертификат / Что нас отличает
 		========================= -->
 		<section class="features-layout2 pt-60 pb-30" id="certificate">
-			<div class="bg-img"><img src="assets/images/backgrounds/E0000_11.jpg" alt="background"></div>
+			<div class="bg-img"><img src="assets/images/backgrounds/white_3.webp" alt="background"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-12 col-lg-5">
 						<!-- <h2 class="heading__subtitle color-primary">20+ Years of Excellence</h2> -->
 						<h3 class="heading__title">Our Certificate</h3>
-						
+
 						<div class="col-sm-12 col-md-12 col-lg-5 test">
 							<div class="video-banner-layout2">
-								<img src="assets/certificates/1_ISO_CERTIFICATE_DENIZ_SERVICE.png" alt="about" class="w-100"
-									 style="cursor: pointer;" data-toggle="modal" data-target="#certificateModal">
+								<img src="assets/images/certificates/1_ISO_CERTIFICATE_DENIZ_SERVICE.webp" alt="about"
+									class="w-100" style="cursor: pointer;" data-toggle="modal"
+									data-target="#certificateModal">
 							</div>
 						</div>
-																
+
 						<!-- <a href="#" class="btn btn__primary btn__outlined btn__custom mb-40">
 							<i class="icon-arrow-right"></i>
 							<span>Learn More About Us</span>
 						</a> -->
 					</div><!-- /col-lg-5 -->
-		
+
 					<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
-                        <h3 class="heading__title mb-40">What sets us apart:</h3>
+						<h3 class="heading__title mb-40">What sets us apart:</h3>
 						<div class="row">
 							<!-- Feature item #1 -->
 							<ul class="custom-list-second">
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Experience across sectors – decades of service in oil and gas, energy, industrial manufacturing and infrastructure.</h6>
+									<h6>Experience across sectors – decades of service in oil and gas, energy,
+										industrial manufacturing and infrastructure.</h6>
 								</li>
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Tailored solutions- we customize every project to meet unique operational needs.</h6>
+									<h6>Tailored solutions- we customize every project to meet unique operational needs.
+									</h6>
 								</li>
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Fast delivery – global sourcing, efficient logistics, and on time performance.</h6>
+									<h6>Fast delivery – global sourcing, efficient logistics, and on time performance.
+									</h6>
 								</li>
 
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Explosion – proof equipment – certified solutions for hazardous areas – both offshore and onshore.</h6>
+									<h6>Explosion – proof equipment – certified solutions for hazardous areas – both
+										offshore and onshore.</h6>
 								</li>
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Valves and accessories – industrial – grade valves, gaskets, actuators and tools.</h6>
+									<h6>Valves and accessories – industrial – grade valves, gaskets, actuators and
+										tools.
+									</h6>
 								</li>
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>Drilling and mechanical components – elevators, tongs, hydraulic systems, and safety tools.</h6>
+									<h6>Drilling and mechanical components – elevators, tongs, hydraulic systems, and
+										safety tools.</h6>
 								</li>
 								<li>
 									<h6 class="dot">• </h6>
-									<h6>We work with energy companies, manufacturers, government contractors, and infrastructure developers across Europe, the Middle East and beyond.</h6>
+									<h6>We work with energy companies, manufacturers, government contractors, and
+										infrastructure developers across Europe, the Middle East and beyond.</h6>
 								</li>
 							</ul>
-		
+
 						</div><!-- /.row -->
 					</div>
 				</div><!-- /.row -->
@@ -820,11 +1029,12 @@
 		========================= -->
 		<div class="modal fade" id="certificateModal" tabindex="2" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered modal-lg">
-			  <div class="modal-content">
-				<div class="modal-body p-0">
-				  <img src="assets/certificates/1_ISO_CERTIFICATE_DENIZ_SERVICE.png" alt="certificate" class="w-100">
+				<div class="modal-content">
+					<div class="modal-body p-0">
+						<img src="assets/images/certificates/1_ISO_CERTIFICATE_DENIZ_SERVICE.webp" alt="certificate"
+							class="w-100">
+					</div>
 				</div>
-			  </div>
 			</div>
 		</div>
 
@@ -839,7 +1049,8 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-contact">
 							<h6 class="footer-widget-title">Quick Contact</h6>
 							<div class="footer-widget-content">
-								<p class="mb-20">If you have any questions or business inquiries, feel free to reach out to our team.</p>
+								<p class="mb-20">If you have any questions or business inquiries, feel free to reach out
+									to our team.</p>
 								<div class="contact__number d-flex align-items-center mb-10">
 									<i class="icon-phone"></i>
 									<a href="tel:+994124373424" class="color-primary">+994 12 437 34 24</a>
@@ -885,7 +1096,7 @@
 										<li><a href="services.html#oilwell">Oilwell supplies</a></li>
 										<li><a href="services.html#protection">Personal Protection</a></li>
 										<li><a href="services.html#services_rendered">Services We Render</a></li>
-									</ul>  
+									</ul>
 								</nav>
 							</div>
 						</div>
@@ -909,7 +1120,8 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-left">
 							<h6 class="footer-widget-title">Our Presentation</h6>
 							<div class="footer-widget-content">
-								<a href="assets/presentation/Deniz%20Service_Presentation.pdf" class="btn btn__primary btn__primary-style2 btn__download mb-60" target="_blank">
+								<a href="assets/presentation/Deniz%20Service_Presentation.pdf"
+									class="btn btn__primary btn__primary-style2 btn__download mb-60" target="_blank">
 									<i class="icon-download"></i>
 									<span>Download PDF</span>
 								</a>
@@ -944,7 +1156,7 @@
 			</div><!-- /.footer-copyright -->
 		</footer>
 
-<button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
+		<button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
 
 	</div><!-- /.wrapper -->
 
@@ -952,7 +1164,7 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
-	 
+
 
 </body>
 

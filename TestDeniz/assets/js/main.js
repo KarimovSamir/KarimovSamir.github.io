@@ -28,8 +28,14 @@ $(function () {
 
     /*==========  Pre Loading   ==========*/
     setTimeout(function () {
-        $(".preloader").remove();
-    }, 2000);
+        const preloader = $(".preloader");
+        preloader.addClass("fade-out"); // запускаем анимацию
+
+        setTimeout(function () {
+            preloader.remove(); // удаляем после завершения анимации
+        }, 600); // 600 мс = то же время, что в CSS transition
+    }, 3000);
+
 
     /*==========   Mobile Menu   ==========*/
     $('.navbar-toggler').on('click', function () {
