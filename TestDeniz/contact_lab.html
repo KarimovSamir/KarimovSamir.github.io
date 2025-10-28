@@ -13,113 +13,114 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
 	<link rel="stylesheet" href="assets/css/libraries.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<link
-		rel="stylesheet"
-		href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-		crossorigin=""
-	/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
 	<div class="wrapper">
-		<!-- <div class="preloader">
-			<div class="loading"><span></span><span></span><span></span><span></span></div>
-		</div> -->
-		<!-- <div class="preloader" id="site-preloader" aria-hidden="true">
-			<div class="loading" role="status" aria-label="Loading">
-				<div class="ring">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-
-				<div class="loading-words">
-					<div class="row">
-						<span class="ch">D</span>
-						<span class="ch">E</span>
-						<span class="ch">N</span>
-						<span class="ch">I</span>
-						<span class="ch">Z</span>
-					</div>
-					<div class="row">
-						<span class="ch">S</span>
-						<span class="ch">E</span>
-						<span class="ch">R</span>
-						<span class="ch">V</span>
-						<span class="ch">I</span>
-						<span class="ch">C</span>
-						<span class="ch">E</span>
-					</div>
-					<div class="progress-line"></div>
-				</div>
-			</div>
-		</div> -->
-
-		<!-- /.preloader -->
 
 		<!-- =========================
         Header
     	=========================== -->
 		<header class="header header-layout1">
-			<nav class="navbar navbar-expand-lg sticky-navbar">
+			<nav class="navbar navbar-expand-xl sticky-navbar">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="contact_lab.html">
+					<!-- Brand (лаборатория) -->
+					<a class="navbar-brand" href="laboratory.html">
 						<img src="assets/images/logo/CalLabLogo.png" class="logo" alt="logo">
 					</a>
+
 					<button class="navbar-toggler" type="button">
 						<span class="menu-lines"><span></span></span>
 					</button>
+
 					<div class="collapse navbar-collapse" id="mainNavigation">
-						<ul class="navbar-nav">
-							<li class="nav__item has-dropdown">
-								<a href="index.html" class="nav__item-link">Home</a>
-							</li>
-							<li class="nav__item has-dropdown">
-								<a href="#" class="nav__item-link">Company</a>
-								<button class="dropdown-toggle" data-toggle="dropdown"></button>
-								<ul class="dropdown-menu">
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">About Us</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">How we act?</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Principles</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Goals</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">What sets us apart</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<a href="services.html" class="nav__item-link">Services</a>
-							</li>
-							<li class="nav__item">
-								<a href="partners.html" class="nav__item-link">Partners</a>
-							</li>
-							<li class="nav__item">
-								<a href="laboratory.html" class="nav__item-link">Laboratory</a>
-							</li>
-							<li class="nav__item">
-								<a href="contact_lab.html" class="nav__item-link active">Contact Us</a>
-							</li>
-						</ul>
-						<button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
+						<div class="navbar-mobile-panel">
+							<!-- Mobile actions (lang) -->
+							<ul
+								class="navbar-actions navbar-actions--mobile d-xl-none align-items-center list-unstyled mb-0">
+								<li>
+									<div class="dropdown lang-dropdown">
+										<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdownMobile"
+											data-toggle="dropdown">
+											<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+										</button>
+										<div class="dropdown-menu" aria-labelledby="langDropdownMobile">
+											<a class="dropdown-item" href="#">
+												<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+											</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+
+							<!-- Mobile nav -->
+							<ul class="navbar-nav">
+								<li class="nav__item has-dropdown">
+									<a href="index.html" class="nav__item-link">Home</a>
+								</li>
+
+								<li class="nav__item has-dropdown">
+									<a href="#" class="nav__item-link">Company</a>
+									<button class="dropdown-toggle" data-toggle="dropdown"></button>
+									<ul class="dropdown-menu">
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">About Us</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">How we act?</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Principles</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Goals</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">What sets us
+												apart</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav__item">
+									<a href="services.html" class="nav__item-link">Services</a>
+								</li>
+								<li class="nav__item">
+									<a href="partners.html" class="nav__item-link">Partners</a>
+								</li>
+								<li class="nav__item">
+									<a href="laboratory.html" class="nav__item-link">Laboratory</a>
+								</li>
+								<li class="nav__item">
+									<a href="contact_lab.html" class="nav__item-link active">Contact Us</a>
+								</li>
+							</ul>
+
+							<div class="contact__number contact__number--mobile d-xl-none align-items-center">
+								<i class="icon-mail"></i>
+								<a href="mailto:callab@denizservice.com">callab@denizservice.com</a>
+							</div>
+						</div>
+
+						<button class="close-mobile-menu d-block d-xl-none">
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
-					<div class="contact__number d-none d-xl-flex align-items-center">
+
+					<!-- Desktop contact -->
+					<div class="contact__number contact__number--desktop d-none d-xl-flex align-items-center">
 						<i class="icon-mail"></i>
 						<a href="mailto:callab@denizservice.com">callab@denizservice.com</a>
 					</div>
-					<ul class="navbar-actions d-none d-xl-flex align-items-center list-unstyled mb-0">
+
+					<!-- Desktop actions (lang) -->
+					<ul
+						class="navbar-actions navbar-actions--desktop d-none d-xl-flex align-items-center list-unstyled mb-0">
 						<li>
 							<div class="dropdown lang-dropdown">
 								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
@@ -133,17 +134,17 @@
 								</div>
 							</div>
 						</li>
-					</ul><!-- /.navbar-actions -->
-				</div><!-- /.container -->
-			</nav><!-- /.navabr -->
+					</ul>
+				</div><!-- /.container-fluid -->
+			</nav>
 		</header>
 
 		<!-- ====================== 
     	Контакты и карта
     	========================= -->
-		<section id="contact" class="contact-section pt-90 pb-30">
+		<section id="contact" class="contact-section pt-80 pb-30">
 			<div class="container">
-				<div class="row justify-content-center mb-5">
+				<div class="row justify-content-center mb-5 pb-30">
 					<div class="col-lg-8 text-center">
 						<h2 class="section-title">Contact Us</h2>
 						<p class="section-subtitle">We're here to help you with any questions or inquiries.</p>
@@ -158,8 +159,7 @@
 								<i class="fas fa-map-marker-alt fa-2x"></i>
 							</div>
 							<h5 class="mb-2 contact-title-size">Our Location</h5>
-							<p class="contact-address-size">Izmir street 23, Floor 2, Office 3<br>Izmir Plaza, AZ 1065
-								Baku, Azerbaijan</p>
+							<p class="contact-address-size">4 Parlament Avenue, <br>Baku, AZ1006, Azerbaijan</p>
 						</div>
 					</div>
 
@@ -171,7 +171,7 @@
 							</div>
 							<h5 class="mb-2 contact-title-size">Email Us</h5>
 							<p class="contact-mail-size"><a
-									href="mailto:sales@denizservice.com">sales@denizservice.com</a></p>
+									href="mailto:callab@denizservice.com">callab@denizservice.com</a></p>
 						</div>
 					</div>
 
@@ -183,7 +183,7 @@
 							</div>
 							<h5 class="mb-2 contact-title-size">Call Us</h5>
 							<p class="contact-call-us-size">
-								<a href="tel:+994124373424">+994 12 437 34 24</a><br>
+								<a href="tel:+994124373424">+994 12 539 52 27</a><br>
 								<!-- <a href="tel:+994512304043">+994 51 230 40 43</a> -->
 							</p>
 						</div>
@@ -333,7 +333,7 @@
 
 	<script>
 		// Координаты из вашей ссылки OSM
-		const DENIZ_POS = [40.388802, 49.822635]; // [lat, lng]
+		const DENIZ_POS = [40.363955, 49.820523]; // [lat, lng]
 
 		function initLeafletMap() {
 			const el = document.getElementById('map');
@@ -356,9 +356,9 @@
 				attribution: '&copy; OpenStreetMap contributors'
 			}).addTo(map);
 
-			L.marker(DENIZ_POS, { title: 'Deniz Service' })
+			L.marker(DENIZ_POS, { title: 'CalLAb' })
 				.addTo(map)
-				.bindPopup('<b>Deniz Service</b><br>İzmir Plaza')
+				.bindPopup('<b>CalLAb</b><br>4 Parlament Avenue')
 				.openPopup();
 
 			// Подгонка размеров после рендера (полезно, если контейнер изначально скрыт)

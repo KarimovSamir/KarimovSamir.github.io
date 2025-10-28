@@ -17,103 +17,107 @@
 
 <body>
 	<div class="wrapper">
-		<!-- <div class="preloader">
-			<div class="loading"><span></span><span></span><span></span><span></span></div>
-		</div> -->
-		<!-- <div class="preloader" id="site-preloader" aria-hidden="true">
-			<div class="loading" role="status" aria-label="Loading">
-				<div class="ring">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-
-				<div class="loading-words">
-					<div class="row">
-						<span class="ch">D</span>
-						<span class="ch">E</span>
-						<span class="ch">N</span>
-						<span class="ch">I</span>
-						<span class="ch">Z</span>
-					</div>
-					<div class="row">
-						<span class="ch">S</span>
-						<span class="ch">E</span>
-						<span class="ch">R</span>
-						<span class="ch">V</span>
-						<span class="ch">I</span>
-						<span class="ch">C</span>
-						<span class="ch">E</span>
-					</div>
-					<div class="progress-line"></div>
-				</div>
-			</div>
-		</div> -->
-
-		<!-- /.preloader -->
 
 		<!-- =========================
         Header
     	=========================== -->
 		<header class="header header-layout1">
-			<nav class="navbar navbar-expand-lg sticky-navbar">
+			<nav class="navbar navbar-expand-xl sticky-navbar">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="index.html">
 						<img src="assets/images/logo/logo.png" class="logo" alt="logo">
 					</a>
+
 					<button class="navbar-toggler" type="button">
 						<span class="menu-lines"><span></span></span>
 					</button>
+
 					<div class="collapse navbar-collapse" id="mainNavigation">
-						<ul class="navbar-nav">
-							<li class="nav__item has-dropdown">
-								<a href="index.html" class="nav__item-link">Home</a>
-							</li>
-							<li class="nav__item has-dropdown">
-								<a href="#" class="nav__item-link">Company</a>
-								<button class="dropdown-toggle" data-toggle="dropdown"></button>
-								<ul class="dropdown-menu">
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">About Us</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">How we act?</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Principles</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Goals</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">What sets us apart</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<a href="services.html" class="nav__item-link">Services</a>
-							</li>
-							<li class="nav__item">
-								<a href="partners.html" class="nav__item-link active">Partners</a>
-							</li>
-							<li class="nav__item">
-								<a href="laboratory.html" class="nav__item-link">Laboratory</a>
-							</li>
-							<li class="nav__item">
-								<a href="contact.html" class="nav__item-link">Contact Us</a>
-							</li>
-						</ul>
-						<button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
+						<div class="navbar-mobile-panel">
+							<!-- Mobile actions (lang) -->
+							<ul
+								class="navbar-actions navbar-actions--mobile d-xl-none align-items-center list-unstyled mb-0">
+								<li>
+									<div class="dropdown lang-dropdown">
+										<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdownMobile"
+											data-toggle="dropdown">
+											<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+										</button>
+										<div class="dropdown-menu" aria-labelledby="langDropdownMobile">
+											<a class="dropdown-item" href="#">
+												<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+											</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+
+							<!-- Mobile nav -->
+							<ul class="navbar-nav">
+								<li class="nav__item has-dropdown">
+									<a href="index.html" class="nav__item-link">Home</a>
+								</li>
+
+								<li class="nav__item has-dropdown">
+									<a href="#" class="nav__item-link">Company</a>
+									<button class="dropdown-toggle" data-toggle="dropdown"></button>
+									<ul class="dropdown-menu">
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">About Us</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">How we act?</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Principles</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Goals</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">What sets us
+												apart</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav__item">
+									<a href="services.html" class="nav__item-link">Services</a>
+								</li>
+								<li class="nav__item">
+									<a href="partners.html" class="nav__item-link active">Partners</a>
+								</li>
+								<li class="nav__item">
+									<a href="laboratory.html" class="nav__item-link">Laboratory</a>
+								</li>
+								<li class="nav__item">
+									<a href="contact.html" class="nav__item-link">Contact Us</a>
+								</li>
+							</ul>
+
+							<div class="contact__number contact__number--mobile d-xl-none align-items-center">
+								<i class="icon-mail"></i>
+								<a href="mailto:sales@denizservice.com">sales@denizservice.com</a>
+							</div>
+						</div>
+
+						<button class="close-mobile-menu d-block d-xl-none">
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
-					<div class="contact__number d-none d-xl-flex align-items-center">
+
+					<!-- Desktop contact -->
+					<div class="contact__number contact__number--desktop d-none d-xl-flex align-items-center">
 						<i class="icon-mail"></i>
 						<a href="mailto:sales@denizservice.com">sales@denizservice.com</a>
 					</div>
-					<ul class="navbar-actions d-none d-xl-flex align-items-center list-unstyled mb-0">
+
+					<!-- Desktop actions (lang) -->
+					<ul
+						class="navbar-actions navbar-actions--desktop d-none d-xl-flex align-items-center list-unstyled mb-0">
 						<li>
 							<div class="dropdown lang-dropdown">
 								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
@@ -127,23 +131,24 @@
 								</div>
 							</div>
 						</li>
-					</ul><!-- /.navbar-actions -->
-				</div><!-- /.container -->
-			</nav><!-- /.navabr -->
+					</ul>
+
+				</div>
+			</nav>
 		</header>
 
 		<!-- ====================== 
     	Partners
     	========================= -->
-		
+
 		<section class="certs-strip section-padding certs-name--stroke" id="certificate">
 			<div class="bg-img"><img src="assets/images/partners/LightHexa.webp" alt="background"></div>
 			<div class="container">
 				<div class="row mb-20 align-items-center">
-				<div class="col-12">
-					<h2 class="certs-title mb-0">Partners and certificates</h2>
-					<p class="certs-subtitle"></p>
-				</div>
+					<div class="col-12">
+						<h2 class="certs-title mb-0">Partners and certificates</h2>
+						<p class="certs-subtitle"></p>
+					</div>
 				</div>
 				<div class="certs-strip__track" id="certsStrip"></div>
 			</div>
@@ -155,15 +160,15 @@
 			<div class="certs-lightbox__content">
 				<!-- «Сцена» с большой картинкой и стрелками -->
 				<div class="certs-lightbox__stage">
-				<button class="certs-lightbox__nav certs-lightbox__prev" aria-label="Previous">
-					<i class="fas fa-chevron-left"></i>
-				</button>
+					<button class="certs-lightbox__nav certs-lightbox__prev" aria-label="Previous">
+						<i class="fas fa-chevron-left"></i>
+					</button>
 
-				<img class="certs-lightbox__img" src="" alt="Certificate">
+					<img class="certs-lightbox__img" src="" alt="Certificate">
 
-				<button class="certs-lightbox__nav certs-lightbox__next" aria-label="Next">
-					<i class="fas fa-chevron-right"></i>
-				</button>
+					<button class="certs-lightbox__nav certs-lightbox__next" aria-label="Next">
+						<i class="fas fa-chevron-right"></i>
+					</button>
 				</div>
 
 				<!-- Вертикальные мини-превью -->
@@ -256,8 +261,8 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-left">
 							<h6 class="footer-widget-title">Our Presentation</h6>
 							<div class="footer-widget-content">
-								<a href="assets/presentation/Deniz%20Service_Presentation.pdf" class="btn btn__primary btn__primary-style2 btn__download mb-60"
-									target="_blank">
+								<a href="assets/presentation/Deniz%20Service_Presentation.pdf"
+									class="btn btn__primary btn__primary-style2 btn__download mb-60" target="_blank">
 									<i class="icon-download"></i>
 									<span>Download PDF</span>
 								</a>
