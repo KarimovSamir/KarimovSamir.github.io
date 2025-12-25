@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Family Recipes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #2b1512;
+      --accent: #24b4ff;
+      --accent-muted: #f8e7b0;
+      --cover-red: #c51b1b;
+      --page-bg: #ffecc4;
+      --page-shadow: rgba(0, 0, 0, 0.35);
+      --tab-bg: #f5d79b;
+      --tab-active: #fffbec;
+      --text-dark: #2a1a13;
+      --button: #26aef5;
+      --button-hover: #1d8ac3;
+      --button-bg: #0c0e10;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 20% 20%, #4b2618, #120608 70%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--page-bg);
+    }
+
+    .app {
+      width: min(1100px, 100vw - 40px);
+      max-height: 700px;
+      padding: 24px 20px 28px;
+      background: #140909;
+      border-radius: 32px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 6px;
+    }
+
+    .title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(28px, 3vw, 34px);
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pill-button {
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: #eae1d4;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .pill-button.active {
+      background: var(--accent);
+      color: #051018;
+      border-color: transparent;
+      box-shadow: 0 0 0 2px rgba(4, 41, 65, 0.7);
+      font-weight: 600;
+    }
+
+    .pill-button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+    }
+
+    .book-wrapper {
+      display: flex;
+      gap: 18px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .book {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 1.35fr;
+      background: #1b0b08;
+      padding: 20px 22px;
+      border-radius: 26px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 24px 40px rgba(0, 0, 0, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-left {
+      background: linear-gradient(135deg, #b81818, #7f1010 65%, #440707);
+      border-radius: 20px 0 0 20px;
+      margin-right: -8px;
+      box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .cover-left::before {
+      content: "";
+      position: absolute;
+      inset: 18px 18px auto auto;
+      height: 56px;
+      width: 11px;
+      border-radius: 999px;
+      background: linear-gradient(#f6d6aa, #bb915a);
+      box-shadow: -1px 0 5px rgba(0, 0, 0, 0.6);
+      opacity: 0.9;
+    }
+
+    .page-stack {
+      position: relative;
+      perspective: 1600px;
+      border-radius: 0 20px 20px 0;
+    }
+
+    .page-shadow {
+      position: absolute;
+      inset: 1%;
+      border-radius: 0 18px 18px 0;
+      background: radial-gradient(circle at 0 50%, rgba(0, 0, 0, 0.35), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: var(--page-bg);
+      border-radius: 0 18px 18px 0;
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.45);
+      padding: 22px 26px 18px 32px;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1), box-shadow 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      color: var(--text-dark);
+    }
+
+    .page.turn-forward {
+      transform: rotateY(-180deg);
+      box-shadow: -6px 0 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .page.turn-back {
+      transform: rotateY(0deg);
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.45);
+    }
+
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      width: 8px;
+      height: 14px;
+      border-radius: 999px;
+      background: #f6d6aa;
+      box-shadow:
+        0 52px 0 #f6d6aa,
+        0 104px 0 #f6d6aa;
+    }
+
+    .page::before {
+      top: 40px;
+    }
+
+    .page::after {
+      bottom: 40px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .dish-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid #c5a36b;
+      background: #fdf2cf;
+    }
+
+    .recipe-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #3a220f;
+    }
+
+    .recipe-tagline {
+      font-size: 11px;
+      color: #7d5531;
+    }
+
+    .dish-image {
+      width: 120px;
+      height: 90px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 16px rgba(0, 0, 0, 0.4);
+      border: 3px solid #fdf6dd;
+      background: #ddd;
+      flex-shrink: 0;
+    }
+
+    .dish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .page-body {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .column-title {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #744727;
+    }
+
+    .divider {
+      width: 28px;
+      height: 2px;
+      background: #b88a55;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 16px;
+      line-height: 1.4;
+    }
+
+    li + li {
+      margin-top: 3px;
+    }
+
+    .steps {
+      list-style: decimal;
+    }
+
+    .tabs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      width: 86px;
+    }
+
+    .tab {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      padding: 8px 6px;
+      border-radius: 14px 0 0 14px;
+      background: var(--tab-bg);
+      color: #6e4728;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: -2px 5px 8px rgba(0, 0, 0, 0.25);
+      transition: 0.18s ease;
+      align-self: flex-end;
+    }
+
+    .tab span {
+      transform: translateX(2px);
+    }
+
+    .tab.active {
+      background: var(--tab-active);
+      color: #3d2514;
+      font-weight: 600;
+      transform: translateX(2px);
+      box-shadow: -3px 5px 9px rgba(0, 0, 0, 0.36);
+    }
+
+    .tab:not(.active):hover {
+      transform: translateX(1px) translateY(-1px);
+    }
+
+    .controls {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      width: 42px;
+      height: 40px;
+      border-radius: 14px;
+      border: none;
+      background: var(--button);
+      color: #03131f;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.75);
+      transition: 0.18s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      background: var(--button-hover);
+      color: #e9f7ff;
+    }
+
+    .nav-btn:active {
+      transform: translateY(1px) scale(0.96);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .page-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #d3c3aa;
+      margin-top: 6px;
+    }
+
+    .dot-row {
+      display: flex;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .dot.active {
+      background: var(--accent);
+    }
+
+    @media (max-width: 880px) {
+      .book-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tabs {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .tab {
+        writing-mode: horizontal-tb;
+        border-radius: 999px;
+        padding-inline: 16px;
+      }
+
+      .book {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .cover-left {
+        display: none;
+      }
+
+      .page {
+        border-radius: 18px;
+      }
+
+      .page::before,
+      .page::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 18px 16px;
+      }
+
+      .page-body {
+        grid-template-columns: 1fr;
+      }
+
+      .dish-image {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1 class="title">Our Family Recipes</h1>
+      <div class="lang-toggle">
+        <button class="pill-button active" type="button">РУССКИЙ</button>
+        <button class="pill-button" type="button">ENGLISH</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="book-wrapper">
+        <div class="book">
+          <div class="cover-left" aria-hidden="true"></div>
+
+          <div class="page-stack">
+            <div class="page-shadow" aria-hidden="true"></div>
+            <article class="page" id="recipe-page">
+              <div class="page-header">
+                <div class="dish-meta">
+                  <span class="section-label" id="dish-section-label">MAIN DISHES</span>
+                  <h2 class="recipe-title" id="dish-title">Котлеты в духовке</h2>
+                  <p class="recipe-tagline" id="dish-tagline">Сочные полуфабрикаты без жарки</p>
+                </div>
+                <div class="dish-image">
+                  <!-- Замените src на путь к вашему файлу с котлетами -->
+                  <img id="dish-image" src="images/cutlets.jpg" alt="Котлеты в духовке" />
+                </div>
+              </div>
+
+              <div class="page-body">
+                <section>
+                  <h3 class="column-title">ИНГРЕДИЕНТЫ</h3>
+                  <div class="divider"></div>
+                  <ul id="ingredients-list"></ul>
+                </section>
+
+                <section>
+                  <h3 class="column-title">ИНСТРУКЦИЯ</h3>
+                  <div class="divider"></div>
+                  <ol class="steps" id="steps-list"></ol>
+                </section>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <nav class="tabs" aria-label="Recipe categories">
+          <button class="tab active" data-index="0" type="button"><span>КОТЛЕТЫ</span></button>
+          <button class="tab" data-index="1" type="button"><span>КУРИНЫЕ ПАЛОЧКИ</span></button>
+        </nav>
+      </div>
+
+      <div class="controls">
+        <button class="nav-btn" id="prev-btn" type="button" aria-label="Предыдущий рецепт">&#9664;</button>
+        <button class="nav-btn" id="next-btn" type="button" aria-label="Следующий рецепт">&#9654;</button>
+      </div>
+
+      <div class="page-indicator" aria-hidden="true">
+        <span id="page-label">1 / 2</span>
+        <div class="dot-row">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Данные по рецептам
+    const recipes = [
+      {
+        id: 0,
+        section: "MAIN DISHES",
+        title: "Котлеты / полуфабрикаты",
+        tagline: "Сочные полуфабрикаты без жарки",
+        image: "images/cutlets.jpg", // замените на свой путь
+        imageAlt: "Котлеты, запечённые в духовке",
+        ingredients: [
+          "Замороженные котлеты или мясные полуфабрикаты",
+          "Пергамент для выпечки",
+          "При желании — немного растительного масла для смазки бумаги"
+        ],
+        steps: [
+          "Разогреть духовку до 200°C.",
+          "Выбрать режим «конвекция» (значок вентилятора в круге).",
+          "Застелить противень пергаментом. При желании слегка смазать пергамент маслом.",
+          "Разложить замороженные котлеты на пергаменте в один слой. Поставить противень на среднюю полку.",
+          "Запекать 25–30 минут: тонкие котлеты примерно 25 минут, более толстые — до 30 минут.",
+          "В конце включить большой гриль (значок прямой линии и треугольников) на 2–3 минуты, чтобы подрумянить верх.",
+          "Достать противень, дать котлетам постоять 2 минуты и подавать к столу."
+        ]
+      },
+      {
+        id: 1,
+        section: "SNACKS",
+        title: "Куриные палочки",
+        tagline: "Хрустящая закуска из духовки",
+        image: "images/chicken-sticks.jpg", // замените на свой путь
+        imageAlt: "Домашние куриные палочки",
+        ingredients: [
+          "Куриные палочки (подготовленный фарш в форме палочек)",
+          "Пергамент для выпечки",
+          "Немного растительного или оливкового масла для смазки бумаги (по желанию)"
+        ],
+        steps: [
+          "Разогреть духовку до 210°C.",
+          "Установить режим «конвекция» (вентилятор в круге).",
+          "Противень застелить пергаментом. При желании слегка смазать его маслом.",
+          "Отсадить или выложить куриные палочки на пергамент, оставляя небольшие промежутки.",
+          "Поставить противень на среднюю полку и запекать 14–20 минут (время зависит от толщины палочек и мощности духовки).",
+          "За 2 минуты до готовности включить большой гриль, чтобы палочки красиво подрумянились.",
+          "Готовые палочки вынуть из духовки и дать им остыть 1 минуту, чтобы корочка стала более стабильной и хрустящей."
+        ]
+      }
+    ];
+
+    const pageEl = document.getElementById("recipe-page");
+    const sectionLabelEl = document.getElementById("dish-section-label");
+    const titleEl = document.getElementById("dish-title");
+    const taglineEl = document.getElementById("dish-tagline");
+    const imageEl = document.getElementById("dish-image");
+    const ingredientsListEl = document.getElementById("ingredients-list");
+    const stepsListEl = document.getElementById("steps-list");
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const pageLabel = document.getElementById("page-label");
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    let currentIndex = 0;
+    let isTurning = false;
+
+    function renderRecipe(index, direction = "forward") {
+      const recipe = recipes[index];
+      if (!recipe) return;
+
+      // Анимация перелистывания
+      if (isTurning) return;
+      isTurning = true;
+
+      const turnClass = direction === "forward" ? "turn-forward" : "turn-back";
+      pageEl.classList.add(turnClass);
+
+      setTimeout(() => {
+        sectionLabelEl.textContent = recipe.section;
+        titleEl.textContent = recipe.title;
+        taglineEl.textContent = recipe.tagline;
+        imageEl.src = recipe.image;
+        imageEl.alt = recipe.imageAlt;
+
+        ingredientsListEl.innerHTML = "";
+        recipe.ingredients.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ingredientsListEl.appendChild(li);
+        });
+
+        stepsListEl.innerHTML = "";
+        recipe.steps.forEach((step) => {
+          const li = document.createElement("li");
+          li.textContent = step;
+          stepsListEl.appendChild(li);
+        });
+
+        // Сброс поворота в другую сторону для плавного перелистывания назад/вперёд
+        pageEl.classList.remove("turn-forward", "turn-back");
+        void pageEl.offsetWidth; // форсируем перерасчёт для корректной анимации
+        pageEl.classList.add(direction === "forward" ? "turn-back" : "turn-forward");
+
+        setTimeout(() => {
+          pageEl.classList.remove("turn-forward", "turn-back");
+          isTurning = false;
+        }, 650);
+      }, 260);
+
+      tabs.forEach((tab) => tab.classList.toggle("active", Number(tab.dataset.index) === index));
+      dots.forEach((dot) => dot.classList.toggle("active", Number(dot.dataset.index) === index));
+      pageLabel.textContent = `${index + 1} / ${recipes.length}`;
+    }
+
+    function goTo(index, direction = "forward") {
+      if (index === currentIndex || index < 0 || index >= recipes.length) return;
+      const actualDirection = index > currentIndex ? "forward" : "back";
+      currentIndex = index;
+      renderRecipe(currentIndex, direction === "auto" ? actualDirection : direction);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetIndex = Number(tab.dataset.index);
+        goTo(targetIndex, "auto");
+      });
+    });
+
+    prevBtn.addEventListener("click", () => {
+      const nextIndex = (currentIndex - 1 + recipes.length) % recipes.length;
+      goTo(nextIndex, "back");
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const nextIndex = (currentIndex + 1) % recipes.length;
+      goTo(nextIndex, "forward");
+    });
+
+    // Стартовая отрисовка
+    renderRecipe(currentIndex);
+  </script>
+</body>
+</html>

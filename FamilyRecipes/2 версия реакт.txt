@@ -1,0 +1,486 @@
+import React, { useState, useMemo } from 'react';
+import { ChevronLeft, ChevronRight, Clock, Thermometer, Wind, Flame, UtensilsCrossed, ChefHat, BookOpen, Hammer } from 'lucide-react';
+
+const RecipeBook = () => {
+  const [activeTab, setActiveTab] = useState('all'); // 'all', 'oven', 'dev'
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // --- Данные ---
+
+  // Сырые данные рецептов
+  const rawRecipes = [
+    {
+      id: 'cutlets',
+      category: 'oven',
+      title: 'Котлеты / Полуфабрикаты',
+      subtitle: 'Сочные и с хрустящей корочкой',
+      image: 'cutlets.jpg',
+      tags: ['Замороженные', 'Обед'],
+      meta: { temp: '200°C', time: '25-30 мин', mode: 'Конвекция' },
+      ingredients: [
+        'Котлеты (замороженные)',
+        'Пергамент для выпечки',
+        'Масло (по желанию)'
+      ],
+      steps: [
+        'Разогреть духовку до 200°C. Режим: конвекция (вентилятор в круге).',
+        'Выложить замороженные котлеты на пергамент (средняя полка).',
+        'Запекать: Тонкие — 25 мин, Толстые — 30 мин.',
+        'ВАЖНО: В конце включить большой гриль (прямая линия + треугольники) на 2–3 минуты для корочки.',
+        'Дать постоять 2 минуты и подавать.'
+      ]
+    },
+    {
+      id: 'chicken-sticks',
+      category: 'oven',
+      title: 'Куриные палочки',
+      subtitle: 'Идеальная закуска',
+      image: 'chicken-sticks.jpg',
+      tags: ['Закуска', 'Быстро'],
+      meta: { temp: '210°C', time: '14-20 мин', mode: 'Конвекция' },
+      ingredients: [
+        'Куриные палочки',
+        'Любимый соус',
+        'Специи по вкусу'
+      ],
+      steps: [
+        'Разогреть духовку до 210°C. Режим: конвекция.',
+        'Отсадить палочки на пергамент на среднюю полку.',
+        'Запекать 14–20 минут до золотистого цвета.',
+        'За 2 минуты до конца включить большой гриль.',
+        'Дать остыть минуту, чтобы стабилизировалась корочка.'
+      ]
+    }
+  ];
+
+  // Формирование страниц в зависимости от таба
+  const pages = useMemo(() => {
+    if (activeTab === 'dev') {
+      return [{ id: 'dev-page', type: 'dev' }];
+    }
+
+    let filteredRecipes = rawRecipes;
+    if (activeTab === 'oven') {
+      filteredRecipes = rawRecipes.filter(r => r.category === 'oven');
+    }
+
+    return [
+      {
+        id: 'cover',
+        type: 'cover',
+        title: 'Семейные\nРецепты',
+        subtitle: 'Коллекция лучших блюд'
+      },
+      ...filteredRecipes.map(r => ({ ...r, type: 'recipe' })),
+      {
+        id: 'end',
+        type: 'end',
+        title: 'Приятного\nаппетита!',
+        subtitle: 'Готовьте с любовью'
+      }
+    ];
+  }, [activeTab]);
+
+  const totalPages = pages.length;
+
+  // --- Управление ---
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setCurrentPage(0); // Сброс на первую страницу при смене раздела
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
+
+  // --- Рендер ---
+
+  return (
+    <div className="min-h-screen bg-[#1a1a1a] flex flex-col items-center justify-center p-4 overflow-hidden font-sans selection:bg-red-200">
+      
+      {/* Заголовок сайта */}
+      <h1 className="text-3xl md:text-4xl font-serif text-amber-50 mb-6 drop-shadow-md tracking-widest uppercase opacity-80" style={{ fontFamily: '"Courier Prime", serif' }}>
+        Кулинарная Книга
+      </h1>
+
+      {/* ГЛАВНЫЙ КОНТЕЙНЕР КНИГИ */}
+      <div className="relative flex items-center justify-center perspective-2000">
+        
+        {/* Книга (объединяет корешок и страницы) */}
+        <div className="relative flex shadow-2xl rounded-r-2xl overflow-visible z-10 transition-all duration-500">
+          
+          {/* 1. КОРЕШОК (Статичный, слева) - Решает проблему с кольцами */}
+          <div className="w-14 md:w-20 bg-gradient-to-r from-red-950 to-red-900 flex flex-col items-center justify-evenly py-12 rounded-l-lg border-r border-red-950 shadow-inner z-50 relative">
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 mix-blend-multiply"></div>
+            {/* Металлический зажим корешка */}
+            <div className="absolute left-1 top-2 bottom-2 w-2 bg-red-950/50 border-r border-white/5"></div>
+
+            {[1, 2, 3].map((_, i) => (
+              <div key={i} className="relative z-20">
+                {/* Отверстие в корешке */}
+                <div className="w-4 h-4 rounded-full bg-black/60 shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] mb-[-8px] mx-auto"></div>
+                {/* Само кольцо (Металлическая дуга) */}
+                <div className="w-12 h-10 md:w-16 md:h-12 border-4 md:border-6 border-gray-300 rounded-[50%] border-l-transparent border-r-gray-400 shadow-md transform -translate-x-1 relative">
+                  {/* Блик на кольце */}
+                  <div className="absolute top-1 right-2 w-3 h-3 bg-white rounded-full opacity-60 blur-[1px]"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 2. БЛОК СТРАНИЦ */}
+          <div className="w-[340px] md:w-[700px] h-[500px] md:h-[550px] relative perspective-2000 bg-[#2c0b0e] rounded-r-2xl border-t-8 border-b-8 border-r-8 border-[#3f1216]">
+             {/* Текстура задней обложки внутри */}
+             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-40 rounded-r-lg"></div>
+
+            {pages.map((page, index) => {
+              // Логика переворота
+              let transform = '';
+              let zIndex = totalPages - Math.abs(currentPage - index);
+              let opacity = 1;
+
+              if (index < currentPage) {
+                // Страница перевернута влево
+                transform = 'rotateY(-180deg)';
+                // Если страниц много, скрываем старые, чтобы не грузить браузер
+                if (currentPage - index > 1) opacity = 0; 
+              } else if (index === currentPage) {
+                // Текущая страница
+                transform = 'rotateY(0deg)';
+              } else {
+                // Следующие страницы
+                transform = 'rotateY(0deg)';
+                // Сдвигаем их чуть ниже визуально, создавая эффект стопки
+                // Ноль градусов, чтобы они лежали ровно
+              }
+              
+              const isCover = page.type === 'cover';
+              const isDev = page.type === 'dev';
+
+              return (
+                <div
+                  key={page.id}
+                  className={`absolute top-0 bottom-0 left-0 w-full rounded-r-xl origin-left transition-all duration-700 ease-[cubic-bezier(0.645,0.045,0.355,1)]
+                    ${index === 0 ? '' : ''}
+                  `}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform,
+                    zIndex,
+                    opacity
+                  }}
+                >
+                  {/* ЛИЦЕВАЯ СТОРОНА СТРАНИЦЫ */}
+                  <div className={`
+                    absolute inset-0 backface-hidden shadow-md overflow-hidden
+                    ${isCover ? 'bg-gradient-to-br from-red-900 to-[#4a0404]' : 'bg-[#fdfbf7]'}
+                    rounded-r-xl
+                  `}>
+                    
+                    {/* Текстура для обложки (Кожа) */}
+                    {isCover && (
+                       <>
+                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-40 mix-blend-multiply"></div>
+                         {/* Эффект прострочки нитками по краю */}
+                         <div className="absolute inset-4 border-2 border-dashed border-yellow-600/30 rounded-r-lg pointer-events-none"></div>
+                       </>
+                    )}
+
+                    {/* Текстура для бумаги */}
+                    {!isCover && (
+                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-60 pointer-events-none"></div>
+                    )}
+                    
+                    {/* Дырки на самой странице (визуально надеты на кольца) */}
+                    <div className="absolute left-2 top-0 bottom-0 w-6 flex flex-col justify-evenly py-12 z-20">
+                       {[1, 2, 3].map((_, i) => (
+                        <div key={i} className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-[#2c0b0e] shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]"></div>
+                      ))}
+                    </div>
+
+                    {/* Контент страницы (с отступом от дырок) */}
+                    <div className="h-full pl-8 md:pl-10 pr-4 md:pr-8 py-6 md:py-8 overflow-y-auto custom-scrollbar relative z-10">
+                      {isCover ? (
+                        <CoverPage title={page.title} subtitle={page.subtitle} />
+                      ) : page.type === 'end' ? (
+                        <EndPage title={page.title} subtitle={page.subtitle} />
+                      ) : isDev ? (
+                        <DevPage />
+                      ) : (
+                        <RecipeContent recipe={page} />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ОБОРОТНАЯ СТОРОНА (видна при перелистывании) */}
+                  <div className={`
+                    absolute inset-0 backface-hidden rounded-l-xl rounded-r-none shadow-md flex items-center justify-center transform rotate-y-180
+                    ${isCover 
+                      ? 'bg-gradient-to-bl from-red-900 to-[#4a0404]' 
+                      : 'bg-[#f4ebd0]'
+                    }
+                  `}>
+                    {isCover && <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-40 mix-blend-multiply"></div>}
+                    {!isCover && <div className="opacity-5 text-2xl font-serif rotate-180 select-none">Заметки</div>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* 3. ТАБЫ (Справа) - Компактные и функциональные */}
+          <div className="absolute -right-[44px] md:-right-[52px] top-8 flex flex-col gap-2 z-0">
+             
+             {/* Таб 1: Все рецепты */}
+             <TabButton 
+               label="Все рецепты" 
+               isActive={activeTab === 'all'} 
+               onClick={() => handleTabChange('all')} 
+               color="bg-emerald-700"
+               icon={<BookOpen size={16} />}
+             />
+
+             {/* Таб 2: Духовка */}
+             <TabButton 
+               label="Духовка" 
+               isActive={activeTab === 'oven'} 
+               onClick={() => handleTabChange('oven')} 
+               color="bg-amber-600"
+               icon={<Flame size={16} />}
+             />
+
+             {/* Таб 3: В разработке */}
+             <TabButton 
+               label="В разработке" 
+               isActive={activeTab === 'dev'} 
+               onClick={() => handleTabChange('dev')} 
+               color="bg-gray-600"
+               icon={<Hammer size={16} />}
+             />
+          </div>
+
+        </div>
+      </div>
+
+      {/* Кнопки навигации (только если не режим разработки) */}
+      {activeTab !== 'dev' && (
+        <div className="mt-10 flex gap-8 z-50">
+          <NavButton onClick={prevPage} disabled={currentPage === 0} icon={<ChevronLeft size={28} />} />
+          <div className="font-mono text-gray-500 mt-3 text-sm">
+            {currentPage + 1} / {totalPages}
+          </div>
+          <NavButton onClick={nextPage} disabled={currentPage === totalPages - 1} icon={<ChevronRight size={28} />} />
+        </div>
+      )}
+
+      <style jsx>{`
+        .perspective-2000 { perspective: 2000px; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(120, 53, 15, 0.2); border-radius: 10px; }
+      `}</style>
+    </div>
+  );
+};
+
+// --- Компоненты UI ---
+
+const TabButton = ({ label, isActive, onClick, color, icon }) => (
+  <button
+    onClick={onClick}
+    className={`
+      w-[44px] md:w-[52px] h-28 md:h-32 
+      rounded-r-lg shadow-lg border-l border-black/20
+      flex flex-col items-center justify-center gap-2
+      transition-all duration-300 transform hover:translate-x-1
+      ${isActive ? `${color} translate-x-1 brightness-110` : 'bg-stone-200 hover:bg-stone-100'}
+    `}
+  >
+    <div className={`transform ${isActive ? 'text-white' : 'text-stone-600'}`}>
+      {icon}
+    </div>
+    <span 
+      className={`
+        text-[10px] md:text-xs font-bold uppercase tracking-wider whitespace-nowrap
+        ${isActive ? 'text-white' : 'text-stone-600'}
+      `}
+      style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+    >
+      {label}
+    </span>
+  </button>
+);
+
+const NavButton = ({ onClick, disabled, icon }) => (
+  <button 
+    onClick={onClick}
+    disabled={disabled}
+    className={`
+      p-3 rounded-full bg-white text-stone-800 shadow-xl 
+      transition-all transform hover:scale-110 active:scale-95 
+      disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100
+    `}
+  >
+    {icon}
+  </button>
+);
+
+// --- Компоненты Страниц ---
+
+const CoverPage = ({ title, subtitle }) => (
+  <div className="flex flex-col items-center justify-center h-full text-center relative">
+    {/* Золотая рамка */}
+    <div className="absolute inset-2 md:inset-6 border border-yellow-500/30 rounded-lg"></div>
+    <div className="absolute inset-3 md:inset-7 border border-yellow-500/30 rounded-lg"></div>
+    
+    <div className="bg-gradient-to-b from-yellow-300 to-yellow-600 bg-clip-text text-transparent mb-6 opacity-90">
+      <ChefHat size={80} className="text-yellow-500 drop-shadow-md" />
+    </div>
+    
+    <h1 className="text-4xl md:text-6xl font-bold font-serif leading-tight mb-6 tracking-wide" 
+        style={{ 
+          color: '#e8cfa0', // Золотистый цвет текста
+          textShadow: '2px 2px 4px rgba(0,0,0,0.6)' 
+        }}>
+      {title}
+    </h1>
+    
+    <div className="w-16 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mb-6"></div>
+    
+    <p className="text-lg md:text-xl font-medium italic text-yellow-100/80 tracking-widest font-serif">
+      {subtitle}
+    </p>
+    
+    <div className="absolute bottom-12 text-[10px] text-yellow-500/40 uppercase tracking-[0.3em]">
+      Est. 2023
+    </div>
+  </div>
+);
+
+const EndPage = ({ title, subtitle }) => (
+  <div className="flex flex-col items-center justify-center h-full border-4 border-double border-stone-300 m-2 md:m-4 p-8 text-center bg-stone-50/50 rounded-lg">
+    <div className="w-24 h-24 rounded-full bg-green-50 border border-green-100 flex items-center justify-center mb-6 shadow-sm">
+       <UtensilsCrossed className="text-green-600 opacity-60" size={40} />
+    </div>
+    <h2 className="text-3xl md:text-4xl font-serif text-stone-700 mb-2">{title}</h2>
+    <p className="text-stone-500 font-serif italic">{subtitle}</p>
+  </div>
+);
+
+const DevPage = () => (
+  <div className="flex flex-col items-center justify-center h-full text-center p-8 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
+    <div className="mb-8 relative">
+       <div className="absolute inset-0 bg-yellow-200 blur-xl opacity-50 rounded-full"></div>
+       <Hammer size={80} className="text-stone-700 relative z-10 animate-bounce" />
+    </div>
+    <h2 className="text-3xl font-bold text-stone-800 mb-4 uppercase tracking-widest border-b-4 border-stone-800 pb-2">
+      В разработке
+    </h2>
+    <p className="text-stone-600 max-w-xs leading-relaxed">
+      Мы готовим новые потрясающие рецепты для этого раздела. Пожалуйста, загляните позже или вернитесь к духовке!
+    </p>
+    <div className="mt-12 opacity-30">
+       🚧 🚧 🚧
+    </div>
+  </div>
+);
+
+// Основной контент рецепта
+const RecipeContent = ({ recipe }) => (
+  <div className="h-full flex flex-col md:flex-row gap-4 md:gap-8">
+    {/* Левая колонка */}
+    <div className="w-full md:w-5/12 flex flex-col gap-4">
+      {/* Фото */}
+      <div className="relative group shadow-lg rotate-1 transition-transform hover:rotate-0 duration-300">
+        <div className="p-2 bg-white rounded-sm">
+           <img 
+            src={recipe.image} 
+            alt={recipe.title} 
+            className="w-full h-40 md:h-48 object-cover filter sepia-[0.1]"
+            onError={(e) => {
+                e.target.src = 'https://placehold.co/400x300/e2e8f0/64748b?text=Фото+блюда';
+            }}
+           />
+        </div>
+        {/* Скотч */}
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-yellow-100/80 backdrop-blur-sm rotate-2 shadow-sm border-l border-r border-white/40"></div>
+      </div>
+
+      {/* Ингредиенты */}
+      <div className="bg-white/60 p-4 rounded-sm border border-stone-200 shadow-sm flex-1">
+        <h3 className="font-bold text-sm text-stone-800 mb-3 border-b border-stone-300 pb-1 font-serif tracking-widest uppercase flex items-center gap-2">
+          <span className="text-emerald-600">●</span> Ингредиенты
+        </h3>
+        <ul className="space-y-2">
+          {recipe.ingredients.map((ing, i) => (
+            <li key={i} className="flex items-start text-xs md:text-sm text-stone-700 font-medium leading-tight">
+              <span className="mr-2 text-stone-400">•</span>
+              {ing}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {/* Правая колонка */}
+    <div className="w-full md:w-7/12 flex flex-col">
+      <div className="mb-4">
+        <div className="flex items-center justify-between mb-1">
+           {/* ИСПРАВЛЕННЫЙ ЦВЕТ MAIN DISH */}
+           <span className="text-amber-700 font-black tracking-[0.2em] text-[10px] uppercase border border-amber-200 px-2 py-0.5 rounded-full bg-amber-50">Main Dish</span>
+        </div>
+        <h2 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 leading-tight mb-2">{recipe.title}</h2>
+        <p className="text-stone-500 italic text-sm mb-3 border-l-2 border-stone-300 pl-3">{recipe.subtitle}</p>
+        
+        {/* Мета данные */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <MetaTag icon={<Thermometer size={14} />} text={recipe.meta.temp} color="bg-red-50 text-red-800 border-red-100" />
+          <MetaTag icon={<Clock size={14} />} text={recipe.meta.time} color="bg-blue-50 text-blue-800 border-blue-100" />
+          <MetaTag icon={<Wind size={14} />} text={recipe.meta.mode} color="bg-stone-100 text-stone-700 border-stone-200" />
+        </div>
+      </div>
+
+      <div className="flex-1 overflow-y-auto pr-1">
+        <h3 className="font-bold text-sm text-stone-800 mb-3 font-serif tracking-widest uppercase">
+          Инструкция
+        </h3>
+        <div className="space-y-3">
+          {recipe.steps.map((step, i) => {
+            const isGrill = step.toLowerCase().includes('гриль');
+            return (
+              <div key={i} className={`flex gap-3 text-xs md:text-sm text-stone-700 ${isGrill ? 'bg-orange-50 p-2 rounded border border-orange-100' : ''}`}>
+                <span className="font-bold font-serif text-lg text-stone-300 leading-none mt-[-2px]">
+                  {i + 1}
+                </span>
+                <p className="leading-relaxed">
+                  {isGrill && <Flame size={14} className="inline text-orange-500 mr-1 align-text-bottom" />}
+                  {step}
+                </p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const MetaTag = ({ icon, text, color }) => (
+  <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold border ${color}`}>
+     {icon}
+     {text}
+  </div>
+);
+
+export default RecipeBook;
