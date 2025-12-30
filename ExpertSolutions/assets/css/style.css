@@ -83,8 +83,8 @@
     --s-extra-bold: 800;
     --s-black: 900;
     --transition: 0.3s;
-    --font-primary: "Red Hat Display", serif;
-    --font-secondary: "DM Sans", serif;
+    --font-primary: "Inter", sans-serif;
+    --font-secondary: "Plus Jakarta Sans", sans-serif;
     --font-3: "fontawesome";
     --font-size-b1: 16px;
     --font-size-b2: 15px;
@@ -118,7 +118,7 @@ body {
     line-height: var(--line-height-b1);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: "DM Sans", serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     color: var(--color-body);
     font-weight: var(--p-regular);
     position: relative;
@@ -194,7 +194,7 @@ h6,
 .h5,
 .h6 {
     word-break: break-word;
-    font-family: "Red Hat Display", serif;
+    font-family: "Inter", sans-serif;
     line-height: 1.4074;
     color: var(--color-heading-1);
 }
@@ -459,7 +459,7 @@ cite,
 }
 
 var {
-    font-family: "Red Hat Display", serif;
+    font-family: "Inter", sans-serif;
 }
 
 /*---------------------------
@@ -768,7 +768,7 @@ ins {
 }
 
 pre {
-    font-family: "Raleway", sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--font-size-b3);
     margin: 10px 0;
     overflow: auto;
@@ -6881,6 +6881,10 @@ Copyright (c) 2015 Daniel Eden
     background: #fff;
 }
 
+.header-one-btn.quote-btn {
+    gap: 10px;
+}
+
 .header-five.header--sticky.sticky {
     backdrop-filter: none;
     box-shadow: none;
@@ -9071,7 +9075,7 @@ header.header--sticky.sticky .nav-area ul li.main-nav {
 
 .inner-content-wrapper-four-banner .title {
     font-weight: 900;
-    font-size: 100px;
+    font-size: 85px;
     text-align: center;
     justify-content: center;
     text-transform: uppercase;
@@ -16782,7 +16786,7 @@ section.main-wrapper-sticky .sticky-statement.narrow .left-side img {
 .comparison-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: "Poppins", sans-serif;
+    font-family: "Plus Jakarta Sans", sans-serif;
     text-align: center;
     border: 1px solid #E3E0E6;
     margin-bottom: 0;
@@ -21356,9 +21360,9 @@ body.with-sticky-item {
     font-family: var(--font-primary);
 }
 
-.progress-circle-main-wrapper {
-    /*For CodePen*/
-}
+/* .progress-circle-main-wrapper {
+    For CodePen
+} */
 
 .progress-circle-main-wrapper svg.radial-progress {
     height: auto;
