@@ -47,7 +47,7 @@ $(function () {
     });
 
     /*==========   Sticky Navbar   ==========*/
-    $win.on('scroll', function () {
+    function stickyNavbar() {
         if ($win.width() >= 992) {
             var $navbar = $('.sticky-navbar');
             if ($win.scrollTop() > 200) {
@@ -56,7 +56,15 @@ $(function () {
                 $navbar.removeClass('is-sticky');
             }
         }
+    }
+
+    // Call on scroll
+    $win.on('scroll', function () {
+        stickyNavbar();
     });
+
+    // Call on load
+    stickyNavbar();
 
     /*==========  Open and Close Popup   ==========*/
     // open Popup
@@ -111,7 +119,7 @@ $(function () {
             'background-size': 'cover',
             'background-position': 'center',
         });
-        $(this).parent().addClass('bg-img');
+        $(this).parent().addClass('bg-section');
         if ($(this).hasClass('background-size-auto')) {
             $(this).parent().addClass('background-size-auto');
         }

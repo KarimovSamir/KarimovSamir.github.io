@@ -22,7 +22,6 @@
 		</div> -->
 		<div class="preloader" id="site-preloader" aria-hidden="true">
 			<div class="loading" role="status" aria-label="Loading">
-				<!-- Кольца-спиннер (родной блок) -->
 				<div class="ring">
 					<span></span>
 					<span></span>
@@ -30,23 +29,16 @@
 					<span></span>
 				</div>
 
-				<!-- Текстовая часть -->
 				<div class="loading-words">
 					<div class="row">
-						<span class="ch">D</span>
-						<span class="ch">E</span>
-						<span class="ch">N</span>
-						<span class="ch">I</span>
-						<span class="ch">Z</span>
+						<span class="ch">C</span>
+						<span class="ch">A</span>
+						<span class="ch">L</span>
 					</div>
 					<div class="row">
-						<span class="ch">S</span>
-						<span class="ch">E</span>
-						<span class="ch">R</span>
-						<span class="ch">V</span>
-						<span class="ch">I</span>
-						<span class="ch">C</span>
-						<span class="ch">E</span>
+						<span class="ch">L</span>
+						<span class="ch">A</span>
+						<span class="ch">B</span>
 					</div>
 					<div class="progress-line"></div>
 				</div>
@@ -59,117 +51,137 @@
         Header
     	=========================== -->
 		<header class="header header-layout1">
-			<nav class="navbar navbar-expand-lg sticky-navbar">
+			<nav class="navbar navbar-expand-xl sticky-navbar">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="index.html">
+					<!-- Brand (лаборатория) -->
+					<a class="navbar-brand" href="laboratory.html">
 						<img src="assets/images/logo/CalLabLogo.png" class="logo" alt="logo">
 					</a>
+
 					<button class="navbar-toggler" type="button">
 						<span class="menu-lines"><span></span></span>
 					</button>
+
 					<div class="collapse navbar-collapse" id="mainNavigation">
-						<ul class="navbar-nav">
-							<li class="nav__item has-dropdown">
-								<a href="index.html" class="nav__item-link">Home</a>
-							</li>
-							<li class="nav__item has-dropdown">
-								<a href="#" class="nav__item-link">Company</a>
-								<button class="dropdown-toggle" data-toggle="dropdown"></button>
-								<ul class="dropdown-menu">
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">About Us</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#about" class="nav__item-link">How we act?</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Principles</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#principles" class="nav__item-link">Our Goals</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
-									</li>
-									<li class="nav__item">
-										<a href="index.html#certificate" class="nav__item-link">What sets us apart</a>
-									</li>
-								</ul>
-							</li>
-							<li class="nav__item">
-								<a href="services.html" class="nav__item-link">Services</a>
-							</li>
-							<li class="nav__item">
-								<a href="projects-grid.html" class="nav__item-link active">Laboratory</a>
-							</li>
-							<li class="nav__item">
-								<a href="contact_lab.html" class="nav__item-link">Contact Us</a>
-							</li>
-						</ul>
-						<button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
+						<div class="navbar-mobile-panel">
+							<!-- Mobile actions (lang) -->
+							<ul
+								class="navbar-actions navbar-actions--mobile d-xl-none align-items-center list-unstyled mb-0">
+								<li>
+									<div class="dropdown lang-dropdown">
+										<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdownMobile"
+											data-toggle="dropdown">
+											<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+										</button>
+										<div class="dropdown-menu" aria-labelledby="langDropdownMobile">
+											<a class="dropdown-item" href="#">
+												<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+											</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+
+							<!-- Mobile nav -->
+							<ul class="navbar-nav">
+								<li class="nav__item has-dropdown">
+									<a href="index.html" class="nav__item-link">Home</a>
+								</li>
+
+								<li class="nav__item has-dropdown">
+									<a href="#" class="nav__item-link">Company</a>
+									<button class="dropdown-toggle" data-toggle="dropdown"></button>
+									<ul class="dropdown-menu">
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">About Us</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#about" class="nav__item-link">How we act?</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Principles</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#principles" class="nav__item-link">Our Goals</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">Our Certificate</a>
+										</li>
+										<li class="nav__item">
+											<a href="index.html#certificate" class="nav__item-link">What sets us
+												apart</a>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav__item">
+									<a href="services.html" class="nav__item-link">Services</a>
+								</li>
+								<li class="nav__item">
+									<a href="partners.html" class="nav__item-link">Partners</a>
+								</li>
+								<li class="nav__item">
+									<a href="laboratory.html" class="nav__item-link active">Laboratory</a>
+								</li>
+								<li class="nav__item">
+									<a href="contact_lab.html" class="nav__item-link">Contact Us</a>
+								</li>
+							</ul>
+
+							<div class="contact__number contact__number--mobile d-xl-none align-items-center">
+								<i class="icon-mail"></i>
+								<a href="mailto:callab@denizservice.com">callab@denizservice.com</a>
+							</div>
+						</div>
+
+						<button class="close-mobile-menu d-block d-xl-none">
+							<i class="fas fa-times"></i>
+						</button>
 					</div>
-					<div class="contact__number d-none d-xl-flex align-items-center">
+
+					<!-- Desktop contact -->
+					<div class="contact__number contact__number--desktop d-none d-xl-flex align-items-center">
 						<i class="icon-mail"></i>
 						<a href="mailto:callab@denizservice.com">callab@denizservice.com</a>
 					</div>
 
-					<ul class="navbar-actions d-flex align-items-center list-unstyled mb-0 ml-auto">
+					<!-- Desktop actions (lang) -->
+					<ul
+						class="navbar-actions navbar-actions--desktop d-none d-xl-flex align-items-center list-unstyled mb-0">
 						<li>
-						  <div class="dropdown lang-dropdown">
-							<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown" data-toggle="dropdown">
-							  <img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
-							</button>
-							<div class="dropdown-menu" aria-labelledby="langDropdown">
-							  <a class="dropdown-item" href="#"><img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span></a>
+							<div class="dropdown lang-dropdown">
+								<button class="dropdown-toggle lang-dropdown-toggle" id="langDropdown"
+									data-toggle="dropdown">
+									<img src="assets/images/flags/en.webp" alt="en"> <span>EN</span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="langDropdown">
+									<a class="dropdown-item" href="#">
+										<img src="assets/images/flags/az.webp" alt="az"> <span>AZ</span>
+									</a>
+								</div>
 							</div>
-						  </div>
 						</li>
 					</ul>
-				</div><!-- /.container -->
-			</nav><!-- /.navabr -->
+				</div><!-- /.container-fluid -->
+			</nav>
 		</header>
 
 		<!-- ========================
        	Первая секция
     	=========================== -->
-		<section class="page-title page-title-layout1 bg-overlay bg-overlay-2 bg-parallax text-center">
-			<div class="bg-img">
-			  <img src="assets/images/laboratory/laboratory.png" alt="our_services">
-			</div>
-			<div class="container">
-			  <div class="row">
-				<div class="col-12">	  
-					<h1 class="pagetitle__heading mb-3">CalLab</h1>
-					<!-- <h5 class="lab__desc col-lg-12 col-xl-9 mb-3 mx-auto">CalLab is a modern calibration and testing laboratory, fully accredited to AZS ISO/IEC 17025:2020.
-						We offer calibration, testing, and verification services with high technical expertise.
-						Established in 2020, we are part of Deniz Service LLC and operate under an ISO-certified management system</h5> -->
-					<div class="service-links lab-page mb-4">
-						<a href="#pressure_lab">Pressure Lab</a>
-						<a href="#electrical_lab">Electrical Lab</a>
-						<a href="#temperature_lab">Temperature Lab</a>
-						<a href="#dimensional_lab">Dimensional Lab</a>
-						<a href="#weight_lab">Mass / weight Lab</a>
-						<a href="#torque_lab">Torque Lab</a>
-						<a href="#gas">Gas</a>
-						<a href="#miscellaneous">Miscellaneous</a>
-					</div>		  
-				</div>
-			  </div>
-			</div>
-		</section>
-		<!-- <section class="slider">
-			<div class="slide-item align-v-h bg-overlay bg-overlay-2">
+		<section class="slider">
+			<div class="slide-item align-v-h bg-overlay bg-overlay-2 pt-10 pb-10">
 				<div class="bg-img">
-					<img src="assets/images/laboratory/laboratory.png" class="darkened-image" alt="slide img">
+					<img src="assets/images/laboratory/laboratory.webp" class="darkened-image" alt="slide img">
 				</div>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
 							<div class="slide__body">
-								<h2 class="slide__title">Professional Calibration & Testing Services</h2>
+								<h2 class="slide__title">Professional Calibration Services</h2>
 								<p class="slide__desc lab-highlight">
-									CalLab is a modern calibration and testing laboratory, fully accredited to AZS
-									ISO/IEC 17025:2020. We offer calibration, testing, and verification services with
+									CalLab is a modern calibration laboratory, fully accredited to AZS
+									ISO/IEC 17025:2020. We offer calibration, verification and repair services with
 									high technical expertise. Established in 2020, we are part of Deniz Service LLC and
 									operate under an ISO-certified management system
 								</p>
@@ -178,16 +190,15 @@
 					</div>
 				</div>
 			</div>
-		</section> -->
+		</section>
 
 		<!-- ======================
       	Услуги лаборатории
     	========================= -->
-		<section class="post-grid pb-30">
+		<!-- <section class="post-grid pb-30">
 			<div class="bg-img"><img src="assets/images/laboratory/LightHexa.webp" alt="background"></div>
 			<div class="container">
 				<div class="row">
-					<!-- Post Item #1 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="pressure_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -220,7 +231,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #2 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="electrical_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -293,7 +303,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #3 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="temperature_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -355,7 +364,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #4 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="dimensional_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -432,7 +440,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #5 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="weight_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -458,7 +465,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #9 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="torque_lab">
 						<div class="post-item">
 							<div class="post__img">
@@ -479,7 +485,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #13 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="gas">
 						<div class="post-item">
 							<div class="post__img">
@@ -512,7 +517,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- Post Item #9 -->
 					<div class="col-sm-12 col-md-6 col-lg-6" id="miscellaneous">
 						<div class="post-item">
 							<div class="post__img">
@@ -538,46 +542,63 @@
 										</li>
 									</ul>
 								</div>
-								<!-- <ul class="custom-list-second">
-									<li>
-										<h6 class="dot-services">• </h6>
-										<p class="custom-service-font-size">PH meters</p>
-									</li>
-									<li>
-										<h6 class="dot-services">• </h6>
-										<p class="custom-service-font-size">Conductivity meters</p>
-									</li>
-									<li>
-										<h6 class="dot-services">• </h6>
-										<p class="custom-service-font-size">Noise meters</p>
-									</li>
-								</ul> -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 		<!-- =========================== 
-      	Информация о CalLab
+      	Banner layout 4
     	============================= -->
-		<section class="banner-layout4 py-0">
+		<section class="banner-layout4 py-0 ">
 			<div class="container-fluid px-0">
 				<div class="row row-no-gutter">
-					<div class="col-sm-12 col-md-12 col-lg-6 background-banner background-lab background-banner-responsive">
+					<div
+						class="col-sm-12 col-md-12 col-lg-6 background-banner background-lab background-banner-responsive">
 						<div class="bg-img">
-							<img src="assets/images/laboratory/3d-azerb-map.webp" alt="banner">
+							<img src="assets/images/laboratory/LightHexa.webp" alt="background">
+						</div>
+
+						<div class="lab-slider" id="labSlider" data-interval="4000">
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred2-1.webp" alt="Lab certificate page 2-1">
+							</div>
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred2-2.webp" alt="Lab certificate page 2-2">
+							</div>
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred2-3.webp" alt="Lab certificate page 2-3">
+							</div>
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred2-4.webp" alt="Lab certificate page 2-4">
+							</div>
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred2-5.webp" alt="Lab certificate page 2-5">
+							</div>
+							<div class="lab-slide is-active">
+								<img src="assets/images/certificates/LabAkkred1-1.webp" alt="Lab certificate page 1">
+							</div>
+							<div class="lab-slide">
+								<img src="assets/images/certificates/LabAkkred1-2.webp" alt="Lab certificate page 1-2">
+							</div>
+
+							<!-- Стрелки -->
+							<button class="lab-nav lab-prev" aria-label="Previous slide" type="button">‹</button>
+							<button class="lab-nav lab-next" aria-label="Next slide" type="button">›</button>
 						</div>
 					</div>
+
 					<div class="col-sm-12 col-md-12 col-lg-6">
 						<div class="inner-padding bg-primary">
 							<div class="heading-layout2 heading-light mb-50">
-								<h3 class="heading__title">CalLab - Who we are</h3>
-								<p class="heading__desc">CalLab is a modern calibration and testing laboratory, fully accredited to AZS
-									ISO/IEC 17025:2020. We offer calibration, testing, and verification services with
-									high technical expertise. Established in 2020, we are part of Deniz Service LLC and
-									operate under an ISO-certified management system</p>
+								<h3 class="heading__title">Our labs</h3>
+								<p class="heading__desc lab_heading__desc">
+									Our laboratories cover a wide range of areas including pressure, temperature,
+									electrical, mass and weight, dimensional, high voltage, torque, noise, load, gas,
+									and volume.
+								</p>
 							</div>
 							<div class="row fancybox-light">
 								<div class="col-sm-6">
@@ -600,7 +621,7 @@
 										</div>
 									</div>
 								</div>
-							
+
 								<div class="col-sm-6">
 									<div class="fancybox-item">
 										<div class="fancybox__icon">
@@ -613,7 +634,7 @@
 													<ul class="list-unstyled pl-3">
 														<li>• Calibration</li>
 														<li>• Verification</li>
-														<li>• Testing</li>
+														<li>• Repair</li>
 													</ul>
 												</li>
 												<li>• Onshore and offshore services</li>
@@ -623,8 +644,8 @@
 									</div>
 								</div>
 							</div>
-												
-							<a href="contact.html" class="btn btn__white btn__white-style2 mt-20">
+
+							<a href="contact_lab.html" class="btn btn__white btn__white-style2 mt-20">
 								<i class="icon-arrow-right"></i>
 								<span>Contact Us</span>
 							</a>
@@ -651,12 +672,12 @@
 									<i class="icon-phone"></i>
 									<a href="tel:+994124373424" class="color-primary">+994 12 539 52 27</a>
 								</div>
-								<div class="contact__number d-flex align-items-center mb-30">
+								<!-- <div class="contact__number d-flex align-items-center mb-30">
 									<i class="icon-phone"></i>
 									<a href="tel:+994512304043" class="color-primary">+994 50 241 61 52</a>
-								</div>
+								</div> -->
 								<p class="mb-20">4 Parlament Avenue, Baku, AZ1006, Azerbaijan</p>
-								<a href="contact.html" target="_blank" class="btn__location">
+								<a href="contact_lab.html" target="_blank" class="btn__location">
 									<i class="icon-location"></i>
 									<span>Get Directions</span>
 								</a>
@@ -703,10 +724,10 @@
 							<div class="footer-widget-content">
 								<nav>
 									<ul class="list-unstyled">
-										<li><a href="#pressure_lab">Pressure lab</a></li>
-										<li><a href="#dimensional_lab">Dimensional lab</a></li>
-										<li><a href="#torque_lab">Torque lab</a></li>
-										<li><a href="#miscellaneous">Miscellaneous</a></li>
+										<li><a href="#labSlider">Pressure lab</a></li>
+										<li><a href="#labSlider">Dimensional lab</a></li>
+										<li><a href="#labSlider">Torque lab</a></li>
+										<li><a href="#labSlider">Miscellaneous</a></li>
 									</ul>
 								</nav>
 							</div>
@@ -716,8 +737,8 @@
 						<div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 footer-widget footer-widget-align-left">
 							<h6 class="footer-widget-title">Our Presentation</h6>
 							<div class="footer-widget-content">
-								<a href="assets/presentation/Deniz%20Service_Presentation.pdf" class="btn btn__primary btn__primary-style2 btn__download mb-60"
-									target="_blank">
+								<a href="assets/presentation/CalLab_presentation.pdf"
+									class="btn btn__primary btn__primary-style2 btn__download mb-60" target="_blank">
 									<i class="icon-download"></i>
 									<span>Download PDF</span>
 								</a>
@@ -759,6 +780,192 @@
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script>
+		(function () {
+			var slider = document.getElementById('labSlider');
+			if (!slider) return;
+
+			var slides = Array.prototype.slice.call(slider.querySelectorAll('.lab-slide'));
+			var prevBtn = slider.querySelector('.lab-prev');
+			var nextBtn = slider.querySelector('.lab-next');
+			var intervalMs = parseInt(slider.getAttribute('data-interval'), 10) || 4000;
+
+			var index = slides.findIndex(function (s) { return s.classList.contains('is-active'); });
+			if (index < 0) index = 0;
+			var timerId = null;
+
+			function show(i) {
+				slides[index].classList.remove('is-active');
+				index = (i + slides.length) % slides.length;
+				slides[index].classList.add('is-active');
+			}
+
+			function next() { show(index + 1); }
+			function prev() { show(index - 1); }
+
+			function start() {
+				stop();
+				timerId = setInterval(next, intervalMs);
+			}
+
+			function stop() {
+				if (timerId) {
+					clearInterval(timerId);
+					timerId = null;
+				}
+			}
+
+			// Автопрокрутка
+			start();
+
+			// Стрелки
+			nextBtn.addEventListener('click', function () { next(); start(); });
+			prevBtn.addEventListener('click', function () { prev(); start(); });
+
+			// Пауза при наведении мыши (чтоб удобно было рассматривать)
+			slider.addEventListener('mouseenter', stop);
+			slider.addEventListener('mouseleave', start);
+
+			// Клавиатура: стрелки ← →
+			slider.setAttribute('tabindex', '0');
+			slider.addEventListener('keydown', function (e) {
+				if (e.key === 'ArrowRight') { next(); start(); }
+				if (e.key === 'ArrowLeft') { prev(); start(); }
+			});
+		})();
+	</script>
+	<script>
+		(function () {
+			var slider = document.getElementById('labSlider');
+			if (!slider) return;
+
+			var imgs = Array.prototype.slice.call(slider.querySelectorAll('.lab-slide img'));
+			if (!imgs.length) return;
+
+			// 1) Гарантируем, что модалка есть. Если нет — создаём.
+			var lb = document.getElementById('labLightbox');
+			if (!lb) {
+				lb = document.createElement('div');
+				lb.id = 'labLightbox';
+				lb.className = 'lab-lightbox';
+				lb.setAttribute('aria-hidden', 'true');
+				lb.innerHTML = '\
+			  <button class="lab-lightbox__close" aria-label="Close">×</button>\
+			  <button class="lab-lightbox__nav lab-lightbox__prev" aria-label="Previous">‹</button>\
+			  <div class="lab-lightbox__stage">\
+				<img class="lab-lightbox__img" src="" alt="">\
+			  </div>\
+			  <button class="lab-lightbox__nav lab-lightbox__next" aria-label="Next">›</button>\
+			  <div class="lab-lightbox__counter"><span id="lbCurrent">1</span>/<span id="lbTotal">1</span></div>';
+				document.body.appendChild(lb);
+			}
+
+			// 2) Кешируем элементы модалки
+			var lbImg = lb.querySelector('.lab-lightbox__img');
+			var btnClose = lb.querySelector('.lab-lightbox__close');
+			var btnPrev = lb.querySelector('.lab-lightbox__prev');
+			var btnNext = lb.querySelector('.lab-lightbox__next');
+			var lbCur = document.getElementById('lbCurrent');
+			var lbTot = document.getElementById('lbTotal');
+
+			var index = 0;
+
+			function openLB(i) {
+				index = (i + imgs.length) % imgs.length;
+				var src = imgs[index].getAttribute('src');
+				var alt = imgs[index].getAttribute('alt') || '';
+				lbImg.setAttribute('src', src);
+				lbImg.setAttribute('alt', alt);
+				lbTot.textContent = imgs.length;
+				lbCur.textContent = index + 1;
+
+				lb.classList.add('is-open');
+				document.body.classList.add('lb-no-scroll');
+				lb.setAttribute('aria-hidden', 'false');
+				lb.focus();
+			}
+
+			function closeLB() {
+				lb.classList.remove('is-open');
+				document.body.classList.remove('lb-no-scroll');
+				lb.setAttribute('aria-hidden', 'true');
+				setTimeout(function () { lbImg.setAttribute('src', ''); }, 150);
+			}
+
+			function show(i) {
+				index = (i + imgs.length) % imgs.length;
+				var src = imgs[index].getAttribute('src');
+				var alt = imgs[index].getAttribute('alt') || '';
+				lbImg.setAttribute('src', src);
+				lbImg.setAttribute('alt', alt);
+				lbCur.textContent = index + 1;
+			}
+
+			function next() { show(index + 1); }
+			function prev() { show(index - 1); }
+
+			// 3) Навешиваем клики на изображения
+			imgs.forEach(function (img, i) {
+				img.style.cursor = 'zoom-in';
+				img.setAttribute('tabindex', '0');   // доступность с клавиатуры
+				img.setAttribute('role', 'button');
+				img.addEventListener('click', function () { openLB(i); });
+				img.addEventListener('keydown', function (e) {
+					if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(i); }
+				});
+			});
+
+			// 4) Кнопки в модалке
+			btnClose.addEventListener('click', closeLB);
+			btnNext.addEventListener('click', next);
+			btnPrev.addEventListener('click', prev);
+
+			// Клик по фону модалки закрывает (но не по самой картинке/кнопкам)
+			lb.addEventListener('click', function (e) {
+				if (e.target === lb) closeLB();
+			});
+
+			// Клавиатура
+			document.addEventListener('keydown', function (e) {
+				if (!lb.classList.contains('is-open')) return;
+				if (e.key === 'Escape') closeLB();
+				if (e.key === 'ArrowRight') next();
+				if (e.key === 'ArrowLeft') prev();
+			});
+
+			// Свайпы на мобиле
+			var touchStartX = 0, touchEndX = 0;
+			lb.addEventListener('touchstart', function (e) {
+				if (!lb.classList.contains('is-open')) return;
+				touchStartX = e.changedTouches[0].screenX;
+			}, { passive: true });
+			lb.addEventListener('touchend', function (e) {
+				if (!lb.classList.contains('is-open')) return;
+				touchEndX = e.changedTouches[0].screenX;
+				var dx = touchEndX - touchStartX;
+				if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+			});
+
+		})();
+	</script>
+
+
+	<!-- Lightbox / модалка для просмотра изображений -->
+	<div id="labLightbox" class="lab-lightbox" aria-hidden="true">
+		<button class="lab-lightbox__close" aria-label="Close">×</button>
+		<button class="lab-lightbox__nav lab-lightbox__prev" aria-label="Previous">‹</button>
+
+		<div class="lab-lightbox__stage">
+			<img class="lab-lightbox__img" src="" alt="">
+		</div>
+
+		<button class="lab-lightbox__nav lab-lightbox__next" aria-label="Next">›</button>
+
+		<div class="lab-lightbox__counter">
+			<span id="lbCurrent">1</span>/<span id="lbTotal">1</span>
+		</div>
+	</div>
+
 </body>
 
 </html>
