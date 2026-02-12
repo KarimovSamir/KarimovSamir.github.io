@@ -1,16 +1,19 @@
-/* assets/js/certificates.strip.js — grid + overlay + групповой лайтбокс */
+/* assets/js/certificates.strip.js */
 (function () {
     var track = document.getElementById('certsStrip');
     if (!track || !window.CERTIFICATES) return;
 
     // 1. ОПРЕДЕЛЯЕМ ЯЗЫК СТРАНИЦЫ
-    // Если тег <html> имеет lang="az", ставим переменную isAz = true
     var isAz = document.documentElement.lang === 'az';
     
-    // 2. ЗАДАЕМ ПЕРЕВОД ДЛЯ КНОПКИ
+    // 2. ПЕРЕВОД КНОПКИ
     var viewText = isAz ? 'Bax' : 'View';
 
-    // Нормализуем данные и соберём группы (глобально для lightbox)
+    // 3. ПРАВИЛЬНЫЙ ПУТЬ К ПАПКЕ (ОТНОСИТЕЛЬНЫЙ)
+    // Если мы в AZ (в папке /az/), нам нужно выйти на уровень вверх (../)
+    // Если мы в EN (в корне), просто заходим в assets
+    var basePath = isAz ? '../assets/images/partners/' : 'assets/images/partners/';
+
     var GROUPS = {};
     window.CERTIFICATES.forEach(function (c, i) {
         var name = c.name || ('Company ' + (i + 1));
@@ -18,21 +21,19 @@
         
         var files = Array.isArray(c.files) && c.files.length ? c.files : (c.file ? [c.file] : []);
         
-        // 3. ИСПРАВЛЕНИЕ ПУТИ (ВАЖНО!)
-        // Добавляем слэш '/' в начале пути. Теперь браузер всегда будет искать картинки от корня сайта.
-        var images = files.map(function (f) { return '/assets/images/partners/' + f; });
+        // Используем basePath без начального слэша
+        var images = files.map(function (f) { return basePath + f; });
         
         if (!images.length) return;
         GROUPS[slug] = { name: name, images: images };
     });
     window.CERTS_GROUPS = GROUPS;
 
-    // Карточки (показываем первую картинку)
+    // Карточки
     var html = Object.keys(GROUPS).map(function (slug) {
         var g = GROUPS[slug];
         var cover = g.images[0];
         
-        // Вставляем правильный текст кнопки (viewText)
         return (
             '<article class="strip-card" data-group="' + slug + '">' +
             '<img class="strip-card__img" src="' + cover + '" alt="' + g.name + ' certificate" loading="lazy" tabindex="0">' +
@@ -46,16 +47,16 @@
     }).join('');
     track.innerHTML = html;
 
-    // Клик по кнопке / картинке / карточке (кроме нижнего бара) — открыть лайтбокс на 1-й картинке группы
+    // Клик
     track.addEventListener('click', function (e) {
         var card = e.target.closest('.strip-card');
         if (!card) return;
-        if (e.target.closest('.strip-card__bar')) return; // клик по бару не открывает
+        if (e.target.closest('.strip-card__bar')) return;
         var group = card.getAttribute('data-group');
         if (group && window.openCertsLightboxGroup) window.openCertsLightboxGroup(group, 0);
     });
 
-    // Клавиатура (Enter/Space по картинке)
+    // Клавиатура
     track.addEventListener('keydown', function (e) {
         if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('strip-card__img')) {
             e.preventDefault();
