@@ -10125,7 +10125,7 @@ textarea.form-control {
     /* Размер точки */
     line-height: 1;
     position: relative;
-    top: 0.3em;
+    /* top: 0.3em; */
 }
 
 @media (min-width: 1200px) {
