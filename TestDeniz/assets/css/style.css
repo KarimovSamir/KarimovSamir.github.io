@@ -3082,6 +3082,10 @@ textarea.form-control {
     line-height: 90px;
 }
 
+.navbar .navbar-brand .logo {
+    max-width: 245px;
+}
+
 .navbar .logo-light {
     display: none;
 }
@@ -11162,4 +11166,15 @@ body.lb-no-scroll {
     
     /* Добавляем тень, чтобы ромб "парил" и был виден даже на белом */
     box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Экраны меньше 360px */
+@media (max-width: 360px) {
+    .navbar .navbar-brand .logo {
+        max-width: 174px;
+    }
+
+    .navbar-expand-xl > .container-fluid {
+        padding-left: 10px;
+    }
 }
